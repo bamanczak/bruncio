@@ -1,6 +1,7 @@
 const panes = document.querySelectorAll('.pane')
 
 let z = 1
+const margin = 10
 
 panes.forEach((pane) => {
   const title = pane.querySelector('.title')
@@ -19,12 +20,22 @@ panes.forEach((pane) => {
 
     let startX = event.pageX
     let startY = event.pageY
+    let screenWidth = document.documentElement.clientWidth;
+
 
     const drag = (event) => {
       event.preventDefault()
 
-      pane.style.left = l + (event.pageX - startX) + 'px'
-      pane.style.top = t + (event.pageY - startY) + 'px'
+      let newValueLeft = l + (event.pageX - startX);
+      if (newValueLeft < 0) {
+        newValueLeft = 0;
+      }
+      let paneWidth = pane.clientWidth //- (startX)
+      if ((newValueLeft + paneWidth) > screenWidth - margin) {
+        newValueLeft = screenWidth - pane.clientWidth - margin;
+      }
+      pane.style.left = newValueLeft + 'px';
+      pane.style.top = t + (event.pageY - startY) + 'px';
     }
 
     const mouseup = () => {
