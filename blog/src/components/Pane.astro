@@ -1,0 +1,21 @@
+---
+const { title, body } = Astro.props;
+---
+
+<div class="pane" style="left: calc(50vw - 320px); top: calc(50vh - 80px)">
+    <div class="title">
+        <h2>{title}</h2>
+    </div>
+    <div class="pane-body">
+        <p>
+            {body}
+        </p>
+    </div>
+    <div class="corner"></div>
+</div>
+
+<style>
+    .pane-body {
+        background-color: rgba(235, 225, 219, 1);
+    }
+</style>

@@ -15,6 +15,7 @@
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
 }
+
 @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/atkinson-regular.woff') format('woff');
@@ -22,6 +23,7 @@
 	font-style: normal;
 	font-display: swap;
 }
+
 @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/atkinson-bold.woff') format('woff');
@@ -29,6 +31,7 @@
 	font-style: normal;
 	font-display: swap;
 }
+
 body {
 	font-family: 'Atkinson', sans-serif;
 	margin: 0;
@@ -42,12 +45,14 @@ body {
 	font-size: 20px;
 	line-height: 1.7;
 }
+
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
 }
+
 h1,
 h2,
 h3,
@@ -58,78 +63,99 @@ h6 {
 	color: rgb(var(--black));
 	line-height: 1.2;
 }
+
 h1 {
 	font-size: 3.052em;
 }
+
 h2 {
 	font-size: 2.441em;
 }
+
 h3 {
 	font-size: 1.953em;
 }
+
 h4 {
 	font-size: 1.563em;
 }
+
 h5 {
 	font-size: 1.25em;
 }
+
 strong,
 b {
 	font-weight: 700;
 }
+
 a {
 	color: var(--accent);
 }
+
 a:hover {
 	color: var(--accent);
 }
+
 p {
 	margin-bottom: 1em;
 }
+
 .prose p {
 	margin-bottom: 2em;
 }
+
 textarea {
 	width: 100%;
 	font-size: 16px;
 }
+
 input {
 	font-size: 16px;
 }
+
 table {
 	width: 100%;
 }
+
 img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
 }
+
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
 }
+
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
 }
-pre > code {
+
+pre>code {
 	all: unset;
 }
+
 blockquote {
 	border-left: 4px solid var(--accent);
 	padding: 0 0 0 20px;
 	margin: 0px;
 	font-size: 1.333em;
 }
+
 hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
+
 @media (max-width: 720px) {
 	body {
 		font-size: 18px;
 	}
+
 	main {
 		padding: 1em;
 	}
@@ -158,90 +184,90 @@ hr {
 @font-face {
 	font-family: 'Xanh Mono';
 	src: url(XanhMono-Regular.ttf);
-  }
-  
-  /* reset defaults */
-  * {
+}
+
+/* reset defaults */
+* {
 	box-sizing: border-box;
 	margin: 0;
-  }
-  
-  /* css variables */
-  :root {
+}
+
+/* css variables */
+:root {
 	--desktop-color: #827977;
 	--desktop-text-color: #ffffff;
-  
+
 	--title-bar-color: #cccccc;
 	--title-bar-text-color: #333333;
 	--title-bar-highlight-color: #aaaaaa;
 	--title-bar-height: 32px;
-  
+
 	--pane-content-background-color: #ffffff;
-  
+
 	--pane-default-width: 320px;
 	--pane-default-height: 360px;
 	--pane-border-radius: 8px;
-  }
-  
-  body {
+}
+
+body {
 	font-family: 'Xanh Mono', monospace;
 	background: var(--desktop-color);
-  
+
 	/* if outside of the window, clip */
 	height: 100vh;
 	/* TUTAJ WYŁĄCZA SIĘ SCROLL */
 	/* overflow: clip; */
-  }
-  
-  h1 {
+}
+
+h1 {
 	color: var(--desktop-text-color);
 	padding: 32px;
 	font-size: 1.5rem;
-  }
-  
-  .pane {
+}
+
+.pane {
 	position: absolute;
 	width: var(--pane-default-width);
 	height: var(--pane-default-height);
-  
+
 	display: grid;
 	grid-template-rows: var(--title-bar-height) 1fr;
-  
+
 	/* border-radius: var(--pane-border-radius); */
 
-	box-shadow: 12px 12px 0 rgba(64, 64, 64, 0.9);
-  
+	box-shadow: 12px 12px 0 rgba(64, 64, 64, 0.8);
+
 	overflow: clip;
-  
+
 	min-width: 160px;
 	min-height: 160px;
 	border-style: solid;
-  	border-width: 5px;
-  }
-  
-  .pane .title {
+	border-width: 5px;
+}
+
+.pane .title {
 	cursor: move;
-  
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
-  
+
 	background-color: var(--title-bar-color);
 	color: var(--title-bar-text-color);
-  }
-  
-  .pane h2 {
+}
+
+.pane h2 {
 	font-size: 1rem;
 	font-weight: 400;
-  }
-  
-  .pane .content {
+}
+
+.pane .content {
 	position: relative;
 	background-color: var(--pane-content-background-color);
-  }
-  
-  /* make image fill the space */
-  .pane .content img {
+}
+
+/* make image fill the space */
+.pane .content img {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -249,28 +275,27 @@ hr {
 	height: 100%;
 	max-width: 100%;
 	max-height: 100%;
-  
+
 	object-fit: cover;
-  
+
 	-webkit-user-drag: none;
 	user-drag: none;
-  }
-  
-  /* add a corner in bottom right */
-  .pane .corner {
+}
+
+/* add a corner in bottom right */
+.pane .corner {
 	position: absolute;
 	bottom: 0;
 	right: 0;
 	width: 24px;
 	height: 24px;
-  
+
 	/* north west to south east */
 	cursor: nwse-resize;
-  
+
 	/* background-color: red; */
-  }
-  
-  .pane.is-dragging .title {
+}
+
+.pane.is-dragging .title {
 	background-color: var(--title-bar-highlight-color);
-  }
-  
+}
