@@ -3,11 +3,19 @@ import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import { Image } from "astro:assets";
 import headImage from "../images/header_head.png";
+import "tippy.js/animations/scale.css";
+
+// import "tippy.js/dist/tippy.css";
 ---
 
 <header>
 	<nav>
-		<a class="head-container" href="/"
+		<a
+			class="head-container dropbtn"
+			id="my-head"
+			href="/"
+			title="Hello there!"
+			data-tooltip-placement="right"
 			><Image
 				src={headImage}
 				alt="A human head"
@@ -22,7 +30,11 @@ import headImage from "../images/header_head.png";
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
 		<div class="social-links">
-			<a href="https://m.webtoo.ls/@astro" target="_blank">
+			<a
+				href="https://m.webtoo.ls/@astro"
+				title="Mastodon"
+				target="_blank"
+			>
 				<span class="sr-only">Follow Astro on Mastodon</span>
 				<svg
 					viewBox="0 0 16 16"
@@ -65,10 +77,22 @@ import headImage from "../images/header_head.png";
 	</nav>
 </header>
 <style>
-	.head-container {
+	/* #tippy-1 .tippy-box {
+		background-color: seagreen;
+	}
+	.tippy-box {
+		background-color: red !important;
+		color: yellow;
+		border: 1px solid pink;
+		border-radius: 0.15rem;
+		padding: 0.5rem;
+		word-wrap: break-word;
+	} */
+	nav a.head-container {
 		max-height: 75px;
 		overflow: hidden;
-		border: none;
+		border-bottom: 0px;
+		margin-bottom: -3px;
 	}
 	.head-container .head {
 		position: relative;

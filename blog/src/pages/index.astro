@@ -3,19 +3,23 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Pane from "../components/Pane.astro";
+import Floppy from "../components/Floppy.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { Tooltips } from "astro-tooltips";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
+		<Tooltips interactive={false} delay={[15, 100]} />
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
+			<!-- <Floppy /> -->
 			<Pane title="Some tajtel" body="This is my body!" />
-			<div
+			<!-- <div
 				class="pane"
 				style="left: calc(50vw - 400px); top: calc(50vh - 280px)"
 			>
@@ -73,7 +77,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 				</div>
 
 				<div class="corner"></div>
-			</div>
+			</div> -->
 
 			<h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>

@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import headImage from "../images/floppy.png";
+---
+
+<Image src={headImage} alt="A human head" width={85} class="floppy-body" />
+<div class="move-area">
+	<div class="container floppy-eyes">
+		<div class="eye left-eye">
+			<div class="pupil"></div>
+		</div>
+		<div class="eye">
+			<div class="pupil"></div>
+		</div>
+	</div>
+</div>
+
+<script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<script>
+	import "../scripts/movingEyes.js";
+</script>
+
+<style>
+	.floppy-body {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		width: 60px;
+		height: 60px;
+	}
+	.floppy-eyes {
+		position: fixed;
+		bottom: 36px;
+		right: 26px;
+	}
+	.move-area {
+		/*normally use body*/
+		width: 100vw;
+		height: 100vh;
+		padding: 10% 45%;
+	}
+	.container {
+		/* width: 100%; */
+	}
+	.eye {
+		position: relative;
+		display: inline-block;
+		border-radius: 50%;
+		height: 22px;
+		width: 22px;
+		background: #ccc;
+	}
+	.left-eye {
+		margin-right: -8px;
+	}
+	/*.eye:after { /*pupil*/
+	.pupil {
+		position: absolute;
+		bottom: 8px;
+		right: 8px;
+		width: 12px;
+		height: 12px;
+		background: #000;
+		border-radius: 50%;
+		content: " ";
+	}
+	.pupil:after {
+		position: absolute;
+		bottom: 2px;
+		right: 1px;
+		width: 4px;
+		height: 4px;
+		background: #ccc;
+		border-radius: 50%;
+		content: " ";
+	}
+</style>
