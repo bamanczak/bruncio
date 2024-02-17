@@ -9,9 +9,54 @@ import "tippy.js/animations/scale.css";
 ---
 
 <header>
+	<!-- <Button color="primary" client:visible>My button</Button> -->
+
+	<!--  -->
+
 	<nav>
+		<!--  -->
+		<div class="hs-dropdown head-container">
+			<button id="hs-dropdown-with-dividers" type="button">
+				<Image
+					src={headImage}
+					alt="A human head"
+					width={85}
+					class="head"
+				/>
+			</button>
+
+			<div
+				class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+				aria-labelledby="hs-dropdown-with-dividers"
+			>
+				<div class="py-2 first:pt-0 last:pb-0">
+					<a
+						class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+						href="#"
+					>
+						Newsletter
+					</a>
+					<a
+						class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+						href="#"
+					>
+						Purchases
+					</a>
+				</div>
+
+				<div class="py-2 first:pt-0 last:pb-0">
+					<a
+						class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+						href="#"
+					>
+						Account Settings
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--  -->
 		<a
-			class="head-container dropbtn"
+			class="head-container"
 			id="my-head"
 			href="/"
 			title="Hello there!"
@@ -88,7 +133,7 @@ import "tippy.js/animations/scale.css";
 		padding: 0.5rem;
 		word-wrap: break-word;
 	} */
-	nav a.head-container {
+	nav .head-container {
 		max-height: 75px;
 		overflow: hidden;
 		border-bottom: 0px;
@@ -96,13 +141,14 @@ import "tippy.js/animations/scale.css";
 	}
 	.head-container .head {
 		position: relative;
-		top: 0;
+		top: 30px;
 		transition: top ease-in-out 0.25s;
 		overflow-clip-margin: content-box;
 		overflow: clip;
 	}
 	.head-container:hover .head {
-		top: -30px;
+		/* naprawić, bo to się do 2 elementów daje */
+		top: -4px;
 	}
 	header {
 		margin: 0;

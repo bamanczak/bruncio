@@ -3,6 +3,8 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Pane from "../components/Pane.astro";
+import Navigation from "../components/Navigation.astro";
+
 import Floppy from "../components/Floppy.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { Tooltips } from "astro-tooltips";
@@ -135,6 +137,7 @@ import { Tooltips } from "astro-tooltips";
 		<Footer />
 		<script>
 			import "../scripts/panes.js";
+			import "preline/dist/preline.js";
 		</script>
 	</body>
 </html>
