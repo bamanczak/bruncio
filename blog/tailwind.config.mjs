@@ -12,6 +12,7 @@ export default {
 			back: "#EBE1DB",
 			white: "#FFF",
 			black: "#000",
+			myblue: "#1E8EBF",
 		},
 		textColor: {
 			// primary: blue,

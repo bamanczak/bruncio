@@ -4,6 +4,7 @@ import { SITE_TITLE } from "../consts";
 import { Image } from "astro:assets";
 import headImage from "../images/header_head.png";
 import "tippy.js/animations/scale.css";
+import Clock from "../components/Clock.astro";
 
 // import "tippy.js/dist/tippy.css";
 ---
@@ -74,6 +75,7 @@ import "tippy.js/animations/scale.css";
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
+		<Clock />
 	</nav>
 
 	<style>
