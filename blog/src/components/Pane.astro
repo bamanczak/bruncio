@@ -1,13 +1,15 @@
 ---
 const { title, body } = Astro.props;
+import BeautifulButton from "./BeautifulButton.astro";
 ---
 
 <div
     class="pane border-4 border-black"
     style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
 >
-    <div class="title bg-myblue h-12">
+    <div class="title bg-myblue">
         <h2>{title}</h2>
+        <BeautifulButton />
     </div>
     <div class="bg-back content">
         <p>
@@ -28,7 +30,7 @@ const { title, body } = Astro.props;
                 grid-template-rows: var(--title-bar-height) 1fr;
                 pewnie moznaby to zrobic lepiej
         */
-        grid-template-rows: 48px 1fr;
+        grid-template-rows: 40px 1fr;
 
         box-shadow: 12px 12px 0 rgba(64, 64, 64, 0.8);
         overflow: clip;
@@ -38,7 +40,7 @@ const { title, body } = Astro.props;
 
     .pane .title {
         cursor: move;
-
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;

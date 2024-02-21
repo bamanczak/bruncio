@@ -30,12 +30,18 @@ panes.forEach((pane) => {
       if (newValueLeft < 0) {
         newValueLeft = 0;
       }
+
+      let newValueTop = t + (event.pageY - startY);
+      if (newValueTop < 44) {
+        newValueTop = 44;
+      }
+
       let paneWidth = pane.clientWidth //- (startX)
       if ((newValueLeft + paneWidth) > screenWidth - margin) {
         newValueLeft = screenWidth - pane.clientWidth - margin;
       }
       pane.style.left = newValueLeft + 'px';
-      pane.style.top = t + (event.pageY - startY) + 'px';
+      pane.style.top = newValueTop + 'px';
     }
 
     const mouseup = () => {

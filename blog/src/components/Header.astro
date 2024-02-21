@@ -4,12 +4,12 @@ import { SITE_TITLE } from "../consts";
 import { Image } from "astro:assets";
 import headImage from "../images/header_head.png";
 import "tippy.js/animations/scale.css";
-import Clock from "../components/Clock.astro";
+import Clock from "./Clock.astro";
 
 // import "tippy.js/dist/tippy.css";
 ---
 
-<header class="sticky top-0">
+<header class="sticky top-0 h-12">
 	<!-- <Button color="primary" client:visible>My button</Button> -->
 
 	<!--  -->
@@ -27,7 +27,7 @@ import Clock from "../components/Clock.astro";
 				<Image
 					src={headImage}
 					alt="A human head"
-					width={70}
+					width={40}
 					class="head"
 				/>
 			</button>
@@ -95,12 +95,12 @@ import Clock from "../components/Clock.astro";
 		}
 
 		nav .hs-dropdown-menu {
-			transform: translate3d(20px, 76px, 0px) !important;
+			transform: translate3d(20px, 44px, 0px) !important;
 			z-index: 1000;
 		}
 
 		nav .head-container {
-			max-height: 75px;
+			max-height: 44px;
 			overflow: hidden;
 			border-bottom: 0px;
 			margin-bottom: 0px;
@@ -108,20 +108,20 @@ import Clock from "../components/Clock.astro";
 
 		.head-container .head {
 			position: relative;
-			top: 35px;
+			top: 17px;
 			transition: top ease-in-out 0.25s;
 			overflow-clip-margin: content-box;
 			overflow: clip;
 		}
 		.head-container:hover .head {
 			/* naprawić, bo to się do 2 elementów daje */
-			top: 10px;
+			top: 4px;
 		}
 		header {
 			margin: 0;
 			padding: 0 1em;
 			background: rgba(236, 179, 55, 1);
-			border-bottom: 5px solid rgba(var(--black), 1);
+			border-bottom: 4px solid rgba(var(--black), 1);
 		}
 		h2 {
 			margin: 0;
