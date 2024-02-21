@@ -13,6 +13,8 @@ panes.forEach((pane) => {
   })
 
   title.addEventListener('mousedown', (event) => {
+    pane.querySelector('.change-on-drag').classList.add('is-dragging')
+    // pane.find('.title').classList.add('is-dragging')
     pane.classList.add('is-dragging')
 
     let l = pane.offsetLeft
@@ -45,6 +47,7 @@ panes.forEach((pane) => {
     }
 
     const mouseup = () => {
+      pane.querySelector('.change-on-drag').classList.remove('is-dragging')
       pane.classList.remove('is-dragging')
 
       document.removeEventListener('mousemove', drag)

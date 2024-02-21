@@ -7,16 +7,32 @@ import BeautifulButton from "./BeautifulButton.astro";
     class="pane border-4 border-black"
     style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
 >
-    <div class="title bg-myblue">
-        <h2>{title}</h2>
-        <BeautifulButton />
+    <div class="title-container">
+        <div class="title change-on-drag bg-myblue grid grid-cols-8">
+            <h2
+                class="change-on-drag col-start-3 col-end-7 flex items-center justify-center bg-myblue"
+            >
+                {title}
+            </h2>
+            <div
+                class="col-start-8 col-end-8 flex items-center justify-center button-container"
+            >
+                <div
+                    class="change-on-drag button-inner-container items-center justify-center bg-myblue"
+                >
+                    <BeautifulButton />
+                </div>
+            </div>
+        </div>
     </div>
     <div class="bg-back content">
         <p>
             {body}
         </p>
     </div>
-    <div class="corner"></div>
+    <div class="corner flex items-center justify-center">
+        <div class="corner-inner"></div>
+    </div>
 </div>
 
 <style>
@@ -34,19 +50,57 @@ import BeautifulButton from "./BeautifulButton.astro";
 
         box-shadow: 12px 12px 0 rgba(64, 64, 64, 0.8);
         overflow: clip;
-        min-width: 160px;
+        min-width: 420px;
         min-height: 160px;
     }
 
     .pane .title {
         cursor: move;
         height: 40px;
-        display: flex;
+        /* display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: center; */
 
         /* background-color: var(--title-bar-color); */
         color: var(--title-bar-text-color);
+        /* background: linear-gradient(
+            to bottom,
+            black,
+            black 10%,
+            black 10%,
+            black
+        ); */
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) 15.63%,
+            #000000 15.63%,
+            #000000 21.88%,
+            rgba(0, 0, 0, 0) 21.89%,
+            rgba(0, 0, 0, 0) 28.13%,
+            #000000 28.13%,
+            #000000 34.38%,
+            rgba(0, 0, 0, 0) 34.38%,
+            rgba(0, 0, 0, 0) 40.63%,
+            #000000 40.63%,
+            #000000 46.88%,
+            rgba(0, 0, 0, 0) 46.88%,
+            rgba(0, 0, 0, 0) 53.13%,
+            #000000 53.13%,
+            #000000 59.38%,
+            rgba(0, 0, 0, 0) 59.38%,
+            rgba(0, 0, 0, 0) 65.63%,
+            #000000 65.63%,
+            #000000 71.88%,
+            rgba(0, 0, 0, 0) 71.88%,
+            rgba(0, 0, 0, 0) 78.13%,
+            #000000 78.13%,
+            #000000 84.38%,
+            rgba(0, 0, 0, 0) 84.38%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        /* // linear gradient that replicates the look of the title bar in Macintosh System 1
+        // https://www.paintcodeapp.com/news/ultimate-guide-to-dark-mode-design
+        background-image: ; */
     }
 
     .pane h2 {
@@ -88,8 +142,43 @@ import BeautifulButton from "./BeautifulButton.astro";
 
         /* background-color: red; */
     }
+    .corner-inner {
+        /* margin: 4px; */
+        width: 21px;
+        height: 21px;
+        background-image: linear-gradient(
+            -45deg,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) 6.25%,
+            #000000 6.25%,
+            #000000 12.5%,
+            rgba(0, 0, 0, 0) 12.5%,
+            rgba(0, 0, 0, 0) 18.75%,
+            #000000 18.75%,
+            #000000 25%,
+            rgba(0, 0, 0, 0) 25%,
+            rgba(0, 0, 0, 0) 31.25%,
+            #000000 31.25%,
+            #000000 37.5%,
+            rgba(0, 0, 0, 0) 37.5%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    }
 
     .pane.is-dragging .title {
-        background-color: var(--title-bar-highlight-color);
+        background-color: #219ed4;
+    }
+
+    .pane.is-dragging .change-on-drag {
+        /* background-image: linear-gradient(red 0%, red 100%); */
+        background-color: #219ed4;
+    }
+
+    .button-container {
+        padding-bottom: 3px;
+    }
+    .button-inner-container {
+        padding-left: 3px;
+        padding-right: 4px;
     }
 </style>
