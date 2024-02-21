@@ -8,6 +8,18 @@ export default {
 		'node_modules/preline/dist/*.js',
 	],
 	theme: {
+		backgroundColor: {
+			back: "#EBE1DB",
+			white: "#FFF",
+			black: "#000",
+		},
+		textColor: {
+			// primary: blue,
+			// secondary: purple,
+			back: "#EBE1DB",
+			white: "#FFF",
+			black: "#000",
+		},
 		extend: {
 			fontFamily: {
 				sans: [

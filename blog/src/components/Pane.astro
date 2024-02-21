@@ -2,7 +2,10 @@
 const { title, body } = Astro.props;
 ---
 
-<div class="pane" style="left: calc(50vw - 320px); top: calc(50vh - 80px)">
+<div
+    class="pane border-black"
+    style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
+>
     <div class="title">
         <h2>{title}</h2>
     </div>
