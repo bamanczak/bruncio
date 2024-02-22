@@ -1,11 +1,11 @@
 ---
-const { title, body } = Astro.props;
+const { title, body, classes } = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
 ---
 
 <div
-    class="pane border-4 border-black animate__animated"
+    class=`pane border-4 border-black animate__animated ${classes}`
     style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
 >
     <div class="title-container">
@@ -38,7 +38,6 @@ import "animate.css";
 
 <style>
     .pane {
-        --animate-duration: 400ms;
         position: absolute;
         width: var(--pane-default-width);
         height: var(--pane-default-height);

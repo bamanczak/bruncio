@@ -24,9 +24,21 @@ import FolderIcon from "../images/folder_icon.png";
 		<main>
 			<DesktopIcon iconName={FolderIcon} label="test" />
 			<!-- <Floppy /> -->
-			<Pane title="Some tajtel" body="This is my body!" />
-			<Pane title="Another tajtel" body="This is my body!" />
-			<Pane title="Three is the charm" body="This is my body!" />
+			<Pane
+				title="Some tajtel"
+				body="This is my body!"
+				classes="invisible"
+			/>
+			<Pane
+				title="Another tajtel"
+				body="This is my body!"
+				classes="invisible"
+			/>
+			<Pane
+				title="Three is the charm"
+				body="This is my body!"
+				classes="invisible"
+			/>
 
 			<!-- <div
 				class="pane"
@@ -144,6 +156,7 @@ import FolderIcon from "../images/folder_icon.png";
 		<Footer />
 		<script>
 			import "../scripts/panes.js";
+			import "../scripts/desktopIcons.js";
 			import "preline/dist/preline.js";
 		</script>
 	</body>

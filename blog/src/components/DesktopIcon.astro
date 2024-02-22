@@ -11,11 +11,18 @@ interface Props {
 const { iconName, label } = Astro.props;
 ---
 
-<div class="max-w-20">
-    <Image src={iconName} alt="Icon" width={40} class="head" />
-    <div class="bg-back border-4 border-black my-shadow">{label}</div>
+<div class="max-w-20 desktop-icon-container">
+    <div class="desktop-icon-sub-container">
+        <Image src={iconName} alt="Icon" width={40} class="head" />
+        <div class="bg-back border-4 border-black my-shadow">{label}</div>
+    </div>
+
+    <Pane
+        title="Opened from icon!"
+        body="This is a body opened from icon"
+        classes="invisible"
+    />
 </div>
-<Pane title="Opened from icon!" body="This is a body opened from icon" />
 
 <style>
     .my-shadow {
