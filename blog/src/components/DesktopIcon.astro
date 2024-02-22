@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+
+import { ImageMetadata } from "astro/dist/@types/astro";
+import Pane from "../components/Pane.astro";
+
+interface Props {
+    iconName: ImageMetadata;
+    label: string;
+}
+const { iconName, label } = Astro.props;
+---
+
+<div class="max-w-20">
+    <Image src={iconName} alt="Icon" width={40} class="head" />
+    <div class="bg-back border-4 border-black my-shadow">{label}</div>
+</div>
+<Pane title="Opened from icon!" body="This is a body opened from icon" />
+
+<style>
+    .my-shadow {
+        box-shadow: 4px 4px 0 rgba(64, 64, 64, 0.8);
+    }
+</style>

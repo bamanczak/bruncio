@@ -4,10 +4,13 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Pane from "../components/Pane.astro";
 import Navigation from "../components/Navigation.astro";
+import DesktopIcon from "../components/DesktopIcon.astro";
 
 import Floppy from "../components/Floppy.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { Tooltips } from "astro-tooltips";
+import "animate.css";
+import FolderIcon from "../images/folder_icon.png";
 ---
 
 <!doctype html>
@@ -19,6 +22,7 @@ import { Tooltips } from "astro-tooltips";
 	<body>
 		<Header />
 		<main>
+			<DesktopIcon iconName={FolderIcon} label="test" />
 			<!-- <Floppy /> -->
 			<Pane title="Some tajtel" body="This is my body!" />
 			<Pane title="Another tajtel" body="This is my body!" />

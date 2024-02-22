@@ -19,6 +19,7 @@
     "@nextui-org/react": "^2.2.9",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
+    "animate.css": "^4.1.1",
     "astro": "^4.3.7",
     "astro-tooltips": "^0.6.2",
     "framer-motion": "^11.0.5",

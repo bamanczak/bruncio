@@ -8,7 +8,12 @@ panes.forEach((pane) => {
   const button = pane.querySelector(".baton");
   button.addEventListener("click", () => {
     console.log("Hello, on client");
-    pane.classList.add("invisible");
+    // pane.classList.add("invisible");
+    pane.classList.add("animate__zoomOut");
+    setTimeout(function () {
+      pane.classList.add("invisible");
+    }, 410);
+
   });
 
   pane.addEventListener('mousedown', () => {
