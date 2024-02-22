@@ -5,6 +5,11 @@ const margin = 10;
 panes.forEach((pane) => {
   const title = pane.querySelector('.title');
   const corner = pane.querySelector('.corner');
+  const button = pane.querySelector(".baton");
+  button.addEventListener("click", () => {
+    console.log("Hello, on client");
+    pane.classList.add("invisible");
+  });
 
   pane.addEventListener('mousedown', () => {
     z = z + 1;
