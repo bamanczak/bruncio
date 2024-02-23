@@ -18,7 +18,9 @@ const { iconName, label } = Astro.props;
         hover:bg-myyellow hover:bg-opacity-25 hover:border-opacity-100"
     >
         <Image src={iconName} alt="Icon" width={40} class="head" />
-        <div class="bg-back border-4 border-black my-shadow">{label}</div>
+        <div class="bg-back border-4 border-black my-shadow text-base px-1">
+            {label}
+        </div>
     </div>
 
     <Pane

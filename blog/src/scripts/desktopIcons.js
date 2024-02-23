@@ -19,24 +19,16 @@ desktopIcons.forEach((desktopIcon) => {
 
 });
 
-
-// tu
 const draggableIcons = document.querySelectorAll('.draggable-icon');
 
-draggableIcons.forEach((pane) => {
-  const corner = pane.querySelector('.corner');
+draggableIcons.forEach((draggableIcon) => {
+  draggableIcon.addEventListener('mousedown', (event) => {
 
-  pane.addEventListener('mousedown', (event) => {
-
-    let l = pane.offsetLeft;
-    let t = pane.offsetTop;
-
+    let l = draggableIcon.offsetLeft;
+    let t = draggableIcon.offsetTop;
     let startX = event.pageX;
     let startY = event.pageY;
     let screenWidth = document.documentElement.clientWidth;
-
-    let clashX = false;
-    let clashY = false;
 
     const drag = (event) => {
       event.preventDefault();
@@ -51,54 +43,22 @@ draggableIcons.forEach((pane) => {
         newValueTop = 48;
       }
 
-      let paneWidth = pane.clientWidth //- (startX)
+      let paneWidth = draggableIcon.clientWidth
       if ((newValueLeft + paneWidth) > screenWidth - margin) {
-        newValueLeft = screenWidth - pane.clientWidth - margin;
+        newValueLeft = screenWidth - draggableIcon.clientWidth - margin;
       }
-      pane.style.left = newValueLeft + 'px';
-      pane.style.top = newValueTop + 'px';
+
+      draggableIcon.style.left = newValueLeft + 'px';
+      draggableIcon.style.top = newValueTop + 'px';
     }
 
     const mouseup = () => {
-      // pane.querySelector('.change-on-drag').classList.remove('is-dragging');
-      pane.classList.remove('is-dragging');
-
+      draggableIcon.classList.remove('is-dragging');
       document.removeEventListener('mousemove', drag);
       document.removeEventListener('mouseup', mouseup);
     }
 
-    let canDrag = true;
-    if (clashX && clashY) {
-      canDrag = false;
-    }
-    if (canDrag) {
-      pane.classList.add('is-dragging');
-      document.addEventListener('mousemove', drag);
-      document.addEventListener('mouseup', mouseup);
-
-    }
-
-  })
-
-  corner.addEventListener('mousedown', (event) => {
-    let w = pane.clientWidth;
-    let h = pane.clientHeight;
-
-    let startX = event.pageX;
-    let startY = event.pageY;
-
-    const drag = (event) => {
-      event.preventDefault();
-
-      pane.style.width = w + (event.pageX - startX) + 'px';
-      pane.style.height = h + (event.pageY - startY) + 'px';
-    }
-
-    const mouseup = () => {
-      document.removeEventListener('mousemove', drag);
-      document.removeEventListener('mouseup', mouseup);
-    }
-
+    draggableIcon.classList.add('is-dragging');
     document.addEventListener('mousemove', drag);
     document.addEventListener('mouseup', mouseup);
   })
