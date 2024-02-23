@@ -8,8 +8,9 @@ desktopIcons.forEach((desktopIcon) => {
   icon.addEventListener("dblclick", () => {
     console.log("Hello, on client");
     if (pane.classList.contains("invisible")) {
-      pane.classList.remove("invisible");
       pane.style.setProperty('--animate-duration', '0.2s');
+      pane.classList.remove("invisible");
+
       pane.classList.add("animate__zoomIn");
       setTimeout(function () {
         pane.classList.remove("animate__zoomIn");

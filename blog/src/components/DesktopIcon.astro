@@ -12,7 +12,9 @@ const { iconName, label } = Astro.props;
 ---
 
 <div class="max-w-20 desktop-icon-container">
-    <div class="desktop-icon-sub-container">
+    <div
+        class="desktop-icon-sub-container cursor-pointer select-none flex flex-col items-center justify-center"
+    >
         <Image src={iconName} alt="Icon" width={40} class="head" />
         <div class="bg-back border-4 border-black my-shadow">{label}</div>
     </div>
