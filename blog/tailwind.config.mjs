@@ -13,6 +13,7 @@ export default {
 			white: "#FFF",
 			black: "#000",
 			myblue: "#1E8EBF",
+			myyellow: "#ecb337",
 		},
 		textColor: {
 			// primary: blue,
