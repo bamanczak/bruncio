@@ -13,7 +13,7 @@ const { iconName, label } = Astro.props;
 
 <div class="max-w-20 desktop-icon-container">
     <div
-        class="desktop-icon-sub-container cursor-pointer select-none flex flex-col items-center justify-center
+        class="draggable-icon desktop-icon-sub-container cursor-pointer select-none flex flex-col items-center justify-center
         border-4 border-myyellow border-opacity-0
         hover:bg-myyellow hover:bg-opacity-25 hover:border-opacity-100"
     >
@@ -31,5 +31,9 @@ const { iconName, label } = Astro.props;
 <style>
     .my-shadow {
         box-shadow: 4px 4px 0 rgba(64, 64, 64, 0.8);
+    }
+
+    .draggable-icon {
+        position: absolute;
     }
 </style>
