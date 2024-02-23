@@ -6,7 +6,6 @@ desktopIcons.forEach((desktopIcon) => {
   const pane = desktopIcon.querySelector('.pane');
   const icon = desktopIcon.querySelector('.desktop-icon-sub-container')
   icon.addEventListener("dblclick", () => {
-    console.log("Hello, on client");
     if (pane.classList.contains("invisible")) {
       pane.style.setProperty('--animate-duration', '0.2s');
       pane.classList.remove("invisible");

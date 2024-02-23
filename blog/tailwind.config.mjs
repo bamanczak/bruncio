@@ -21,7 +21,16 @@ export default {
 			back: "#EBE1DB",
 			white: "#FFF",
 			black: "#000",
+			myyellow: "#ecb337",
 		},
+		colors: {
+			black: "#000",
+			myblue: "#1E8EBF",
+			myyellow: "#ecb337",
+		},
+		// border: {
+		// 	myyellow: "#ecb337",
+		// },
 		extend: {
 			fontFamily: {
 				sans: [

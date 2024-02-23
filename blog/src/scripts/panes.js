@@ -7,8 +7,6 @@ panes.forEach((pane) => {
   const corner = pane.querySelector('.corner');
   const button = pane.querySelector(".baton");
   button.addEventListener("click", () => {
-    console.log("Hello, on client");
-    // pane.classList.add("invisible");
     pane.style.setProperty('--animate-duration', '0.4s');
     pane.classList.add("animate__zoomOut");
     setTimeout(function () {
