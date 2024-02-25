@@ -5,19 +5,11 @@ import { Image } from "astro:assets";
 import headImage from "../images/header_head.png";
 import "tippy.js/animations/scale.css";
 import Clock from "./Clock.astro";
-
-// import "tippy.js/dist/tippy.css";
 ---
 
 <header class="sticky top-0 h-12 bg-myyellow">
-	<!-- <Button color="primary" client:visible>My button</Button> -->
-
-	<!--  -->
-
 	<nav class="sticky">
-		<!--  -->
 		<div class="hs-dropdown head-container">
-			<!-- [--trigger:hover]"> -->
 			<button
 				id="hs-dropdown-with-dividers"
 				type="button"
@@ -69,13 +61,14 @@ import Clock from "./Clock.astro";
 			</div>
 		</div>
 		<!--  -->
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
+		<div class="flex flex-row justify-between grow">
+			<div class="internal-links">
+				<HeaderLink href="/">Home</HeaderLink>
+				<HeaderLink href="/blog">Blog</HeaderLink>
+				<HeaderLink href="/about">About</HeaderLink>
+			</div>
+			<Clock />
 		</div>
-		<Clock />
 	</nav>
 
 	<style>

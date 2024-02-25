@@ -250,6 +250,7 @@ body {
 
 .tippy-box[data-placement^=bottom]>.tippy-arrow:after {
 	border-bottom-color: inherit;
+	color: red;
 	border-width: 0 8px 8px;
 	top: -8px;
 	left: 0
