@@ -14,6 +14,7 @@ export default {
 			black: "#000",
 			myblue: "#1E8EBF",
 			myyellow: "#ecb337",
+			mywhite: "#FAF4E6",
 		},
 		textColor: {
 			// primary: blue,
@@ -22,15 +23,14 @@ export default {
 			white: "#FFF",
 			black: "#000",
 			myyellow: "#ecb337",
+			mywhite: "#FAF4E6",
 		},
 		colors: {
 			black: "#000",
 			myblue: "#1E8EBF",
 			myyellow: "#ecb337",
+			mywhite: "#FAF4E6",
 		},
-		// border: {
-		// 	myyellow: "#ecb337",
-		// },
 		extend: {
 			fontFamily: {
 				sans: [
