@@ -1,6 +1,7 @@
 const panes = document.querySelectorAll('.pane');
 let z = 1;
 const margin = 10;
+const menuHeight = 44;
 const fullScreenClass = "full-screen";
 
 
@@ -29,7 +30,7 @@ panes.forEach((pane) => {
       pane.style.height = '40vh';
       pane.style.width = '40vw';
       pane.style.left = 'calc(50vw - 20vw)';
-      pane.style.top = 'calc(50vh - 20vh + 44px)';
+      pane.style.top = `calc(50vh - 20vh + ${menuHeight}px)`;
 
 
     } else {
@@ -37,9 +38,9 @@ panes.forEach((pane) => {
       pane.style.width = "100%";
       console.log("TESTING2!")
       pane.style.left = '0px';
-      pane.style.top = '44px';
+      pane.style.top = `${menuHeight}px`;
       // pane.style.width = document.documentElement.clientWidth
-      pane.style.height = 'calc(100vh - 44px)';
+      pane.style.height = `calc(100vh - ${menuHeight}px)`;
       // pane.style.box - sizing = 'border-box;';
     }
 
@@ -88,8 +89,8 @@ panes.forEach((pane) => {
       }
 
       let newValueTop = t + (event.pageY - startY);
-      if (newValueTop < 44) {
-        newValueTop = 44;
+      if (newValueTop < menuHeight) {
+        newValueTop = menuHeight;
       }
 
       let paneWidth = pane.clientWidth //- (startX)

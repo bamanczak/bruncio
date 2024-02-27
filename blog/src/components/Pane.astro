@@ -5,34 +5,57 @@ import "animate.css";
 ---
 
 <div
-    class=`pane border-4 border-black animate__animated ${classes}`
+    class=`pane border-4 border-black rounded-2xl animate__animated ${classes}`
     style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
 >
     <div class="title-container">
-        <div class="title change-on-drag bg-myblue grid grid-cols-8">
+        <div
+            class="title change-on-drag bg-mywhite grid grid-cols-8 border-b-4 border-black"
+        >
             <h2
-                class="change-on-drag col-start-3 col-end-7 flex items-center justify-center bg-myblue"
+                class="change-on-drag col-start-3 col-end-7 flex items-center justify-center bg-mywhite"
             >
                 {title}
             </h2>
             <div
-                class="col-start-8 col-end-8 flex items-center justify-center button-container"
+                class="col-start-8 col-end-8 flex items-center justify-end button-container"
             >
                 <div
-                    class="change-on-drag button-inner-container items-center justify-center bg-myblue"
+                    class="change-on-drag button-inner-container flex flex-row gap-1 items-center justify-end bg-mywhite"
                 >
-                    <BeautifulButton />
+                    <BeautifulButton
+                        classes="button-expand"
+                        iconName="material-symbols:expand-content"
+                    />
+                    <BeautifulButton
+                        classes="button-close"
+                        iconName="material-symbols:close"
+                    />
                 </div>
             </div>
         </div>
     </div>
-    <div class="bg-back content">
-        <p>
-            {body}
-        </p>
+    <div class="bg-mywhite content text-black scrollable">
+        {body}
+        <slot />
+    </div>
+    <div class="flex justify-end">
+        <div
+            class="pane-footer
+            bg-black text-mywhite text-xs
+            flex-grow flex items-center justify-center"
+        >
+            Some info
+        </div>
     </div>
     <div class="corner flex items-center justify-center">
         <div class="corner-inner"></div>
+    </div>
+    <div class="dummy-scrollbar top-button flex items-center justify-center">
+        <i class="arrow up"></i>
+    </div>
+    <div class="dummy-scrollbar bottom-button flex items-center justify-center">
+        <i class="arrow down"></i>
     </div>
 </div>
 
@@ -71,7 +94,7 @@ import "animate.css";
             black 10%,
             black
         ); */
-        background-image: linear-gradient(
+        /* background-image: linear-gradient(
             rgba(0, 0, 0, 0) 0%,
             rgba(0, 0, 0, 0) 15.63%,
             #000000 15.63%,
@@ -98,7 +121,7 @@ import "animate.css";
             #000000 84.38%,
             rgba(0, 0, 0, 0) 84.38%,
             rgba(0, 0, 0, 0) 100%
-        );
+        ); */
         /* // linear gradient that replicates the look of the title bar in Macintosh System 1
         // https://www.paintcodeapp.com/news/ultimate-guide-to-dark-mode-design
         background-image: ; */
@@ -111,8 +134,95 @@ import "animate.css";
 
     .pane .content {
         position: relative;
+        overflow: scroll;
+        overflow-x: hidden;
+        padding: 5px;
         /* background-color: var(--pane-content-background-color); */
     }
+
+    .pane-footer {
+        height: 20px;
+    }
+
+    /* scrollbar starts here */
+
+    .dummy-scrollbar {
+        width: 20px;
+        height: 16px;
+        background-color: black;
+        border-left: 4px solid #000000;
+        position: absolute;
+        right: 0;
+    }
+    .dummy-scrollbar.top-button {
+        top: 40px;
+    }
+    .dummy-scrollbar.bottom-button {
+        bottom: 20px;
+    }
+
+    .arrow {
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+    }
+
+    .arrow.up {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+    }
+
+    .arrow.down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+
+    .scrollable {
+        --sb-track-color: #faf4e6;
+        --sb-thumb-color: #000000;
+        --sb-size: 20px;
+    }
+
+    .scrollable::-webkit-scrollbar {
+        width: var(--sb-size);
+        border-left: 4px solid #000000;
+        background-image: radial-gradient(
+            circle at 0.8px 0.8px,
+            rgba(0, 0, 0, 1) 1px,
+            transparent 0
+        );
+        background-size: 10px 10px;
+        margin-top: 30px;
+    }
+
+    .scrollable::-webkit-scrollbar-track {
+        background: var(--sb-track-color);
+        border-radius: 0px;
+        /* dotted background */
+        background-image: radial-gradient(
+            circle at 0.8px 0.8px,
+            rgba(0, 0, 0, 0.5) 2px,
+            transparent 0
+        );
+        background-size: 5px 5px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        border-left: 4px solid #000000;
+    }
+
+    .scrollable::-webkit-scrollbar-thumb {
+        background: var(--sb-thumb-color);
+        border-radius: 0px;
+        /* border: 4px solid #faf4e6; */
+    }
+
+    @supports not selector(::-webkit-scrollbar) {
+        .scrollable {
+            scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+        }
+    }
+    /* scrollbar ends here */
 
     /* make image fill the space */
     .pane .content img {
@@ -150,29 +260,29 @@ import "animate.css";
         background-image: linear-gradient(
             -45deg,
             rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0) 6.25%,
-            #000000 6.25%,
-            #000000 12.5%,
-            rgba(0, 0, 0, 0) 12.5%,
-            rgba(0, 0, 0, 0) 18.75%,
-            #000000 18.75%,
-            #000000 25%,
+            /* rgba(0, 0, 0, 0) 6.25%,
+            #faf4e6 6.25%,
+            #faf4e6 12.5%,
+            rgba(0, 0, 0, 0) 12.5%, */
+                rgba(0, 0, 0, 0) 18.75%,
+            #faf4e6 18.75%,
+            #faf4e6 25%,
             rgba(0, 0, 0, 0) 25%,
             rgba(0, 0, 0, 0) 31.25%,
-            #000000 31.25%,
-            #000000 37.5%,
+            #faf4e6 31.25%,
+            #faf4e6 37.5%,
             rgba(0, 0, 0, 0) 37.5%,
             rgba(0, 0, 0, 0) 100%
         );
     }
 
     .pane.is-dragging .title {
-        background-color: #219ed4;
+        background-color: #ebe1db;
     }
 
     .pane.is-dragging .change-on-drag {
         /* background-image: linear-gradient(red 0%, red 100%); */
-        background-color: #219ed4;
+        background-color: #ebe1db;
     }
 
     .button-container {
