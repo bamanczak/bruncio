@@ -5,7 +5,7 @@ const margin = 10;
 panes.forEach((pane) => {
   const title = pane.querySelector('.title');
   const corner = pane.querySelector('.corner');
-  const button = pane.querySelector(".baton");
+  const button = pane.querySelector(".button-close");
   button.addEventListener("click", () => {
     pane.style.setProperty('--animate-duration', '0.4s');
     pane.classList.add("animate__zoomOut");

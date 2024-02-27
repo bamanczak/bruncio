@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 
 import { ImageMetadata } from "astro/dist/@types/astro";
 import Pane from "../components/Pane.astro";
+import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
 
 interface Props {
     iconName: ImageMetadata;
@@ -24,11 +25,9 @@ const { iconName, label } = Astro.props;
         </div>
     </div>
 
-    <Pane
-        title="Opened from icon!"
-        body="This is a body opened from icon"
-        classes="invisible"
-    />
+    <Pane title="Opened from icon!" body="hey!" classes="invisible">
+        <MyPost />
+    </Pane>
 </div>
 
 <style>

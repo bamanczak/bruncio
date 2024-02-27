@@ -21,6 +21,7 @@
     "@types/react-dom": "^18.2.19",
     "animate.css": "^4.1.1",
     "astro": "^4.3.7",
+    "astro-icon": "^1.1.0",
     "astro-tooltips": "^0.6.2",
     "framer-motion": "^11.0.5",
     "preline": "^2.0.3",
@@ -29,5 +30,9 @@
     "tailwindcss": "^3.4.1",
     "tippy.js": "^6.3.7",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@iconify-json/material-symbols": "^1.1.73",
+    "@iconify-json/mdi": "^1.1.64"
   }
 }
