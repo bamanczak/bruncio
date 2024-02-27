@@ -212,7 +212,7 @@ body {
 	/* if outside of the window, clip */
 	height: 100vh;
 	/* TUTAJ WYŁĄCZA SIĘ SCROLL */
-	/* overflow: clip; */
+	overflow: clip;
 }
 
 h1 {

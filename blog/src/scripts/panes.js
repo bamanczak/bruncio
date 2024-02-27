@@ -1,18 +1,51 @@
 const panes = document.querySelectorAll('.pane');
 let z = 1;
 const margin = 10;
+const fullScreenClass = "full-screen";
+
 
 panes.forEach((pane) => {
   const title = pane.querySelector('.title');
   const corner = pane.querySelector('.corner');
-  const button = pane.querySelector(".button-close");
-  button.addEventListener("click", () => {
+  const buttonClose = pane.querySelector(".button-close");
+  const buttonExpand = pane.querySelector(".button-expand");
+
+  buttonClose.addEventListener("click", () => {
     pane.style.setProperty('--animate-duration', '0.4s');
     pane.classList.add("animate__zoomOut");
     setTimeout(function () {
       pane.classList.add("invisible");
       pane.classList.remove("animate__zoomOut");
     }, 410);
+
+  });
+
+  buttonExpand.addEventListener("click", () => {
+    pane.style.transition = "all 0.3s ease-in-out";
+    if (pane.classList.contains(fullScreenClass)) {
+      pane.classList.remove(fullScreenClass);
+      console.log("TESTING!")
+
+      pane.style.height = '40vh';
+      pane.style.width = '40vw';
+      pane.style.left = 'calc(50vw - 20vw)';
+      pane.style.top = 'calc(50vh - 20vh + 44px)';
+
+
+    } else {
+      pane.classList.add(fullScreenClass);
+      pane.style.width = "100%";
+      console.log("TESTING2!")
+      pane.style.left = '0px';
+      pane.style.top = '44px';
+      // pane.style.width = document.documentElement.clientWidth
+      pane.style.height = 'calc(100vh - 44px)';
+      // pane.style.box - sizing = 'border-box;';
+    }
+
+    setTimeout(function () {
+      pane.style.transition = "none";
+    }, 400);
 
   });
 
@@ -83,14 +116,17 @@ panes.forEach((pane) => {
       pane.classList.add('is-dragging');
       document.addEventListener('mousemove', drag);
       document.addEventListener('mouseup', mouseup);
-
     }
-
   })
 
   corner.addEventListener('mousedown', (event) => {
     let w = pane.clientWidth;
     let h = pane.clientHeight;
+    let screenWidth = document.documentElement.clientWidth;
+    let screenHeight = document.documentElement.clientHeight;
+    let l = pane.offsetLeft;
+    let t = pane.offsetTop;
+
 
     let startX = event.pageX;
     let startY = event.pageY;
@@ -98,8 +134,22 @@ panes.forEach((pane) => {
     const drag = (event) => {
       event.preventDefault();
 
-      pane.style.width = w + (event.pageX - startX) + 'px';
-      pane.style.height = h + (event.pageY - startY) + 'px';
+
+      let newWidth = w + (event.pageX - startX)
+      let newHeight = h + (event.pageY - startY)
+
+      if ((newWidth + l) > screenWidth - (margin / 2)) {
+        newWidth = screenWidth - l - (margin / 2);
+      }
+      if ((newHeight + t) > (screenHeight)) {
+        newHeight = screenHeight - t;
+      }
+
+      pane.style.width = newWidth + 'px';
+      pane.style.height = newHeight + 'px';
+      if (pane.classList.contains(fullScreenClass)) {
+        pane.classList.remove(fullScreenClass);
+      }
     }
 
     const mouseup = () => {
