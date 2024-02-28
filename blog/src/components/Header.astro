@@ -5,21 +5,17 @@ import { Image } from "astro:assets";
 import headImage from "../images/header_head.png";
 import "tippy.js/animations/scale.css";
 import Clock from "./Clock.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<header class="sticky top-0 h-12 bg-mywhite">
+<header class="sticky top-0 h-10 bg-mywhite">
 	<nav class="sticky">
 		<div class="hs-dropdown head-container">
-			<button
-				id="hs-dropdown-with-dividers"
-				type="button"
-				title="Click me!"
-				data-tooltip-placement="right"
-			>
+			<button id="hs-dropdown-with-dividers" type="button">
 				<Image
 					src={headImage}
 					alt="A human head"
-					width={40}
+					width={36}
 					class="head"
 				/>
 			</button>
@@ -67,7 +63,18 @@ import Clock from "./Clock.astro";
 				<HeaderLink href="/blog">Blog</HeaderLink>
 				<HeaderLink href="/about">About</HeaderLink>
 			</div>
-			<Clock />
+			<div class="flex flex-row justify-center items-center gap-4">
+				<a href="mailto:bamanczak@gmail.com" class="grey text-sm"
+					>hello@brunc.io</a
+				>
+				<a
+					href="https://www.linkedin.com/in/bruno-manczak/"
+					class="grey hide-mobile"
+				>
+					<Icon name="mdi:linkedin" />
+				</a>
+				<Clock />
+			</div>
 		</div>
 	</nav>
 
@@ -88,12 +95,12 @@ import Clock from "./Clock.astro";
 		}
 
 		nav .hs-dropdown-menu {
-			transform: translate3d(20px, 44px, 0px) !important;
+			transform: translate3d(20px, 36px, 0px) !important;
 			z-index: 1000;
 		}
 
 		nav .head-container {
-			max-height: 44px;
+			max-height: 36px;
 			overflow: hidden;
 			border-bottom: 0px;
 			margin-bottom: 0px;
@@ -101,7 +108,7 @@ import Clock from "./Clock.astro";
 
 		.head-container .head {
 			position: relative;
-			top: 17px;
+			top: 15px;
 			transition: top ease-in-out 0.25s;
 			overflow-clip-margin: content-box;
 			overflow: clip;
@@ -137,13 +144,16 @@ import Clock from "./Clock.astro";
 			border-bottom: 4px solid transparent;
 			text-decoration: none;
 		}
+		.grey {
+			color: #686864;
+		}
 		nav a.active {
 			text-decoration: none;
 			border-bottom-color: var(--accent);
 		}
 
 		@media (max-width: 720px) {
-			.social-links {
+			.hide-mobile {
 				display: none;
 			}
 		}

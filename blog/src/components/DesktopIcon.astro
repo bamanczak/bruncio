@@ -1,31 +1,46 @@
 ---
-import { Image } from "astro:assets";
-
-import { ImageMetadata } from "astro/dist/@types/astro";
 import Pane from "../components/Pane.astro";
-import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
+import { Icon } from "astro-icon/components";
 
 interface Props {
-    iconName: ImageMetadata;
+    iconName?:
+        | "mdi:file-document-multiple"
+        | "mdi:folder-open"
+        | "mdi:person-help"
+        | "mdi:photo-library"
+        | "mdi:web";
     label: string;
+    position_x: number;
+    position_y: number;
+    postName?: string;
 }
-const { iconName, label } = Astro.props;
+const {
+    iconName,
+    label,
+    position_x,
+    position_y,
+    postName = "MyPost",
+} = Astro.props;
+
+import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
 ---
 
 <div class="max-w-20 desktop-icon-container">
     <div
-        class="draggable-icon desktop-icon-sub-container cursor-pointer select-none flex flex-col items-center justify-center
+        class="draggable-icon desktop-icon-sub-container cursor-pointer grow select-none flex flex-col items-center justify-center
         border-4 p-1 border-mywhite border-opacity-0
         hover:bg-mywhite hover:bg-opacity-25 hover:border-opacity-100
         rounded-xl"
+        style=`left:${position_x}px; top:${position_y}px;`
     >
-        <Image src={iconName} alt="Icon" width={40} class="head" />
-        <div class="text-base px-1">
+        <Icon name={iconName} class="head" size={36} />
+        <!-- <Image src={iconName} alt="Icon" width={40} class="head" /> -->
+        <div class="text-base px-1 mt-1">
             {label}
         </div>
     </div>
 
-    <Pane title="Opened from icon!" body="hey!" classes="invisible">
+    <Pane title={label} body="hey!" classes="invisible">
         <MyPost />
     </Pane>
 </div>
@@ -37,5 +52,19 @@ const { iconName, label } = Astro.props;
 
     .draggable-icon {
         position: absolute;
+    }
+    .grow svg,
+    .grow .text-base {
+        transition: all 0.2s ease-in-out;
+
+        /* transition: position none;
+        -webkit-transition: -moz-transform 0.3s ease-out;
+        -moz-transition: -webkit-transform 0.3s ease-out; */
+    }
+    .grow:hover svg,
+    .grow:hover .text-base {
+        /* transition: all 0.2s ease-in-out; */
+        transform: scale(1.05);
+        /* color: white; */
     }
 </style>

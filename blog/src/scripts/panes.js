@@ -1,7 +1,7 @@
 const panes = document.querySelectorAll('.pane');
 let z = 1;
 const margin = 10;
-const menuHeight = 44;
+const menuHeight = 40;
 const fullScreenClass = "full-screen";
 
 
@@ -70,6 +70,7 @@ panes.forEach((pane) => {
     let startX = event.pageX;
     let startY = event.pageY;
     let screenWidth = document.documentElement.clientWidth;
+    let screenHeight = document.documentElement.clientHeight;
 
     let clashX = false;
     let clashY = false;
@@ -89,8 +90,11 @@ panes.forEach((pane) => {
       }
 
       let newValueTop = t + (event.pageY - startY);
+      let paneHeight = pane.clientHeight
       if (newValueTop < menuHeight) {
         newValueTop = menuHeight;
+      } else if ((newValueTop + paneHeight) > screenHeight) {
+        newValueTop = screenHeight - paneHeight - margin;
       }
 
       let paneWidth = pane.clientWidth //- (startX)
@@ -135,6 +139,8 @@ panes.forEach((pane) => {
     const drag = (event) => {
       event.preventDefault();
 
+      document.body.style.cursor = "nwse-resize";
+
 
       let newWidth = w + (event.pageX - startX)
       let newHeight = h + (event.pageY - startY)
@@ -156,6 +162,7 @@ panes.forEach((pane) => {
     const mouseup = () => {
       document.removeEventListener('mousemove', drag);
       document.removeEventListener('mouseup', mouseup);
+      document.body.style.cursor = "auto";
     }
 
     document.addEventListener('mousemove', drag);

@@ -2,4 +2,19 @@
 
 ---
 
-<div title="Time in Poznań, Poland" data-placement="bottom">12:02:37 AM</div>
+<div id="brunc-clock" class="text-sm">00:00:00</div>
+<script>
+    function showTime() {
+        let date = new Date().toLocaleString("pl-PL", {
+            timeZone: "Europe/Warsaw",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false,
+        });
+        document.getElementById("brunc-clock").innerText = date;
+        document.getElementById("brunc-clock").textContent = date;
+        setTimeout(showTime, 1000);
+    }
+    showTime();
+</script>

@@ -22,86 +22,41 @@ import FolderIcon from "../images/folder_icon.png";
 	<body class="bg-myyellow">
 		<Header />
 		<main>
-			<DesktopIcon iconName={FolderIcon} label="test" />
-
-			<!-- <Floppy /> -->
-			<Pane
-				title="Some tajtel"
-				body="This is my body!"
-				classes="invisible"
+			<DesktopIcon
+				iconName="mdi:file-document-multiple"
+				label="posts"
+				position_x={20}
+				position_y={60}
 			/>
-			<Pane
-				title="Another tajtel"
-				body="This is my body!"
-				classes="invisible"
+			<DesktopIcon
+				iconName="mdi:folder-open"
+				label="test"
+				position_x={94}
+				position_y={130}
 			/>
-			<Pane
-				title="Three is the charm"
-				body="This is my body!"
-				classes="invisible"
+			<DesktopIcon
+				iconName="mdi:person-help"
+				label="Author"
+				position_x={22}
+				position_y={180}
+			/>
+			<DesktopIcon
+				iconName="mdi:photo-library"
+				label="projects"
+				position_x={25}
+				position_y={270}
+			/>
+			<DesktopIcon
+				iconName="mdi:web"
+				label="internet"
+				position_x={24}
+				position_y={350}
 			/>
 
-			<!-- <div
-				class="pane"
-				style="left: calc(50vw - 400px); top: calc(50vh - 280px)"
-			>
-				<div class="title">
-					<h2>Doodle #1</h2>
-				</div>
-
-				<div class="content">
-					<img src="/images/curly.12.jpg" alt="Doodle #1" />
-				</div>
-
-				<div class="corner"></div>
-			</div>
-
-			<div
-				class="pane"
-				style="left: calc(50vw + 80px); top: calc(50vh - 120px)"
-			>
-				<div class="title">
-					<h2>Doodle #2</h2>
-				</div>
-
-				<div class="content">
-					<img src="/images/curly.22.jpg" alt="Doodle #2" />
-				</div>
-
-				<div class="corner"></div>
-			</div>
-
-			<div
-				class="pane"
-				style="left: calc(50vw - 50px); top: calc(50vh - 320px)"
-			>
-				<div class="title">
-					<h2>Doodle #3</h2>
-				</div>
-
-				<div class="content">
-					<img src="/images/curly.18.jpg" alt="Doodle #3" />
-				</div>
-
-				<div class="corner"></div>
-			</div>
-
-			<div
-				class="pane"
-				style="left: calc(50vw - 160px); top: calc(50vh - 200px)"
-			>
-				<div class="title">
-					<h2>Doodle #4</h2>
-				</div>
-
-				<div class="content">
-					<img src="/images/curly.30.jpg" alt="Doodle #4" />
-				</div>
-
-				<div class="corner"></div>
-			</div> -->
-
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+			<!-- <h1>🧑‍🚀 Hello, Astronaut! 👋 👋🏻</h1> -->
+			<h1 class="text-center justify-center select-none">
+				<div class="waving-hand">👋</div>
+			</h1>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a>
 				blog starter template. This template serves as a lightweight, minimally-styled
