@@ -7,6 +7,7 @@ import "tippy.js/animations/scale.css";
 import Clock from "./Clock.astro";
 import { Icon } from "astro-icon/components";
 import Pane from "./Pane.astro";
+import MenuDropdown from "../components/MenuDropdown.svelte";
 
 import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
 import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
@@ -15,6 +16,15 @@ import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 <header class="sticky top-0 h-10 bg-mywhite">
 	<nav class="sticky">
 		<div class="hs-dropdown head-container">
+			<MenuDropdown client:load>
+				<Image
+					src={headImage}
+					alt="A human head"
+					width={36}
+					class="head"
+				/>
+			</MenuDropdown>
+			<!-- 
 			<button id="hs-dropdown-with-dividers" type="button">
 				<Image
 					src={headImage}
@@ -22,7 +32,7 @@ import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 					width={36}
 					class="head"
 				/>
-			</button>
+			</button> -->
 
 			<div
 				class="hs-dropdown-menu hidden transition-[opacity,margin] duration

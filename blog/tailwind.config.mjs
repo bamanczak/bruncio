@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import preline from 'preline/plugin.js';
+import svelteUx from 'svelte-ux/plugins/tailwind.cjs';
 
 export default {
 	content: [
@@ -39,6 +40,6 @@ export default {
 			},
 		},
 	},
-	plugins: [preline],
+	plugins: [preline, svelteUx],
 	darkMode: "class",
 }

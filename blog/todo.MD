@@ -30,8 +30,10 @@
 - navbar border bottom width through tailwind (5>4)
 - switch to [custom web elements](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements)
 - kontrola gdzie otwiera się okienko, dzięki astro props
-- save position of window to astroprop
+- save position of window to astroprop (zeby sie zapamiętał przy odświezeniu strony)
+- wiggle okienka jeśli nacisniesz ikonke a okienko juz było otwarte
 
 # Bugs
 - legal otwiera okienka, ale ukrywają się jak zniknie dropdown
 - doubleckick nie działa na mobile (change to click? add handler?) [SO topic](https://stackoverflow.com/questions/28940676/how-to-make-ondblclick-event-works-on-phone) -> temporarily changed to click()
+- onhover na machającą rączkę zmienić na mousevent bo jak się z niej zjedzie to animacja się przerywa

@@ -15,6 +15,7 @@
     "@astrojs/react": "^3.0.10",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.0.5",
+    "@astrojs/svelte": "^5.2.0",
     "@astrojs/tailwind": "^5.1.0",
     "@nextui-org/react": "^2.2.9",
     "@types/react": "^18.2.56",
@@ -28,6 +29,8 @@
     "preline": "^2.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "svelte": "^4.2.12",
+    "svelte-ux": "^0.60.6",
     "tailwindcss": "^3.4.1",
     "tippy.js": "^6.3.7",
     "typescript": "^5.3.3"
