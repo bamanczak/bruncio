@@ -25,7 +25,7 @@ const {
 import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
 ---
 
-<div class="max-w-20 desktop-icon-container window-opener">
+<div class="max-w-20 desktop-icon-container window-opener" transition:persist>
     <div
         class="draggable-icon desktop-icon-sub-container cursor-pointer grow select-none flex flex-col items-center justify-center
         border-4 p-1 border-mywhite border-opacity-0
@@ -43,7 +43,9 @@ import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
         <MyPost />
     </Pane>
 </div>
-
+<script>
+    import "../scripts/desktopIcons.js";
+</script>
 <style>
     .my-shadow {
         box-shadow: 4px 4px 0 rgba(64, 64, 64, 0.8);

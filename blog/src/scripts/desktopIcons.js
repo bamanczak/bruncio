@@ -1,4 +1,4 @@
-const desktopIcons = document.querySelectorAll('.window-opener');
+const desktopIcons = document.querySelectorAll('.desktop-icon-container');
 import { openPanel, showPanelOnTop } from './panesOpener.ts'
 const margin = 10;
 const menuHeight = 40;
