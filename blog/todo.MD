@@ -30,6 +30,7 @@
 - navbar border bottom width through tailwind (5>4)
 - switch to [custom web elements](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements)
 - kontrola gdzie otwiera się okienko, dzięki astro props
+- save position of window to astroprop
 
 # Bugs
 - legal otwiera okienka, ale ukrywają się jak zniknie dropdown
