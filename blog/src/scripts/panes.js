@@ -1,7 +1,9 @@
+import { zIndex } from '../store.js';
+import { closePanel } from './panesOpener.ts';
+
 const panes = document.querySelectorAll('.pane');
-let z = 1;
 const margin = 10;
-const menuHeight = 40;
+const menuHeight = 36;
 const fullScreenClass = "full-screen";
 
 
@@ -12,20 +14,13 @@ panes.forEach((pane) => {
   const buttonExpand = pane.querySelector(".button-expand");
 
   buttonClose.addEventListener("click", () => {
-    pane.style.setProperty('--animate-duration', '0.4s');
-    pane.classList.add("animate__zoomOut");
-    setTimeout(function () {
-      pane.classList.add("invisible");
-      pane.classList.remove("animate__zoomOut");
-    }, 410);
-
+    closePanel(pane);
   });
 
   buttonExpand.addEventListener("click", () => {
     pane.style.transition = "all 0.3s ease-in-out";
     if (pane.classList.contains(fullScreenClass)) {
       pane.classList.remove(fullScreenClass);
-      console.log("TESTING!")
 
       pane.style.height = '40vh';
       pane.style.width = '40vw';
@@ -51,8 +46,9 @@ panes.forEach((pane) => {
   });
 
   pane.addEventListener('mousedown', () => {
-    z = z + 1;
-    pane.style.zIndex = z;
+    const currentIndex = zIndex.get() + 1
+    zIndex.set(currentIndex);
+    pane.style.zIndex = currentIndex;
   })
 
   title.addEventListener('mousedown', (event) => {

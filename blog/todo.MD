@@ -28,8 +28,8 @@
 
 - pane use tailwind
 - navbar border bottom width through tailwind (5>4)
+- switch to [custom web elements](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements)
 
 # Bugs
-
-- z index is not shared between icons and panes.js, thus sometimes panel opens behind other panels
-- doubleckick nie działa na mobile (change to click? add handler?) [SO topic](https://stackoverflow.com/questions/28940676/how-to-make-ondblclick-event-works-on-phone)
+- if pane is open, make sure that clicking on desktopIcons increases the zindex
+- doubleckick nie działa na mobile (change to click? add handler?) [SO topic](https://stackoverflow.com/questions/28940676/how-to-make-ondblclick-event-works-on-phone) -> temporarily changed to click()

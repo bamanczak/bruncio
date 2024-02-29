@@ -6,6 +6,10 @@ import headImage from "../images/header_head.png";
 import "tippy.js/animations/scale.css";
 import Clock from "./Clock.astro";
 import { Icon } from "astro-icon/components";
+import Pane from "./Pane.astro";
+
+import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
+import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 ---
 
 <header class="sticky top-0 h-10 bg-mywhite">
@@ -47,12 +51,17 @@ import { Icon } from "astro-icon/components";
 					>
 						Home
 					</a>
-					<a
-						class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-						href="#"
+					<div
+						class="window-opener flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
 					>
 						Legal
-					</a>
+						<Pane title="Cookie Notice" classes="invisible">
+							<CookieNotice />
+						</Pane>
+						<Pane title="Cookie Notice" classes="invisible">
+							<PrivacyPolicy />
+						</Pane>
+					</div>
 				</div>
 			</div>
 		</div>

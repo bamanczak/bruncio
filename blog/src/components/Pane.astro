@@ -1,5 +1,5 @@
 ---
-const { title, body, classes } = Astro.props;
+const { title, classes } = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
 ---
@@ -21,7 +21,7 @@ import "animate.css";
                 class="col-start-8 col-end-8 flex items-center justify-end button-container"
             >
                 <div
-                    class="change-on-drag button-inner-container flex flex-row gap-1 items-center justify-end bg-mywhite"
+                    class="window-opener change-on-drag button-inner-container flex flex-row gap-1 items-center justify-end bg-mywhite"
                 >
                     <BeautifulButton
                         classes="button-expand"
@@ -36,7 +36,6 @@ import "animate.css";
         </div>
     </div>
     <div class="bg-mywhite content text-black scrollable">
-        {body}
         <slot />
     </div>
     <div class="flex justify-end">
@@ -293,3 +292,6 @@ import "animate.css";
         padding-right: 4px;
     }
 </style>
+<script>
+    import "../scripts/panes.js";
+</script>

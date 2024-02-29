@@ -2,7 +2,6 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Pane from "../components/Pane.astro";
 import Navigation from "../components/Navigation.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
 
@@ -21,6 +20,10 @@ import FolderIcon from "../images/folder_icon.png";
 	</head>
 	<body class="bg-myyellow">
 		<Header />
+		<div class="class1 class2 class3"></div>
+		<div class="class1 class2 class3 class4 class5"></div>
+		<div class="class4 class5"></div>
+
 		<main>
 			<DesktopIcon
 				iconName="mdi:file-document-multiple"
@@ -66,7 +69,6 @@ import FolderIcon from "../images/folder_icon.png";
 		</main>
 		<!-- <Footer /> -->
 		<script>
-			import "../scripts/panes.js";
 			import "../scripts/desktopIcons.js";
 			import "preline/dist/preline.js";
 		</script>
