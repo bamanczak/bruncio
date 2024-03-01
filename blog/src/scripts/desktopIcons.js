@@ -1,16 +1,14 @@
 const desktopIcons = document.querySelectorAll('.desktop-icon-container');
-import { openPanel, showPanelOnTop } from './panesOpener.ts'
+import { activatePanel } from './panesOpener.ts'
 const margin = 10;
 const menuHeight = 40;
 
 desktopIcons.forEach((desktopIcon) => {
   const pane = desktopIcon.querySelector('.pane');
   const icon = desktopIcon.querySelector('.desktop-icon-sub-container')
+  const panelName = desktopIcon.getAttribute("data-openWindow");
   desktopIcon.addEventListener("click", () => {
-    if (pane.classList.contains("invisible")) {
-      openPanel(pane);
-    }
-    showPanelOnTop(pane);
+    activatePanel(panelName);
   });
 
 });

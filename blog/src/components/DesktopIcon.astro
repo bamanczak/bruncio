@@ -25,7 +25,11 @@ const {
 import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
 ---
 
-<div class="max-w-20 desktop-icon-container window-opener" transition:persist>
+<div
+    class="max-w-20 desktop-icon-container window-opener"
+    data-openWindow={label}
+    transition:persist
+>
     <div
         class="draggable-icon desktop-icon-sub-container cursor-pointer grow select-none flex flex-col items-center justify-center
         border-4 p-1 border-mywhite border-opacity-0
@@ -38,11 +42,10 @@ import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
             {label}
         </div>
     </div>
-
-    <Pane title={label} classes="invisible">
-        <MyPost />
-    </Pane>
 </div>
+<Pane title={label} classes="invisible" windowName={label}>
+    <MyPost />
+</Pane>
 <script>
     import "../scripts/desktopIcons.js";
 </script>

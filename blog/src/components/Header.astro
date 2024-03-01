@@ -18,6 +18,7 @@ import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 		<div class="hs-dropdown head-container">
 			<MenuDropdown client:load>
 				<Image
+					slot="image"
 					src={headImage}
 					alt="A human head"
 					width={36}
@@ -187,3 +188,12 @@ import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 		}
 	</style>
 </header>
+
+<div slot="panels">
+	<Pane title="Cookie Notice" classes="invisible" windowName="CokkieNotice">
+		<CookieNotice />
+	</Pane>
+	<Pane title="Privacy Policy" classes="invisible" windowName="PrivacyPolicy">
+		<PrivacyPolicy />
+	</Pane>
+</div>

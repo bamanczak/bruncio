@@ -9,6 +9,8 @@ import Floppy from "../components/Floppy.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { Tooltips } from "astro-tooltips";
 import "animate.css";
+import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
+import Pane from "../components/Pane.astro";
 ---
 
 <!doctype html>
@@ -31,6 +33,7 @@ import "animate.css";
 				position_x={20}
 				position_y={60}
 			/>
+
 			<DesktopIcon
 				iconName="mdi:folder-open"
 				label="test"
