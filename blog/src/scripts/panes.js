@@ -7,31 +7,31 @@ const menuHeight = 36;
 const fullScreenClass = "full-screen";
 
 
-function expandPanel(pane) {
-  pane.style.transition = "all 0.3s ease-in-out";
-  if (pane.classList.contains(fullScreenClass)) {
-    pane.classList.remove(fullScreenClass);
+// function expandPanel(pane) {
+//   pane.style.transition = "all 0.3s ease-in-out";
+//   if (pane.classList.contains(fullScreenClass)) {
+//     pane.classList.remove(fullScreenClass);
 
-    pane.style.height = '40vh';
-    pane.style.width = '40vw';
-    pane.style.left = 'calc(50vw - 20vw)';
-    pane.style.top = `calc(50vh - 20vh + ${menuHeight}px)`;
+//     pane.style.height = '40vh';
+//     pane.style.width = '40vw';
+//     pane.style.left = 'calc(50vw - 20vw)';
+//     pane.style.top = `calc(50vh - 20vh + ${menuHeight}px)`;
 
 
-  } else {
-    pane.classList.add(fullScreenClass);
-    pane.style.width = "100%";
-    pane.style.left = '0px';
-    pane.style.top = `${menuHeight}px`;
-    // pane.style.width = document.documentElement.clientWidth
-    pane.style.height = `calc(100vh - ${menuHeight}px)`;
-    // pane.style.box - sizing = 'border-box;';
-  }
+//   } else {
+//     pane.classList.add(fullScreenClass);
+//     pane.style.width = "100%";
+//     pane.style.left = '0px';
+//     pane.style.top = `${menuHeight}px`;
+//     // pane.style.width = document.documentElement.clientWidth
+//     pane.style.height = `calc(100vh - ${menuHeight}px)`;
+//     // pane.style.box - sizing = 'border-box;';
+//   }
 
-  setTimeout(function () {
-    pane.style.transition = "none";
-  }, 400);
-}
+//   setTimeout(function () {
+//     pane.style.transition = "none";
+//   }, 400);
+// }
 
 panes.forEach((pane) => {
   const title = pane.querySelector('.title');
