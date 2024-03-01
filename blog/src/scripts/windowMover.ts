@@ -4,92 +4,71 @@ const fullScreenClass = "full-screen";
 
 
 
-export function moveObject(pane: HTMLElement, event: MouseEvent) {
-    const myButton = pane.querySelector(".button-close") as HTMLElement;
-    const pane2 = pane;
+export function moveObject(myObject: HTMLElement, event: MouseEvent) {
     const myEvent = event as MouseEvent;
-
-    let buttonLeft = myButton.offsetLeft;
-    // Why figure out why calculations are wrong if I can just hardcode the missing pixels?
-    let buttonTop = myButton.offsetTop + 2;
-    let buttonWidth = myButton.offsetWidth + 3;
-    let buttonHeight = myButton.offsetHeight;
-
-    let l = pane2.offsetLeft;
-    let t = pane2.offsetTop;
-
     let startX = myEvent.pageX;
     let startY = myEvent.pageY;
+    // let asd = myEvent.x
     let screenWidth = document.documentElement.clientWidth;
     let screenHeight = document.documentElement.clientHeight;
+    let l = myObject.offsetLeft;
 
-    let clashX = false;
-    let clashY = false;
-    if (
-        startX > buttonLeft + l &&
-        startX < buttonLeft + l + buttonWidth
-    ) {
-        clashX = true;
-    }
-    if (
-        startY > buttonTop + t &&
-        startY < buttonTop + t + buttonHeight
-    ) {
-        clashY = true;
-    }
+    let t = myObject.offsetTop;
+
 
     const drag = (event: MouseEvent) => {
         event.preventDefault();
-
         let newValueLeft = l + (event.pageX - startX);
         if (newValueLeft < 0) {
             newValueLeft = 0;
         }
-
         let newValueTop = t + (event.pageY - startY);
-        let paneHeight = pane2.clientHeight;
+        let paneHeight = myObject.clientHeight;
         if (newValueTop < menuHeight) {
             newValueTop = menuHeight;
         } else if (newValueTop + paneHeight > screenHeight) {
             newValueTop = screenHeight - paneHeight - margin;
         }
 
-        let paneWidth = pane2.clientWidth; //- (startX)
+        let paneWidth = myObject.clientWidth;
         if (newValueLeft + paneWidth > screenWidth - margin) {
-            newValueLeft = screenWidth - pane2.clientWidth - margin;
+            newValueLeft = screenWidth - myObject.clientWidth - margin;
         }
-        pane2.style.left = newValueLeft + "px";
-        pane2.style.top = newValueTop + "px";
+        myObject.style.left = newValueLeft + "px";
+        myObject.style.top = newValueTop + "px";
     };
 
     const mouseup = () => {
         (
-            pane2.querySelector(".change-on-drag") as HTMLElement
+            myObject.querySelector(".change-on-drag") as HTMLElement
         ).classList.remove("is-dragging");
-        pane2.classList.remove("is-dragging");
+        myObject.classList.remove("is-dragging");
 
         document.removeEventListener("mousemove", drag);
         document.removeEventListener("mouseup", mouseup);
     };
 
-    let canDrag = true;
-    if (clashX && clashY) {
-        canDrag = false;
-    }
-    if (canDrag) {
-        pane2.classList.add("is-dragging");
+    let clash = false;
+    const panelButtons = myObject.querySelectorAll(".beautiful-button");
+    panelButtons.forEach((button) => {
+        if (button.contains(event.target as Element)) {
+            clash = true;
+        }
+    })
+    if (!clash) {
+        myObject.classList.add("is-dragging");
         document.addEventListener("mousemove", drag);
         document.addEventListener("mouseup", mouseup);
     }
 }
 
-export function resizeObject(pane: HTMLElement, event: MouseEvent) {
-    let w = pane.clientWidth;
-    let h = pane.clientHeight;
+export function resizeObject(myObject: HTMLElement, event: MouseEvent) {
+    let w = myObject.clientWidth;
+    let h = myObject.clientHeight;
     let screenWidth = document.documentElement.clientWidth;
     let screenHeight = document.documentElement.clientHeight;
-    let l = pane.offsetLeft;
-    let t = pane.offsetTop;
+    let l = myObject.offsetLeft;
+    let t = myObject.offsetTop;
 
     let startX = event.pageX;
     let startY = event.pageY;
@@ -109,10 +88,10 @@ export function resizeObject(pane: HTMLElement, event: MouseEvent) {
             newHeight = screenHeight - t;
         }
 
-        pane.style.width = newWidth + "px";
-        pane.style.height = newHeight + "px";
-        if (pane.classList.contains(fullScreenClass)) {
-            pane.classList.remove(fullScreenClass);
+        myObject.style.width = newWidth + "px";
+        myObject.style.height = newHeight + "px";
+        if (myObject.classList.contains(fullScreenClass)) {
+            myObject.classList.remove(fullScreenClass);
         }
     };
 

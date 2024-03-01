@@ -295,26 +295,19 @@ import "animate.css";
     }
 </style>
 <script>
-    // import "../scripts/panes.js";
     import { closePanel } from "../scripts/panesOpener.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
     import { zIndex } from "../store.js";
 
-    // console.log("I am here");
-    // Define the behaviour for our new type of HTML element.
     class AstroDesktopWindow extends HTMLElement {
         constructor() {
             super();
             const menuHeight = 36;
-
-            // const heartButton = this.querySelector('button');
-            // const countSpan = this.querySelector('span');
             const title = this.querySelector(".title");
             const corner = this.querySelector(".corner");
             const buttonClose = this.querySelector(".button-close");
             const buttonExpand = this.querySelector(".button-expand");
             const fullScreenClass = "full-screen";
-            const pane = this.querySelector(".pane");
 
             function expandPanel(pane: HTMLElement) {
                 pane.style.transition = "all 0.3s ease-in-out";
@@ -331,7 +324,6 @@ import "animate.css";
                     pane.style.left = "0px";
                     pane.style.top = `${menuHeight}px`;
                     pane.style.height = `calc(100vh - ${menuHeight}px)`;
-                    // pane.style.box - sizing = 'border-box;';
                 }
 
                 setTimeout(function () {
@@ -343,7 +335,11 @@ import "animate.css";
                 pane.style.zIndex = newIndex;
             }
 
-            function resizePanel(pane: HTMLElement, event: Event) {}
+            this.addEventListener("mousedown", () => {
+                const currentIndex = zIndex.get() + 1;
+                zIndex.set(currentIndex);
+                this.style.zIndex = currentIndex.toString();
+            });
 
             buttonClose!.addEventListener("click", () => {
                 closePanel(this);
@@ -352,14 +348,9 @@ import "animate.css";
             buttonExpand!.addEventListener("click", () => {
                 expandPanel(this);
             });
+
             title!.addEventListener("dblclick", () => {
                 expandPanel(this);
-            });
-
-            this.addEventListener("mousedown", () => {
-                const currentIndex = zIndex.get() + 1;
-                zIndex.set(currentIndex);
-                this.style.zIndex = currentIndex.toString();
             });
 
             title!.addEventListener("mousedown", (event) => {
@@ -372,6 +363,5 @@ import "animate.css";
         }
     }
 
-    // Tell the browser to use our AstroHeart class for <astro-heart> elements.
     customElements.define("astro-desktop-window", AstroDesktopWindow);
 </script>
