@@ -1,11 +1,3 @@
-## TERAZ ROBIĘ
-- switch to [custom web elements](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements)
-
-brak: corner
-problem: animacja przejścia stron, mega laggy
-Tech: zostawić tylko event listenery w componencie, funkcje na zewnątrz
-tech: dla blogposta zrobić osobny (copy&paste) component -> potem będzie miał paginację i np nawigację wsteczinne
-
 ## Features
 
 ### Big
@@ -41,6 +33,7 @@ tech: dla blogposta zrobić osobny (copy&paste) component -> potem będzie miał
 - wiggle okienka jeśli nacisniesz ikonke a okienko juz było otwarte
 
 # Bugs
-- nawigacja psuje panele
+- nawigacja psuje panele ??
+- expand trochę dziwnie animuje bo przesuwa w lewo blogpost
 - doubleckick nie działa na mobile (change to click? add handler?) [SO topic](https://stackoverflow.com/questions/28940676/how-to-make-ondblclick-event-works-on-phone) -> temporarily changed to click()
 - onhover na machającą rączkę zmienić na mousevent bo jak się z niej zjedzie to animacja się przerywa
