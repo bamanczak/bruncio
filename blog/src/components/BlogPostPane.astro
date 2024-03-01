@@ -4,11 +4,10 @@ import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
 ---
 
-<astro-desktop-window
+<astro-post-desktop-window
     data-windowName={windowName}
     class=`pane border-4 border-black rounded-2xl animate__animated ${classes}`
     style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
-    transition:persist
 >
     <div class="title-container select-none">
         <div
@@ -58,7 +57,7 @@ import "animate.css";
     <div class="dummy-scrollbar bottom-button flex items-center justify-center">
         <i class="arrow down"></i>
     </div>
-</astro-desktop-window>
+</astro-post-desktop-window>
 
 <style>
     .pane {
@@ -253,7 +252,7 @@ import "animate.css";
     import { closePanel, showPanelOnTop } from "../scripts/panesOpener.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
 
-    class AstroDesktopWindow extends HTMLElement {
+    class AstroPostDesktopWindow extends HTMLElement {
         constructor() {
             super();
             const menuHeight = 36;
@@ -262,6 +261,7 @@ import "animate.css";
             const buttonClose = this.querySelector(".button-close");
             const buttonExpand = this.querySelector(".button-expand");
             const fullScreenClass = "full-screen";
+            showPanelOnTop(this);
 
             function expandPanel(pane: HTMLElement) {
                 pane.style.transition = "all 0.3s ease-in-out";
@@ -283,10 +283,6 @@ import "animate.css";
                 setTimeout(function () {
                     pane.style.transition = "none";
                 }, 400);
-            }
-
-            function changePanelZIndex(pane: HTMLElement, newIndex: string) {
-                pane.style.zIndex = newIndex;
             }
 
             this.addEventListener("mousedown", () => {
@@ -315,5 +311,5 @@ import "animate.css";
         }
     }
 
-    customElements.define("astro-desktop-window", AstroDesktopWindow);
+    customElements.define("astro-post-desktop-window", AstroPostDesktopWindow);
 </script>

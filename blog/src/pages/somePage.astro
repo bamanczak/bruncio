@@ -2,13 +2,13 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import DesktopPage from "../layouts/DesktopPage.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import Pane from "../components/Pane.astro";
+import Pane from "../components/BlogPostPane.astro";
 
 const post = Astro.props;
 ---
 
 <DesktopPage title={SITE_TITLE} , description={SITE_DESCRIPTION}>
-	<Pane title="HEY!" windowName="Hey">
+	<Pane title="HEY!" windowName="Heyyy">
 		<h1>MAJTAJTEL!</h1>
 	</Pane>
 </DesktopPage>

@@ -2,7 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 import DesktopPage from "../../layouts/DesktopPage.astro";
-import Pane from "../../components/Pane.astro";
+import Pane from "../../components/BlogPostPane.astro";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
