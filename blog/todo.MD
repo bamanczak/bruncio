@@ -1,3 +1,11 @@
+## TERAZ ROBIĘ
+- switch to [custom web elements](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements)
+
+brak: corner
+problem: animacja przejścia stron, mega laggy
+Tech: zostawić tylko event listenery w componencie, funkcje na zewnątrz
+tech: dla blogposta zrobić osobny (copy&paste) component -> potem będzie miał paginację i np nawigację wsteczinne
+
 ## Features
 
 ### Big
@@ -28,7 +36,6 @@
 
 - pane use tailwind
 - navbar border bottom width through tailwind (5>4)
-- switch to [custom web elements](https://docs.astro.build/en/guides/client-side-scripts/#web-components-with-custom-elements)
 - kontrola gdzie otwiera się okienko, dzięki astro props
 - save position of window to astroprop (zeby sie zapamiętał przy odświezeniu strony)
 - wiggle okienka jeśli nacisniesz ikonke a okienko juz było otwarte
