@@ -7,7 +7,6 @@ import "animate.css";
 <astro-post-desktop-window
     data-windowName={windowName}
     class=`pane border-4 border-black rounded-2xl animate__animated ${classes}`
-    style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
 >
     <div class="title-container select-none">
         <div
@@ -62,8 +61,10 @@ import "animate.css";
 <style>
     .pane {
         position: absolute;
-        width: var(--pane-default-width);
-        height: var(--pane-default-height);
+        width: 80vw;
+        height: 90vh;
+        right: 20px;
+        top: 56px;
 
         display: grid;
         /* Ta linijka przesuwa w dół content, nie wiem jak działa, wcześniej było:
@@ -249,41 +250,21 @@ import "animate.css";
     }
 </style>
 <script>
-    import { closePanel, showPanelOnTop } from "../scripts/panesOpener.ts";
+    import {
+        closePanel,
+        showPanelOnTop,
+        expandPanel,
+    } from "../scripts/panesOpener.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
 
     class AstroPostDesktopWindow extends HTMLElement {
         constructor() {
             super();
-            const menuHeight = 36;
             const title = this.querySelector(".title");
             const corner = this.querySelector(".corner");
             const buttonClose = this.querySelector(".button-close");
             const buttonExpand = this.querySelector(".button-expand");
-            const fullScreenClass = "full-screen";
             showPanelOnTop(this);
-
-            function expandPanel(pane: HTMLElement) {
-                pane.style.transition = "all 0.3s ease-in-out";
-                if (pane.classList.contains(fullScreenClass)) {
-                    pane.classList.remove(fullScreenClass);
-
-                    pane.style.height = "40vh";
-                    pane.style.width = "40vw";
-                    pane.style.left = "calc(50vw - 20vw)";
-                    pane.style.top = `calc(50vh - 20vh + ${menuHeight}px)`;
-                } else {
-                    pane.classList.add(fullScreenClass);
-                    pane.style.width = "100%";
-                    pane.style.left = "0px";
-                    pane.style.top = `${menuHeight}px`;
-                    pane.style.height = `calc(100vh - ${menuHeight}px)`;
-                }
-
-                setTimeout(function () {
-                    pane.style.transition = "none";
-                }, 400);
-            }
 
             this.addEventListener("mousedown", () => {
                 showPanelOnTop(this);

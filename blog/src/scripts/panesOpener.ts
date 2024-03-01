@@ -54,3 +54,28 @@ export function showPanelOnTop(myElement: HTMLElement) {
     zIndex.set(currentIndex);
     myElement.style.zIndex = currentIndex.toString();
 }
+
+export function expandPanel(panel: HTMLElement) {
+    const fullScreenClass = "full-screen";
+    const menuHeight = 36;
+
+    panel.style.transition = "all 0.3s ease-in-out";
+    if (panel.classList.contains(fullScreenClass)) {
+        panel.classList.remove(fullScreenClass);
+
+        panel.style.height = "40vh";
+        panel.style.width = "40vw";
+        panel.style.left = "calc(50vw - 20vw)";
+        panel.style.top = `calc(50vh - 20vh + ${menuHeight}px)`;
+    } else {
+        panel.classList.add(fullScreenClass);
+        panel.style.width = "100vw";
+        panel.style.left = "0px";
+        panel.style.top = `${menuHeight}px`;
+        panel.style.height = `calc(100vh - ${menuHeight}px)`;
+    }
+
+    setTimeout(function () {
+        panel.style.transition = "none";
+    }, 400);
+}
