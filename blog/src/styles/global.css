@@ -146,6 +146,20 @@ blockquote {
 	font-size: 1.333em;
 }
 
+ul {
+	list-style-type: square;
+	padding-left: 2rem;
+}
+
+ol {
+	list-style: decimal;
+	padding-left: 3rem;
+}
+
+mark {
+	background-color: #ecb337;
+}
+
 hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
