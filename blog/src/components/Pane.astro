@@ -8,7 +8,7 @@ import "animate.css";
     data-windowName={windowName}
     class=`pane border-4 border-black rounded-2xl animate__animated ${classes}`
     style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
-    transition:persist
+    transition:animate="none"
 >
     <div class="title-container select-none">
         <div
@@ -296,4 +296,5 @@ import "animate.css";
 </style>
 <script>
     import "../scripts/panes.js";
+    // console.log("I am here");
 </script>

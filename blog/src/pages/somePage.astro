@@ -1,77 +1,14 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { type CollectionEntry, getCollection } from "astro:content";
+import DesktopPage from "../layouts/DesktopPage.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import Pane from "../components/Pane.astro";
 
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Navigation from "../components/Navigation.astro";
-import DesktopIcon from "../components/DesktopIcon.astro";
-
-import Floppy from "../components/Floppy.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { Tooltips } from "astro-tooltips";
-import "animate.css";
+const post = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<Tooltips interactive={false} delay={[15, 100]} />
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<ViewTransitions />
-	</head>
-	<body class="bg-myyellow">
-		<Header />
-		<div class="class1 class2 class3"></div>
-		<div class="class1 class2 class3 class4 class5"></div>
-		<div class="class4 class5"></div>
-
-		<main>
-			<DesktopIcon
-				iconName="mdi:file-document-multiple"
-				label="posts"
-				position_x={20}
-				position_y={60}
-			/>
-			<DesktopIcon
-				iconName="mdi:folder-open"
-				label="test"
-				position_x={94}
-				position_y={130}
-			/>
-			<DesktopIcon
-				iconName="mdi:person-help"
-				label="Author"
-				position_x={22}
-				position_y={180}
-			/>
-			<DesktopIcon
-				iconName="mdi:photo-library"
-				label="projects"
-				position_x={25}
-				position_y={270}
-			/>
-			<DesktopIcon
-				iconName="mdi:web"
-				label="internet"
-				position_x={24}
-				position_y={350}
-			/>
-
-			<!-- <h1>🧑‍🚀 Hello, Astronaut! 👋 👋🏻</h1> -->
-			<h1 class="text-center justify-center select-none">
-				<div class="waving-hand">👋</div>
-			</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a>
-				blog starter template. This template serves as a lightweight, minimally-styled
-				starting point for anyone looking to build a personal website, blog,
-				or portfolio with Astro.
-			</p>
-		</main>
-		<!-- <Footer /> -->
-		<script>
-			import "preline/dist/preline.js";
-		</script>
-	</body>
-</html>
+<DesktopPage title={SITE_TITLE} , description={SITE_DESCRIPTION}>
+	<Pane title="HEY!" windowName="Hey">
+		<h1>MAJTAJTEL!</h1>
+	</Pane>
+</DesktopPage>

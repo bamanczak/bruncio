@@ -229,6 +229,10 @@ body {
 	overflow: clip;
 }
 
+body.scrollablebody {
+	overflow: scroll;
+}
+
 h1 {
 	/* color: var(--desktop-text-color); */
 	padding: 32px;

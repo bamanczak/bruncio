@@ -34,6 +34,6 @@
 - wiggle okienka jeśli nacisniesz ikonke a okienko juz było otwarte
 
 # Bugs
-- legal otwiera okienka, ale ukrywają się jak zniknie dropdown
+- nawigacja psuje panele
 - doubleckick nie działa na mobile (change to click? add handler?) [SO topic](https://stackoverflow.com/questions/28940676/how-to-make-ondblclick-event-works-on-phone) -> temporarily changed to click()
 - onhover na machającą rączkę zmienić na mousevent bo jak się z niej zjedzie to animacja się przerywa
