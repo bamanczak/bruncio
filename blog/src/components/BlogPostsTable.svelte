@@ -1,10 +1,14 @@
 <script>
+    import { navigate } from "astro:transitions/client";
+
     export let posts;
-    import { Button } from "flowbite-svelte";
     import GithubSlugger from "github-slugger";
     const slugger = new GithubSlugger();
+    import Icon from "@iconify/svelte";
 
     import {
+        Button,
+        Tooltip,
         Table,
         TableBody,
         TableBodyCell,
@@ -13,8 +17,8 @@
         TableHeadCell,
         Checkbox,
         TableSearch,
+        P,
     } from "flowbite-svelte";
-    console.log(posts);
 
     import { writable } from "svelte/store";
     const sortKey = writable("pubDate"); // default sort key
@@ -53,47 +57,126 @@
         month: "2-digit",
         day: "2-digit",
     };
+
+    function isOdd(number) {
+        if (number % 2 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function setRowClass(number) {
+        let baseClasses =
+            "text-justify pl-3 text-base group-hover:bg-black group-focus:bg-black group-hover:text-white dark:text-black dark:group-focus:text-white group-focus:text-white dark:group-hover:text-white";
+        if (isOdd(number)) {
+            return baseClasses;
+        } else {
+            return baseClasses + " bg-white dark:bg-white";
+        }
+    }
+
+    function openPost(url) {
+        console.log("URL!: " + url);
+        navigate("blog/" + url);
+    }
 </script>
 
-<Table hoverable={true} striped={true}>
-    <TableHead class="bg-black text-white">
-        <TableHeadCell on:click={() => sortTable("title")}>Title</TableHeadCell>
-        <TableHeadCell on:click={() => sortTable("description")}
-            >Description</TableHeadCell
-        >
-        <TableHeadCell on:click={() => sortTable("pubDate")}
-            >Pub. date</TableHeadCell
-        >
-        <TableHeadCell>
-            <span class="sr-only">Edit</span>
-        </TableHeadCell>
-    </TableHead>
-    <TableBody class="divide-y ">
-        <!-- {#each Object.entries(posts) as [key, value], index (key)} -->
-        {#each $sortItems as post}
-            <TableBodyRow class="bg-mywhite">
-                <TableBodyCell
-                    class="text-black dark:text-black whitespace-normal"
-                    >{post.title}</TableBodyCell
+<table>
+    <thead
+        class="text-base bg-black dark:bg-black text-mywhite dark:text-mywhite sticky p-0"
+    >
+        <th></th>
+        <th on:click={() => sortTable("title")} class="text-left">Post</th>
+        <th class="text-left">Date</th>
+    </thead>
+
+    <tbody>
+        {#each $sortItems as post, index}
+            <tr
+                id={"post-no-" + index}
+                class="group cursor-pointer"
+                on:click={() => openPost(slugger.slug(post.title))}
+            >
+                <td class={setRowClass(index)}
+                    ><Icon
+                        class="inline-icon"
+                        icon="pixelarticons:briefcase-check"
+                    /></td
                 >
-                <TableBodyCell
-                    class="text-black dark:text-black whitespace-normal"
-                    >{post.description}</TableBodyCell
+                <td class={setRowClass(index)}>{post.title}</td>
+                <td class={setRowClass(index)}
+                    >{post.pubDate.toISOString().substring(0, 10)}</td
                 >
-                <TableBodyCell
-                    class="text-black dark:text-black whitespace-nowrap"
-                    >{post.pubDate
-                        .toISOString()
-                        .substring(0, 10)}</TableBodyCell
-                >
-                <TableBodyCell>
-                    <a
-                        href={"blog/" + slugger.slug(post.title)}
-                        class="font-medium text-primary-600 hover:underline"
-                        >Open</a
-                    >
-                </TableBodyCell>
-            </TableBodyRow>
+            </tr>
+            <Tooltip
+                placement="bottom"
+                type="custom"
+                defaultClass=""
+                class="p-1 text-xs text-mywhite dark:text-mywhite dark:bg-black bg-black, border-black border-4"
+                arrow={false}
+                triggeredBy={"#post-no-" + index}>{post.description}</Tooltip
+            >
         {/each}
-    </TableBody>
-</Table>
+    </tbody>
+</table>
+
+<style>
+    .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
+
+    tr td:first-child,
+    thead th:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    tr td:last-child,
+    thead th:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    td:not(:first-child) {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-right: 20px;
+    }
+    td:not(:first-child) {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-right: 20px;
+    }
+
+    /* tr:nth-child(even) */
+    /* tr td.oddClass {
+        background-color: #ebe1db;
+        border-radius: 16px;
+    } */
+
+    table {
+        text-align: center;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    thead {
+        /* background: #fff; */
+        height: 32px;
+        position: sticky;
+        inset-block-start: 0;
+    }
+    tfoot {
+        height: 32px;
+        position: sticky;
+        background: #fff;
+        inset-block-end: 0;
+    }
+    th {
+        border-bottom: 1px solid #e0e0e0;
+        border-top: 1px solid #e0e0e0;
+    }
+</style>

@@ -12,6 +12,7 @@
 - remember position of windows/icons when moved
 - settings (change bg color, maybe more)
 - open legal
+- [tooltip svelte?](https://dev.to/danawoodman/svelte-quick-tip-using-actions-to-integrate-with-javascript-libraries-tippy-tooltips-2m94)
 
 ### Fun:
 
