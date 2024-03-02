@@ -17,7 +17,6 @@ posts.forEach((post) => {
 import DesktopPage from "../../layouts/DesktopPage.astro";
 import Pane from "../../components/BlogPostPane.astro";
 import BlogPostsTable from "../../components/BlogPostsTable.svelte";
-import BlogPostsTableRow from "../../components/BlogPostTableRow.svelte";
 ---
 
 <DesktopPage title={SITE_TITLE} , description={SITE_DESCRIPTION}>
@@ -43,7 +42,12 @@ import BlogPostsTableRow from "../../components/BlogPostTableRow.svelte";
 			}
 		</ul>
 	</Pane>
-	<Pane title="List of posts" , windowName="postsList">
+	<Pane
+		title="List of posts"
+		,
+		windowName="postsList"
+		footnote={posts.length + " items; free NaN GB"}
+	>
 		<BlogPostsTable client:load posts={postMetaData} />
 	</Pane>
 </DesktopPage>

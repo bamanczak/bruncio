@@ -1,5 +1,5 @@
 ---
-const { title, classes, windowName } = Astro.props;
+const { title, classes, windowName, footnote = "nothing to add" } = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
 ---
@@ -44,7 +44,7 @@ import "animate.css";
             bg-black text-mywhite text-xs
             flex-grow flex items-center justify-center"
         >
-            Some info
+            {footnote}
         </div>
     </div>
     <div class="corner flex items-center justify-center">

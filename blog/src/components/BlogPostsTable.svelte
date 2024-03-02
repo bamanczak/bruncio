@@ -1,6 +1,9 @@
 <script>
     export let posts;
     import { Button } from "flowbite-svelte";
+    import GithubSlugger from "github-slugger";
+    const slugger = new GithubSlugger();
+
     import {
         Table,
         TableBody,
@@ -14,14 +17,6 @@
     console.log(posts);
 
     import { writable } from "svelte/store";
-
-    let items = [
-        { id: 1, maker: "Toyota", type: "ABC", make: 2017 },
-        { id: 2, maker: "Ford", type: "CDE", make: 2018 },
-        { id: 3, maker: "Volvo", type: "FGH", make: 2019 },
-        { id: 4, maker: "Saab", type: "IJK", make: 2020 },
-    ];
-
     const sortKey = writable("pubDate"); // default sort key
     const sortDirection = writable(1); // default sort direction (ascending)
     const sortItems = writable(posts.slice()); // make a copy of the items array
@@ -52,10 +47,16 @@
         });
         sortItems.set(sorted);
     }
+
+    const dateOptions = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    };
 </script>
 
 <Table hoverable={true} striped={true}>
-    <TableHead>
+    <TableHead class="bg-black text-white">
         <TableHeadCell on:click={() => sortTable("title")}>Title</TableHeadCell>
         <TableHeadCell on:click={() => sortTable("description")}
             >Description</TableHeadCell
@@ -70,7 +71,7 @@
     <TableBody class="divide-y ">
         <!-- {#each Object.entries(posts) as [key, value], index (key)} -->
         {#each $sortItems as post}
-            <TableBodyRow>
+            <TableBodyRow class="bg-mywhite">
                 <TableBodyCell
                     class="text-black dark:text-black whitespace-normal"
                     >{post.title}</TableBodyCell
@@ -80,29 +81,19 @@
                     >{post.description}</TableBodyCell
                 >
                 <TableBodyCell
-                    class="text-black dark:text-black whitespace-normal"
-                    >{post.pubDate}</TableBodyCell
+                    class="text-black dark:text-black whitespace-nowrap"
+                    >{post.pubDate
+                        .toISOString()
+                        .substring(0, 10)}</TableBodyCell
                 >
                 <TableBodyCell>
                     <a
-                        href="/tables"
+                        href={"blog/" + slugger.slug(post.title)}
                         class="font-medium text-primary-600 hover:underline"
-                        >Edit</a
+                        >Open</a
                     >
                 </TableBodyCell>
             </TableBodyRow>
         {/each}
     </TableBody>
 </Table>
-
-<!-- const sections = {
-		"Title 1": "paragraph",
-  	"Title 2": "paragraph",
-		"Title 3": "paragraph",
-		"Title 4": "paragraph",
-		"Title 5": "paragraph"
-	} -->
-<!-- {#each Object.entries(sections) as [title, paragraph]}
-  <h1>{title}</h1>
-  <p>{paragraph}</p>
-{/each} -->
