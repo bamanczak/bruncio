@@ -68,6 +68,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			</p>
 			<slot />
 		</main>
-		<!-- <Footer /> -->
+		<script>
+			document.documentElement.classList.remove("dark");
+		</script>
 	</body>
 </html>

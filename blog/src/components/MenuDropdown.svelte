@@ -1,6 +1,6 @@
 <script>
     import { Toggle, Button, MenuItem, Menu } from "svelte-ux";
-    import { showPrivacyPolicy, showCookiePolicy } from "../store";
+    import { showCookiePolicy } from "../store";
     import { activatePanel } from "../scripts/panesOpener";
 </script>
 

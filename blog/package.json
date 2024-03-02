@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "@iconify-json/material-symbols": "^1.1.73",
-    "@iconify-json/mdi": "^1.1.64"
+    "@iconify-json/mdi": "^1.1.64",
+    "flowbite": "^2.3.0",
+    "flowbite-svelte": "^0.44.24"
   }
 }
