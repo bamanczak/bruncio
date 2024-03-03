@@ -1,10 +1,12 @@
+import { blogHeight, blogWidth, blogPositionDefault, blogPositionLeft, blogPositionTop } from "../store.js"
+
 const menuHeight = 36;
 const margin = 10;
 const fullScreenClass = "full-screen";
 
 
 
-export function moveObject(myObject: HTMLElement, event: MouseEvent) {
+export function moveObject(myObject: HTMLElement, event: MouseEvent, savePosition = false) {
     const myEvent = event as MouseEvent;
     let startX = myEvent.pageX;
     let startY = myEvent.pageY;
@@ -36,6 +38,13 @@ export function moveObject(myObject: HTMLElement, event: MouseEvent) {
         }
         myObject.style.left = newValueLeft + "px";
         myObject.style.top = newValueTop + "px";
+
+        if (savePosition) {
+            saveObjectPosition(myObject, {
+                savedPositionLeft: newValueLeft,
+                savedPositionTop: newValueTop,
+            })
+        }
     };
 
     const mouseup = () => {
@@ -62,7 +71,7 @@ export function moveObject(myObject: HTMLElement, event: MouseEvent) {
     }
 }
 
-export function resizeObject(myObject: HTMLElement, event: MouseEvent) {
+export function resizeObject(myObject: HTMLElement, event: MouseEvent, savePosition = false) {
     let w = myObject.clientWidth;
     let h = myObject.clientHeight;
     let screenWidth = document.documentElement.clientWidth;
@@ -93,6 +102,12 @@ export function resizeObject(myObject: HTMLElement, event: MouseEvent) {
         if (myObject.classList.contains(fullScreenClass)) {
             myObject.classList.remove(fullScreenClass);
         }
+        if (savePosition) {
+            saveObjectPosition(myObject, {
+                savedWidth: newWidth,
+                savedHeight: newHeight
+            })
+        }
     };
 
     const mouseup = () => {
@@ -103,4 +118,34 @@ export function resizeObject(myObject: HTMLElement, event: MouseEvent) {
 
     document.addEventListener("mousemove", drag);
     document.addEventListener("mouseup", mouseup);
+}
+
+export function saveObjectPosition(myObject: HTMLElement, options?: {
+    savedWidth?: number,
+    savedHeight?: number,
+    savedPositionLeft?: number,
+    savedPositionTop?: number,
+}) {
+    console.log("saving!");
+    blogPositionDefault.set(false);
+    if (options?.savedWidth) {
+        blogWidth.set(options.savedWidth);
+    } else {
+        blogWidth.set(myObject.clientWidth)
+    }
+    if (options?.savedHeight) {
+        blogHeight.set(options.savedHeight);
+    } else {
+        blogHeight.set(myObject.clientHeight);
+    }
+    if (options?.savedPositionLeft) {
+        blogPositionLeft.set(options.savedPositionLeft);
+    } else {
+        blogPositionLeft.set(parseInt(myObject.style.left));
+    }
+    if (options?.savedPositionTop) {
+        blogPositionTop.set(options.savedPositionTop);
+    } else {
+        blogPositionTop.set(parseInt(myObject.style.top));
+    }
 }

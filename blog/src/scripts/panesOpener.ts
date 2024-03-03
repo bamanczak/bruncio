@@ -1,4 +1,5 @@
-import { zIndex } from '../store.js';
+import { zIndex, blogExpanded } from '../store.js';
+import { saveObjectPosition } from './windowMover.js'
 
 export function activatePanel(myElement: HTMLElement | string) {
     if (typeof myElement === "string") {
@@ -7,7 +8,6 @@ export function activatePanel(myElement: HTMLElement | string) {
         openOrWigglePanel(myElement);
     }
 }
-
 
 export function openOrWigglePanel(myElement: HTMLElement) {
     if (myElement.classList.contains("invisible")) {
@@ -55,7 +55,7 @@ export function showPanelOnTop(myElement: HTMLElement) {
     myElement.style.zIndex = currentIndex.toString();
 }
 
-export function expandPanel(panel: HTMLElement) {
+export function expandPanel(panel: HTMLElement, savePosition = false) {
     const fullScreenClass = "full-screen";
     const menuHeight = 36;
 
@@ -67,12 +67,19 @@ export function expandPanel(panel: HTMLElement) {
         panel.style.width = "40vw";
         panel.style.left = "calc(50vw - 20vw)";
         panel.style.top = `calc(50vh - 20vh + ${menuHeight}px)`;
+        if (savePosition) {
+            blogExpanded.set(false);
+            saveObjectPosition(panel);
+        }
     } else {
         panel.classList.add(fullScreenClass);
         panel.style.width = "100vw";
         panel.style.left = "0px";
         panel.style.top = `${menuHeight}px`;
         panel.style.height = `calc(100vh - ${menuHeight}px)`;
+        if (savePosition) {
+            blogExpanded.set(true);
+        }
     }
 
     setTimeout(function () {

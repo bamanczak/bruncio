@@ -63,7 +63,7 @@ import "animate.css";
         position: absolute;
         width: 80vw;
         height: 90vh;
-        right: 20px;
+        left: calc(20vw - 20px);
         top: 56px;
 
         display: grid;
@@ -255,6 +255,14 @@ import "animate.css";
         showPanelOnTop,
         expandPanel,
     } from "../scripts/panesOpener.ts";
+    import {
+        blogExpanded,
+        blogHeight,
+        blogWidth,
+        blogPositionDefault,
+        blogPositionLeft,
+        blogPositionTop,
+    } from "../store.js";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
 
     class AstroPostDesktopWindow extends HTMLElement {
@@ -265,6 +273,17 @@ import "animate.css";
             const buttonClose = this.querySelector(".button-close");
             const buttonExpand = this.querySelector(".button-expand");
             showPanelOnTop(this);
+            console.log("init");
+            if (blogExpanded.get()) {
+                console.log("init expand");
+                expandPanel(this);
+            } else if (!blogPositionDefault.get()) {
+                console.log("jestę!");
+                this.style.width = blogWidth.get() + "px";
+                this.style.height = blogHeight.get() + "px";
+                this.style.left = blogPositionLeft.get() + "px";
+                this.style.top = blogPositionTop.get() + "px";
+            }
 
             this.addEventListener("mousedown", () => {
                 showPanelOnTop(this);
@@ -275,19 +294,19 @@ import "animate.css";
             });
 
             buttonExpand!.addEventListener("click", () => {
-                expandPanel(this);
+                expandPanel(this, true);
             });
 
             title!.addEventListener("dblclick", () => {
-                expandPanel(this);
+                expandPanel(this, true);
             });
 
             title!.addEventListener("mousedown", (event) => {
-                moveObject(this, event as MouseEvent);
+                moveObject(this, event as MouseEvent, true);
             });
 
             corner!.addEventListener("mousedown", (event) => {
-                resizeObject(this, event as MouseEvent);
+                resizeObject(this, event as MouseEvent, true);
             });
         }
     }
