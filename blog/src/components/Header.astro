@@ -13,6 +13,7 @@ import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
 import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 import { Content as TermsOfUse } from "../pages/special/termsOfUse.md";
 import { Content as A11y } from "../pages/special/a11y.md";
+import { Content as Environment } from "../pages/special/environment.md";
 ---
 
 <header class="sticky top-0 h-10 bg-mywhite">
@@ -153,9 +154,17 @@ import { Content as A11y } from "../pages/special/a11y.md";
 		title="Privacy Policy"
 		classes="invisible"
 		windowName="PrivacyPolicy"
-		position="left: 50px; top: calc(100vh - 380px)"
+		position="left: calc(50vw - 150px); top: calc(50vh - 200px)"
 	>
 		<PrivacyPolicy />
+	</Pane>
+	<Pane
+		title="Privacy Policy"
+		classes="invisible"
+		windowName="EnvPolicy"
+		position="left: 50px; top: calc(100vh - 380px)"
+	>
+		<Environment />
 	</Pane>
 	<Pane
 		title="Terms of use"
