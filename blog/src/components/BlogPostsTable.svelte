@@ -2,23 +2,14 @@
     import { navigate } from "astro:transitions/client";
 
     export let posts;
+    export let fullPosts;
+    console.log(fullPosts);
+    console.log(posts);
     import GithubSlugger from "github-slugger";
     const slugger = new GithubSlugger();
     import Icon from "@iconify/svelte";
 
-    import {
-        Button,
-        Tooltip,
-        Table,
-        TableBody,
-        TableBodyCell,
-        TableBodyRow,
-        TableHead,
-        TableHeadCell,
-        Checkbox,
-        TableSearch,
-        P,
-    } from "flowbite-svelte";
+    import { Tooltip } from "flowbite-svelte";
 
     import { writable } from "svelte/store";
     const sortKey = writable("pubDate"); // default sort key
@@ -58,7 +49,7 @@
         day: "2-digit",
     };
 
-    function isOdd(number) {
+    function isEven(number) {
         if (number % 2 == 0) {
             return true;
         } else {
@@ -69,7 +60,7 @@
     function setRowClass(number) {
         let baseClasses =
             "text-justify pl-3 text-base group-hover:bg-black group-focus:bg-black group-hover:text-white dark:text-black dark:group-focus:text-white group-focus:text-white dark:group-hover:text-white";
-        if (isOdd(number)) {
+        if (isEven(number)) {
             return baseClasses;
         } else {
             return baseClasses + " bg-white dark:bg-white";
@@ -86,9 +77,11 @@
     <thead
         class="text-base bg-black dark:bg-black text-mywhite dark:text-mywhite sticky p-0"
     >
-        <th></th>
+        <th class="icon-column"></th>
         <th on:click={() => sortTable("title")} class="text-left">Post</th>
-        <th class="text-left">Date</th>
+        <th on:click={() => sortTable("pubDate")} class="text-left date-column"
+            >Date</th
+        >
     </thead>
 
     <tbody>
@@ -96,7 +89,7 @@
             <tr
                 id={"post-no-" + index}
                 class="group cursor-pointer"
-                on:click={() => openPost(slugger.slug(post.title))}
+                on:click={() => openPost(slugger.slug(post.id))}
             >
                 <td class={setRowClass(index)}
                     ><Icon
@@ -104,8 +97,10 @@
                         icon="pixelarticons:briefcase-check"
                     /></td
                 >
-                <td class={setRowClass(index)}>{post.title}</td>
-                <td class={setRowClass(index)}
+                <td class={setRowClass(index) + +"text-balance"}
+                    >{post.title}</td
+                >
+                <td class={setRowClass(index) + "text-nowrap"}
                     >{post.pubDate.toISOString().substring(0, 10)}</td
                 >
             </tr>
@@ -126,6 +121,13 @@
         position: -webkit-sticky;
         position: sticky;
         top: 0;
+    }
+    .date-column {
+        min-width: 150px;
+    }
+
+    .icon-column {
+        min-width: 25px;
     }
 
     tr td:first-child,

@@ -32,8 +32,48 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: 'PixelUnicode';
+	src: url('/fonts/Pixel_UniCode.woff2') format('woff');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Pixeloid';
+	src: url('/fonts/Pixeloid_Sans.woff2') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Apple';
+	src: url('/fonts/Apple.woff2') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Hellovetica';
+	src: url('/fonts/Hellovetica.woff2') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PixChicago';
+	src: url('/fonts/PixChicago.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
 body {
-	font-family: 'Atkinson', sans-serif;
+	/* font-family: 'Pixeloid', sans-serif; */
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -220,7 +260,8 @@ hr {
 }
 
 body {
-	font-family: 'Xanh Mono', monospace;
+	/* font-family: 'PixChicago', sans-serif; */
+	font-size: 12px;
 	background: var(--desktop-color);
 
 	/* if outside of the window, clip */

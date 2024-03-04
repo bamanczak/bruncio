@@ -1,5 +1,6 @@
 ---
-title: '9 post'
+title: 'post-9'
+id: 'post-9'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 22 2022'
 heroImage: '/blog-placeholder-4.jpg'

@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 import preline from 'preline/plugin.js';
 import svelteUx from 'svelte-ux/plugins/tailwind.cjs';
-import flowbite from 'flowbite/plugin'
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 
 export default {
 	content: [
@@ -47,10 +48,21 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: [
-					'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+					'PixChicago', ...defaultTheme.fontFamily.sans
+					// 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
 				],
 			},
 		},
+		fontSize: {
+			xs: '0.6rem', //changed
+			sm: '0.8rem',
+			base: '0.8rem', //changed
+			xl: '1.25rem',
+			'2xl': '1.563rem',
+			'3xl': '1.953rem',
+			'4xl': '2.441rem',
+			'5xl': '3.052rem',
+		}
 	},
 	plugins: [preline, svelteUx],
 	darkMode: false,

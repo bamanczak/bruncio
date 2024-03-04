@@ -14,7 +14,8 @@ export default defineConfig({
     include: {
       mdi: ["*"],
       // (Default) Loads entire Material Design Icon set
-      "material-symbols": ["*"] // (Default) Loads entire Material Design Icon set
+      "material-symbols": ["*"], // (Default) Loads entire Material Design Icon set
+      "pixelarticons": ["*"]
     }
   }), svelte()]
 });

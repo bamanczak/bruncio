@@ -1,7 +1,8 @@
 ---
-title: '10 post'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 22 2022'
+title: AThis is a title that is very very very very very very very very very very very very very very very very long and very little info it has 10 post'
+id: 'post-10'
+description: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+pubDate: 'Jul 22 2021'
 heroImage: '/blog-placeholder-4.jpg'
 ---
 
