@@ -11,6 +11,8 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 
 import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
 import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
+import { Content as TermsOfUse } from "../pages/special/termsOfUse.md";
+import { Content as A11y } from "../pages/special/a11y.md";
 ---
 
 <header class="sticky top-0 h-10 bg-mywhite">
@@ -25,58 +27,7 @@ import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 					class="head"
 				/>
 			</MenuDropdown>
-			<!-- 
-			<button id="hs-dropdown-with-dividers" type="button">
-				<Image
-					src={headImage}
-					alt="A human head"
-					width={36}
-					class="head"
-				/>
-			</button> -->
-
-			<div
-				class="hs-dropdown-menu hidden transition-[opacity,margin] duration
-				m-0
-				hs-dropdown-open:opacity-100 opacity-0 min-w-60 border-4 border-black bg-mywhite p-1 divide-y divide-black dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
-				aria-labelledby="hs-dropdown-with-dividers"
-			>
-				<div class="py-1 first:pt-0 last:pb-0">
-					<a
-						class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-						href="#"
-					>
-						About BruncOS
-					</a>
-				</div>
-				<div class="py-1 first:pt-0 last:pb-0">
-					<a
-						class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-						href="#"
-					>
-						Blog
-					</a>
-					<a
-						class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-						href="#"
-					>
-						Home
-					</a>
-					<div
-						class="window-opener flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-					>
-						Legal
-						<Pane title="Cookie Notice" classes="invisible">
-							<CookieNotice />
-						</Pane>
-						<Pane title="Cookie Notice" classes="invisible">
-							<PrivacyPolicy />
-						</Pane>
-					</div>
-				</div>
-			</div>
 		</div>
-		<!--  -->
 		<div class="flex flex-row justify-between grow">
 			<div class="internal-links">
 				<HeaderLink href="/">Home</HeaderLink>
@@ -190,10 +141,36 @@ import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 </header>
 
 <div slot="panels">
-	<Pane title="Cookie Notice" classes="invisible" windowName="CokkieNotice">
+	<Pane
+		title="Cookie Notice"
+		classes="invisible"
+		windowName="CokkieNotice"
+		position="left: calc(100vw - 470px); top: 80px"
+	>
 		<CookieNotice />
 	</Pane>
-	<Pane title="Privacy Policy" classes="invisible" windowName="PrivacyPolicy">
+	<Pane
+		title="Privacy Policy"
+		classes="invisible"
+		windowName="PrivacyPolicy"
+		position="left: 50px; top: calc(100vh - 380px)"
+	>
 		<PrivacyPolicy />
+	</Pane>
+	<Pane
+		title="Terms of use"
+		classes="invisible"
+		windowName="TermsOfUse"
+		position="left: 75px; top: 80px"
+	>
+		<TermsOfUse />
+	</Pane>
+	<Pane
+		title="Accessibility"
+		classes="invisible"
+		windowName="A11y"
+		position="left: calc(100vw - 500px); top: calc(100vh - 400px)"
+	>
+		<A11y />
 	</Pane>
 </div>

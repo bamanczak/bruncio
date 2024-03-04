@@ -1,5 +1,11 @@
 ---
-const { title, classes, windowName } = Astro.props;
+const {
+    title,
+    classes,
+    windowName,
+    position = "left: calc(50vw - 320px); top: calc(50vh - 80px)",
+    footnote = "Bla bla",
+} = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
 ---
@@ -7,7 +13,7 @@ import "animate.css";
 <astro-desktop-window
     data-windowName={windowName}
     class=`pane border-4 border-black rounded-2xl animate__animated ${classes}`
-    style="left: calc(50vw - 320px); top: calc(50vh - 80px)"
+    style={position}
     transition:persist
 >
     <div class="title-container select-none">
@@ -46,7 +52,7 @@ import "animate.css";
             bg-black text-mywhite text-xs
             flex-grow flex items-center justify-center"
         >
-            Some info
+            {footnote}
         </div>
     </div>
     <div class="corner flex items-center justify-center">

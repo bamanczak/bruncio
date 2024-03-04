@@ -1,9 +1,11 @@
 import { zIndex, blogExpanded, blogHeight, blogWidth, blogPositionLeft, blogPositionTop, blogPositionDefault } from '../store.ts';
 import { saveObjectPosition } from './windowMover.js'
 
-export function activatePanel(myElement: HTMLElement | string) {
+export function activatePanel(myElement: HTMLElement | string, delay = 0) {
     if (typeof myElement === "string") {
-        openPanelWithId(myElement);
+        setTimeout(function () {
+            openPanelWithId(myElement);
+        }, delay);
     } else {
         openOrWigglePanel(myElement);
     }
@@ -45,7 +47,6 @@ export function openPanel(myElement: HTMLElement) {
 
 export function openPanelWithId(id: string) {
     const panel = <HTMLElement>document.querySelector(`[data-windowName='${id}']`)
-    console.log(`opening ${id}`);
     openOrWigglePanel(panel);
 }
 
