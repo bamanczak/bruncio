@@ -1,4 +1,4 @@
-import { zIndex, blogExpanded } from '../store.js';
+import { zIndex, blogExpanded, blogHeight, blogWidth, blogPositionLeft, blogPositionTop, blogPositionDefault } from '../store.js';
 import { saveObjectPosition } from './windowMover.js'
 
 export function activatePanel(myElement: HTMLElement | string) {
@@ -55,7 +55,7 @@ export function showPanelOnTop(myElement: HTMLElement) {
     myElement.style.zIndex = currentIndex.toString();
 }
 
-export function expandPanel(panel: HTMLElement, savePosition = false) {
+export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost = false) {
     const fullScreenClass = "full-screen";
     const menuHeight = 36;
 
@@ -63,13 +63,29 @@ export function expandPanel(panel: HTMLElement, savePosition = false) {
     if (panel.classList.contains(fullScreenClass)) {
         panel.classList.remove(fullScreenClass);
 
-        panel.style.height = "40vh";
-        panel.style.width = "40vw";
-        panel.style.left = "calc(50vw - 20vw)";
-        panel.style.top = `calc(50vh - 20vh + ${menuHeight}px)`;
+        if (isBlogPost) {
+            // or should I use values from store?
+            if (blogPositionDefault.get()) {
+                panel.style.height = "90vh";
+                panel.style.width = "80vw";
+                panel.style.left = "calc(20vw - 20px)";
+                panel.style.top = `56px`;
+            } else {
+                panel.style.height = blogHeight.get() + "px";
+                panel.style.width = blogWidth.get() + "px";
+                panel.style.left = blogPositionLeft.get() + "px";
+                panel.style.top = blogPositionTop.get() + "px";
+            }
+        } else {
+            panel.style.height = "40vh";
+            panel.style.width = "40vw";
+            panel.style.left = "calc(50vw - 20vw)";
+            panel.style.top = `calc(50vh - 20vh + ${menuHeight}px)`;
+        }
+
         if (savePosition) {
             blogExpanded.set(false);
-            saveObjectPosition(panel);
+            // saveObjectPosition(panel);
         }
     } else {
         panel.classList.add(fullScreenClass);
