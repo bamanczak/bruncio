@@ -26,7 +26,6 @@ const {
     postName = "MyPost",
 } = Astro.props;
 
-import { Content as MyPost2 } from "../pages/special/aboutBruncOS.md";
 import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
 ---
 
@@ -39,11 +38,13 @@ import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
         class="draggable-icon desktop-icon-sub-container cursor-pointer grow select-none flex flex-col items-center justify-center
         border-4 p-1 border-mywhite border-opacity-0
         hover:bg-mywhite hover:bg-opacity-25 hover:border-opacity-100
-        rounded-xl"
+        rounded-xl group"
         style=`left:${position_x}px; top:${position_y}px;`
     >
         <Icon name={iconName} class="head" size={36} />
-        <div class="text-base px-1 mt-1">
+        <div
+            class="text-base px-1 mt-1 bg-mywhite group-hover:bg-black group-hover:text-mywhite group-focus:bg-black group-focus:text-mywhite"
+        >
             {label}
         </div>
     </div>
@@ -61,19 +62,5 @@ import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
 
     .draggable-icon {
         position: absolute;
-    }
-    .grow svg,
-    .grow .text-base {
-        transition: all 0.2s ease-in-out;
-
-        /* transition: position none;
-        -webkit-transition: -moz-transform 0.3s ease-out;
-        -moz-transition: -webkit-transform 0.3s ease-out; */
-    }
-    .grow:hover svg,
-    .grow:hover .text-base {
-        /* transition: all 0.2s ease-in-out; */
-        transform: scale(1.05);
-        /* color: white; */
     }
 </style>
