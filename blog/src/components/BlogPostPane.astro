@@ -6,7 +6,7 @@ import "animate.css";
 
 <astro-post-desktop-window
     data-windowName={windowName}
-    class=`pane border-4 border-black rounded-2xl animate__animated ${classes}`
+    class=`pane border-4 border-black rounded-2xl animate__animated${classes}`
 >
     <div class="title-container select-none">
         <div
@@ -254,6 +254,7 @@ import "animate.css";
         closePanel,
         showPanelOnTop,
         expandPanel,
+        enableAndDisableAnimatedTransition,
     } from "../scripts/panesOpener.ts";
     import {
         blogExpanded,
@@ -262,7 +263,7 @@ import "animate.css";
         blogPositionDefault,
         blogPositionLeft,
         blogPositionTop,
-    } from "../store.js";
+    } from "../store.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
 
     class AstroPostDesktopWindow extends HTMLElement {
@@ -273,12 +274,10 @@ import "animate.css";
             const buttonClose = this.querySelector(".button-close");
             const buttonExpand = this.querySelector(".button-expand");
             showPanelOnTop(this);
-            console.log("init");
-            if (blogExpanded.get()) {
-                console.log("init expand");
+            if (blogExpanded.get() == "true") {
                 expandPanel(this);
-            } else if (!blogPositionDefault.get()) {
-                console.log("jestę!");
+            } else if (blogPositionDefault.get() == "false") {
+                enableAndDisableAnimatedTransition(this);
                 this.style.width = blogWidth.get() + "px";
                 this.style.height = blogHeight.get() + "px";
                 this.style.left = blogPositionLeft.get() + "px";

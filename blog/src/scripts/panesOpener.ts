@@ -1,4 +1,4 @@
-import { zIndex, blogExpanded, blogHeight, blogWidth, blogPositionLeft, blogPositionTop, blogPositionDefault } from '../store.js';
+import { zIndex, blogExpanded, blogHeight, blogWidth, blogPositionLeft, blogPositionTop, blogPositionDefault } from '../store.ts';
 import { saveObjectPosition } from './windowMover.js'
 
 export function activatePanel(myElement: HTMLElement | string) {
@@ -59,13 +59,13 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
     const fullScreenClass = "full-screen";
     const menuHeight = 36;
 
-    panel.style.transition = "all 0.3s ease-in-out";
+    enableAndDisableAnimatedTransition(panel)
     if (panel.classList.contains(fullScreenClass)) {
         panel.classList.remove(fullScreenClass);
 
         if (isBlogPost) {
             // or should I use values from store?
-            if (blogPositionDefault.get()) {
+            if (blogPositionDefault.get() == 'true') {
                 panel.style.height = "90vh";
                 panel.style.width = "80vw";
                 panel.style.left = "calc(20vw - 20px)";
@@ -84,7 +84,7 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
         }
 
         if (savePosition) {
-            blogExpanded.set(false);
+            blogExpanded.set('false');
             // saveObjectPosition(panel);
         }
     } else {
@@ -94,11 +94,18 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
         panel.style.top = `${menuHeight}px`;
         panel.style.height = `calc(100vh - ${menuHeight}px)`;
         if (savePosition) {
-            blogExpanded.set(true);
+            blogExpanded.set('true');
         }
     }
 
+    // setTimeout(function () {
+    //     panel.style.transition = "none";
+    // }, 400);
+}
+
+export function enableAndDisableAnimatedTransition(myObject: HTMLElement) {
+    myObject.style.transition = "all 0.3s ease-in-out";
     setTimeout(function () {
-        panel.style.transition = "none";
+        myObject.style.transition = "none";
     }, 400);
 }
