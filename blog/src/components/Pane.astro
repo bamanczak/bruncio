@@ -260,6 +260,7 @@ import "animate.css";
         closePanel,
         showPanelOnTop,
         expandPanel,
+        scroll,
     } from "../scripts/panesOpener.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
 
@@ -293,6 +294,15 @@ import "animate.css";
 
             corner!.addEventListener("mousedown", (event) => {
                 resizeObject(this, event as MouseEvent);
+            });
+
+            const scrollUpButton = this.querySelector(".arrow.up");
+            scrollUpButton!.addEventListener("mousedown", (event) => {});
+
+            const scrollDownButton = this.querySelector(".arrow.down");
+            const content = this.querySelector(".content") as HTMLElement;
+            scrollDownButton!.addEventListener("mousedown", (event) => {
+                scroll(content, 50);
             });
         }
     }

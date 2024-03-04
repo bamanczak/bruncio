@@ -104,9 +104,15 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
     // }, 400);
 }
 
-export function enableAndDisableAnimatedTransition(myObject: HTMLElement) {
-    myObject.style.transition = "all 0.3s ease-in-out";
+export function scroll(myObject: HTMLElement, scrollValue: number) {
+    enableAndDisableAnimatedTransition(myObject, "0.3s");
+    myObject.scrollTop += 100;
+}
+
+export function enableAndDisableAnimatedTransition(myObject: HTMLElement, time = "0.3s") {
+    myObject.style.transition = `all ${time} ease-in-out`;
     setTimeout(function () {
         myObject.style.transition = "none";
     }, 400);
 }
+
