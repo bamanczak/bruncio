@@ -1,17 +1,12 @@
 ## Features
 
 ### Big
-
-- styling of lists in mdx
-- Queryparams/links to open posts
-- list of posts
-- open post with fullscreen (astro layout? islands?)
-
+- pane with images
+- open image
+- "back" in blogpost
 ### Polish
 
-- remember position of windows/icons when moved
 - settings (change bg color, maybe more)
-- open legal
 - [tooltip svelte?](https://dev.to/danawoodman/svelte-quick-tip-using-actions-to-integrate-with-javascript-libraries-tippy-tooltips-2m94)
 
 ### Fun:
@@ -34,7 +29,5 @@
 - wiggle okienka jeśli nacisniesz ikonke a okienko juz było otwarte
 
 # Bugs
-- nawigacja psuje panele ??
-- expand trochę dziwnie animuje bo przesuwa w lewo blogpost
+- zegar mruga po nawigacji
 - doubleckick nie działa na mobile (change to click? add handler?) [SO topic](https://stackoverflow.com/questions/28940676/how-to-make-ondblclick-event-works-on-phone) -> temporarily changed to click()
-- onhover na machającą rączkę zmienić na mousevent bo jak się z niej zjedzie to animacja się przerywa
