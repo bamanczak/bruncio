@@ -3,6 +3,9 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import DesktopPage from "../layouts/DesktopPage.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Pane from "../components/BlogPostPane.astro";
+import Hello from "../components/hello.astro";
+import { Image } from "astro:assets";
+import headImage from "../images/helloAnimated.gif";
 
 const post = Astro.props;
 ---

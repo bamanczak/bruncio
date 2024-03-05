@@ -2,15 +2,14 @@
 import { ViewTransitions } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
-import Navigation from "../components/Navigation.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
 
 import Floppy from "../components/Floppy.astro";
 import { Tooltips } from "astro-tooltips";
 import "animate.css";
-import { Content as MyPost } from "../pages/special/aboutBruncOS.md";
-import Pane from "../components/Pane.astro";
+
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+import Hello from "../components/hello.astro";
 ---
 
 <!doctype html>
@@ -24,6 +23,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 
 		<main>
+			<Hello />
+
 			<DesktopIcon
 				iconName="pixelarticons:article-multiple"
 				label="posts"

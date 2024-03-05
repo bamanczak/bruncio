@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import helloAnimation from "../images/helloAnimated.gif";
+---
+
+<div class="hello-container animate__animated" transition:persist>
+    <Image src={helloAnimation} alt="Animated hello" />
+</div>
+<div class="overlay bg-myyellow animate__animated" transition:persist></div>
+<style>
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9990;
+    }
+    .hello-container {
+        /* width: 300px;
+        height: 200px; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -70px;
+        margin-left: -200px;
+        width: 400px;
+        z-index: 9991;
+    }
+    #hello-container {
+        height: 100%;
+        width: 0;
+        position: fixed; /* Stay in place */
+        z-index: 9999; /* Sit on top */
+        left: 0;
+        top: 0;
+    }
+</style>
+<script>
+    const overlay = document.querySelector(".overlay");
+    const hello = document.querySelector(".hello-container");
+
+    function hideElement(myElement: HTMLElement) {
+        myElement.style.setProperty("--animate-duration", "0.4s");
+        const animationTriggerClass = "animate__zoomOut";
+        myElement.classList.add(animationTriggerClass);
+        setTimeout(function () {
+            myElement.classList.add("invisible");
+            myElement.classList.remove(animationTriggerClass);
+        }, 410);
+    }
+
+    setTimeout(function () {
+        hideElement(overlay);
+        hideElement(hello);
+    }, 500);
+</script>
