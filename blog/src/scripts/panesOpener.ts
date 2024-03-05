@@ -1,3 +1,4 @@
+import { number } from 'svelte-ux';
 import { zIndex, blogExpanded, blogHeight, blogWidth, blogPositionLeft, blogPositionTop, blogPositionDefault } from '../store.ts';
 import { saveObjectPosition } from './windowMover.js'
 
@@ -105,8 +106,7 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
 }
 
 export function scroll(myObject: HTMLElement, scrollValue: number) {
-    enableAndDisableAnimatedTransition(myObject, "0.3s");
-    myObject.scrollTop += 100;
+    myObject.scrollTop += scrollValue;
 }
 
 export function enableAndDisableAnimatedTransition(myObject: HTMLElement, time = "0.3s") {

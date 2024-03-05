@@ -59,10 +59,10 @@ import "animate.css";
         <div class="corner-inner"></div>
     </div>
     <div class="dummy-scrollbar top-button flex items-center justify-center">
-        <i class="arrow up"></i>
+        <i class="arrow up cursor-pointer"></i>
     </div>
     <div class="dummy-scrollbar bottom-button flex items-center justify-center">
-        <i class="arrow down"></i>
+        <i class="arrow down cursor-pointer"></i>
     </div>
 </astro-desktop-window>
 
@@ -101,6 +101,7 @@ import "animate.css";
         overflow: scroll;
         overflow-x: hidden;
         padding: 1rem;
+        scroll-behavior: smooth;
     }
 
     .pane-footer {
@@ -267,23 +268,22 @@ import "animate.css";
     class AstroDesktopWindow extends HTMLElement {
         constructor() {
             super();
-            const title = this.querySelector(".title");
-            const corner = this.querySelector(".corner");
-            const buttonClose = this.querySelector(".button-close");
-            const buttonExpand = this.querySelector(".button-expand");
 
             this.addEventListener("mousedown", () => {
                 showPanelOnTop(this);
             });
 
+            const buttonClose = this.querySelector(".button-close");
             buttonClose!.addEventListener("click", () => {
                 closePanel(this);
             });
 
+            const buttonExpand = this.querySelector(".button-expand");
             buttonExpand!.addEventListener("click", () => {
                 expandPanel(this);
             });
 
+            const title = this.querySelector(".title");
             title!.addEventListener("dblclick", () => {
                 expandPanel(this);
             });
@@ -292,17 +292,20 @@ import "animate.css";
                 moveObject(this, event as MouseEvent);
             });
 
+            const corner = this.querySelector(".corner");
             corner!.addEventListener("mousedown", (event) => {
                 resizeObject(this, event as MouseEvent);
             });
 
+            const content = this.querySelector(".content") as HTMLElement;
             const scrollUpButton = this.querySelector(".arrow.up");
-            scrollUpButton!.addEventListener("mousedown", (event) => {});
+            scrollUpButton!.addEventListener("mousedown", () => {
+                scroll(content, -200);
+            });
 
             const scrollDownButton = this.querySelector(".arrow.down");
-            const content = this.querySelector(".content") as HTMLElement;
-            scrollDownButton!.addEventListener("mousedown", (event) => {
-                scroll(content, 50);
+            scrollDownButton!.addEventListener("mousedown", () => {
+                scroll(content, 200);
             });
         }
     }

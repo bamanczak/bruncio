@@ -51,10 +51,10 @@ import "animate.css";
         <div class="corner-inner"></div>
     </div>
     <div class="dummy-scrollbar top-button flex items-center justify-center">
-        <i class="arrow up"></i>
+        <i class="arrow up cursor-pointer"></i>
     </div>
     <div class="dummy-scrollbar bottom-button flex items-center justify-center">
-        <i class="arrow down"></i>
+        <i class="arrow down cursor-pointer"></i>
     </div>
 </astro-post-desktop-window>
 
@@ -95,6 +95,7 @@ import "animate.css";
         overflow: scroll;
         overflow-x: hidden;
         padding: 1rem;
+        scroll-behavior: smooth;
     }
 
     .pane-footer {
@@ -255,6 +256,7 @@ import "animate.css";
         showPanelOnTop,
         expandPanel,
         enableAndDisableAnimatedTransition,
+        scroll,
     } from "../scripts/panesOpener.ts";
     import {
         blogExpanded,
@@ -269,10 +271,7 @@ import "animate.css";
     class AstroPostDesktopWindow extends HTMLElement {
         constructor() {
             super();
-            const title = this.querySelector(".title");
-            const corner = this.querySelector(".corner");
-            const buttonClose = this.querySelector(".button-close");
-            const buttonExpand = this.querySelector(".button-expand");
+
             showPanelOnTop(this);
             if (blogExpanded.get() == "true") {
                 expandPanel(this);
@@ -288,14 +287,17 @@ import "animate.css";
                 showPanelOnTop(this);
             });
 
+            const buttonClose = this.querySelector(".button-close");
             buttonClose!.addEventListener("click", () => {
                 closePanel(this);
             });
 
+            const buttonExpand = this.querySelector(".button-expand");
             buttonExpand!.addEventListener("click", () => {
                 expandPanel(this, true, true);
             });
 
+            const title = this.querySelector(".title");
             title!.addEventListener("dblclick", () => {
                 expandPanel(this, true, true);
             });
@@ -304,8 +306,20 @@ import "animate.css";
                 moveObject(this, event as MouseEvent, true);
             });
 
+            const corner = this.querySelector(".corner");
             corner!.addEventListener("mousedown", (event) => {
                 resizeObject(this, event as MouseEvent, true);
+            });
+
+            const content = this.querySelector(".content") as HTMLElement;
+            const scrollUpButton = this.querySelector(".arrow.up");
+            scrollUpButton!.addEventListener("mousedown", () => {
+                scroll(content, -200);
+            });
+
+            const scrollDownButton = this.querySelector(".arrow.down");
+            scrollDownButton!.addEventListener("mousedown", () => {
+                scroll(content, 200);
             });
         }
     }
