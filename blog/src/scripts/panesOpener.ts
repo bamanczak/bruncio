@@ -65,18 +65,12 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
         panel.classList.remove(fullScreenClass);
 
         if (isBlogPost) {
-            // or should I use values from store?
-            if (blogPositionDefault.get() == 'true') {
-                panel.style.height = "90vh";
-                panel.style.width = "80vw";
-                panel.style.left = "calc(20vw - 20px)";
-                panel.style.top = `56px`;
-            } else {
-                panel.style.height = blogHeight.get() + "px";
-                panel.style.width = blogWidth.get() + "px";
-                panel.style.left = blogPositionLeft.get() + "px";
-                panel.style.top = blogPositionTop.get() + "px";
-            }
+            blogPositionDefault.set('true');
+            panel.style.height = "90vh";
+            panel.style.width = "80vw";
+            panel.style.left = "calc(20vw - 20px)";
+            panel.style.top = `56px`;
+
         } else {
             panel.style.height = "40vh";
             panel.style.width = "40vw";
@@ -86,6 +80,7 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
 
         if (savePosition) {
             blogExpanded.set('false');
+            blogPositionDefault.set('true');
         }
     } else {
         panel.classList.add(fullScreenClass);
