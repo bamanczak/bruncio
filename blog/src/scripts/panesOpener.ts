@@ -1,5 +1,4 @@
 import { zIndex, blogExpanded, blogHeight, blogWidth, blogPositionLeft, blogPositionTop, blogPositionDefault } from '../store.ts';
-import { saveObjectPosition } from './windowMover.js'
 
 export function activatePanel(myElement: HTMLElement | string, delay = 0) {
     if (typeof myElement === "string") {
@@ -25,6 +24,10 @@ export function openOrWigglePanel(myElement: HTMLElement) {
     showPanelOnTop(myElement)
 }
 
+export function closePanelByName(panelName: string) {
+    const panel = <HTMLElement>document.querySelector(`[data-windowName='${panelName}']`)
+    closePanel(panel);
+}
 export function closePanel(myElement: HTMLElement) {
     myElement.style.setProperty('--animate-duration', '0.4s');
     const animationTriggerClass = "animate__zoomOut"

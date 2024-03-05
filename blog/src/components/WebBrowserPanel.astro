@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="internet-container">
+    <div
+        class="container mx-auto -mx-4 -mt-4 flex flex-row justify-center items-center border-b-4 border-black"
+    >
+        <Icon name="mdi:arrow-back" size={20} />
+        <Icon name="mdi:arrow-right" size={20} />
+        <Icon name="mdi:refresh" size={20} />
+        <div class="text-xs bg-white p-1 rounded-full grow m-1">
+            https://www.coorpo.com/
+        </div>
+        <Icon name="mdi:arrow-down-drop-circle" size={20} />
+    </div>
+    <slot />
+</div>
+
+<style>
+    .container {
+        width: calc(100% + 32px);
+    }
+</style>
+<script>
+    import { closePanelByName } from "../scripts/panesOpener.ts";
+    const content = document.querySelector(
+        ".internet-container",
+    ) as HTMLElement;
+    content!.addEventListener("mousedown", () => {
+        closePanelByName("internet");
+    });
+</script>

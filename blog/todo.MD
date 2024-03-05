@@ -4,6 +4,7 @@
 - pane with images
 - open image
 - "back" in blogpost
+- mobile styling
 ### Polish
 
 - settings (change bg color, maybe more)

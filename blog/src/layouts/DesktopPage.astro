@@ -10,6 +10,8 @@ import "animate.css";
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 import Hello from "../components/hello.astro";
+import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
+import { Content as WebBrowser } from "../pages/special/web.mdx";
 ---
 
 <!doctype html>
@@ -30,7 +32,9 @@ import Hello from "../components/hello.astro";
 				label="posts"
 				position_x={20}
 				position_y={60}
-			/>
+			>
+				<MyPost />
+			</DesktopIcon>
 
 			<DesktopIcon
 				iconName="pixelarticons:folder"
@@ -55,7 +59,9 @@ import Hello from "../components/hello.astro";
 				label="internet"
 				position_x={24}
 				position_y={350}
-			/>
+			>
+				<WebBrowser />
+			</DesktopIcon>
 			<DesktopIcon
 				iconName="pixelarticons:trash"
 				label="trash"

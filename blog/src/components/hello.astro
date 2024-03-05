@@ -37,8 +37,8 @@ import helloAnimation from "../images/helloAnimated.gif";
     }
 </style>
 <script>
-    const overlay = document.querySelector(".overlay");
-    const hello = document.querySelector(".hello-container");
+    const overlay = document.querySelector(".overlay") as HTMLElement;
+    const hello = document.querySelector(".hello-container") as HTMLElement;
 
     function hideElement(myElement: HTMLElement) {
         myElement.style.setProperty("--animate-duration", "0.4s");
