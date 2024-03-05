@@ -10,7 +10,6 @@ let postMetaData: any[] = [];
 const posts = (await getCollection("blog")).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
 );
-console.log(posts);
 posts.forEach((post) => {
 	let postData = post.data;
 	postMetaData.push(postData);
@@ -21,7 +20,7 @@ import BlogPostsTable from "../../components/BlogPostsTable.svelte";
 ---
 
 <DesktopPage title={SITE_TITLE} , description={SITE_DESCRIPTION}>
-	<Pane title="Anotherlist" , windowName="postsList2">
+	<!-- <Pane title="Anotherlist" , windowName="postsList2">
 		<ul>
 			{
 				posts.map((post) => (
@@ -42,13 +41,13 @@ import BlogPostsTable from "../../components/BlogPostsTable.svelte";
 				))
 			}
 		</ul>
-	</Pane>
+	</Pane> -->
 	<Pane
 		title="List of posts"
 		,
 		windowName="postsList"
 		footnote={posts.length + " items; free NaN GB"}
 	>
-		<BlogPostsTable client:load posts={postMetaData} fullPosts={posts} />
+		<BlogPostsTable client:load posts={postMetaData} />
 	</Pane>
 </DesktopPage>

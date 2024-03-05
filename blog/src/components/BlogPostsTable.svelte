@@ -2,9 +2,6 @@
     import { navigate } from "astro:transitions/client";
 
     export let posts;
-    export let fullPosts;
-    console.log(fullPosts);
-    console.log(posts);
     import GithubSlugger from "github-slugger";
     const slugger = new GithubSlugger();
     import Icon from "@iconify/svelte";
@@ -68,7 +65,6 @@
     }
 
     function openPost(url) {
-        console.log("URL!: " + url);
         navigate("blog/" + url);
     }
 </script>

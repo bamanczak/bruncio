@@ -4,27 +4,21 @@ const menuHeight = 36;
 const margin = 10;
 const fullScreenClass = "full-screen";
 
-
-
-export function moveObject(myObject: HTMLElement, event: MouseEvent, savePosition = false) {
-    const myEvent = event as MouseEvent;
-    let startX = myEvent.pageX;
+export function moveObject(myObject: HTMLElement, myEvent: MouseEvent, savePosition = false) {
     let startY = myEvent.pageY;
-    // let asd = myEvent.x
+    let startX = myEvent.pageX;
     let screenWidth = document.documentElement.clientWidth;
     let screenHeight = document.documentElement.clientHeight;
-    let l = myObject.offsetLeft;
-
-    let t = myObject.offsetTop;
-
+    let offsetTop = myObject.offsetTop;
+    let offsetLeft = myObject.offsetLeft;
 
     const drag = (event: MouseEvent) => {
         event.preventDefault();
-        let newValueLeft = l + (event.pageX - startX);
+        let newValueLeft = offsetLeft + (event.pageX - startX);
         if (newValueLeft < 0) {
             newValueLeft = 0;
         }
-        let newValueTop = t + (event.pageY - startY);
+        let newValueTop = offsetTop + (event.pageY - startY);
         let paneHeight = myObject.clientHeight;
         if (newValueTop < menuHeight) {
             newValueTop = menuHeight;
@@ -60,7 +54,7 @@ export function moveObject(myObject: HTMLElement, event: MouseEvent, savePositio
     let clash = false;
     const panelButtons = myObject.querySelectorAll(".beautiful-button");
     panelButtons.forEach((button) => {
-        if (button.contains(event.target as Element)) {
+        if (button.contains(myEvent.target as Element)) {
             clash = true;
         }
     })
@@ -72,29 +66,28 @@ export function moveObject(myObject: HTMLElement, event: MouseEvent, savePositio
 }
 
 export function resizeObject(myObject: HTMLElement, event: MouseEvent, savePosition = false) {
-    let w = myObject.clientWidth;
-    let h = myObject.clientHeight;
+    let startY = event.pageY;
+    let startX = event.pageX;
     let screenWidth = document.documentElement.clientWidth;
     let screenHeight = document.documentElement.clientHeight;
-    let l = myObject.offsetLeft;
-    let t = myObject.offsetTop;
-
-    let startX = event.pageX;
-    let startY = event.pageY;
+    let offsetTop = myObject.offsetTop;
+    let offsetLeft = myObject.offsetLeft;
+    let objectWidth = myObject.clientWidth;
+    let objectHeight = myObject.clientHeight;
 
     const drag = (event: MouseEvent) => {
         event.preventDefault();
 
         document.body.style.cursor = "nwse-resize";
 
-        let newWidth = w + (event.pageX - startX);
-        let newHeight = h + (event.pageY - startY);
+        let newWidth = objectWidth + (event.pageX - startX);
+        let newHeight = objectHeight + (event.pageY - startY);
 
-        if (newWidth + l > screenWidth - margin / 2) {
-            newWidth = screenWidth - l - margin / 2;
+        if (newWidth + offsetLeft > screenWidth - margin / 2) {
+            newWidth = screenWidth - offsetLeft - margin / 2;
         }
-        if (newHeight + t > screenHeight) {
-            newHeight = screenHeight - t;
+        if (newHeight + offsetTop > screenHeight) {
+            newHeight = screenHeight - offsetTop;
         }
 
         myObject.style.width = newWidth + "px";
@@ -126,7 +119,6 @@ export function saveObjectPosition(myObject: HTMLElement, options?: {
     savedPositionLeft?: number,
     savedPositionTop?: number,
 }) {
-    console.log("saving!");
     blogPositionDefault.set('false');
     if (options?.savedWidth) {
         blogWidth.set(options.savedWidth.toString());

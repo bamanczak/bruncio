@@ -1,4 +1,3 @@
-import { number } from 'svelte-ux';
 import { zIndex, blogExpanded, blogHeight, blogWidth, blogPositionLeft, blogPositionTop, blogPositionDefault } from '../store.ts';
 import { saveObjectPosition } from './windowMover.js'
 
@@ -87,7 +86,6 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
 
         if (savePosition) {
             blogExpanded.set('false');
-            // saveObjectPosition(panel);
         }
     } else {
         panel.classList.add(fullScreenClass);
@@ -99,10 +97,6 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
             blogExpanded.set('true');
         }
     }
-
-    // setTimeout(function () {
-    //     panel.style.transition = "none";
-    // }, 400);
 }
 
 export function scroll(myObject: HTMLElement, scrollValue: number) {
