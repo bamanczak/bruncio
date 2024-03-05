@@ -16,20 +16,24 @@ interface Props {
     label: string;
     position_x: number;
     position_y: number;
-    postName?: string;
+    iconFunction?: string;
+    navigateTo?: string;
 }
 const {
     iconName,
     label,
     position_x,
     position_y,
-    postName = "MyPost",
+    iconFunction = "openPanel",
+    navigateTo = "",
 } = Astro.props;
 ---
 
 <div
     class="max-w-20 desktop-icon-container window-opener"
     data-openWindow={label}
+    data-iconFunction={iconFunction}
+    data-navigateTo={navigateTo}
     transition:persist
 >
     <div

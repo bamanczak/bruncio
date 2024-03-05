@@ -1,4 +1,4 @@
-import { zIndex, blogExpanded, blogHeight, blogWidth, blogPositionLeft, blogPositionTop, blogPositionDefault } from '../store.ts';
+import { zIndex, blogExpanded, blogPositionDefault } from '../store.ts';
 
 export function activatePanel(myElement: HTMLElement | string, delay = 0) {
     if (typeof myElement === "string") {

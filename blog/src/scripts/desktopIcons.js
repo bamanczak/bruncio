@@ -1,5 +1,7 @@
-const desktopIcons = document.querySelectorAll('.desktop-icon-container');
 import { activatePanel } from './panesOpener.ts'
+import { navigate } from "astro:transitions/client";
+
+const desktopIcons = document.querySelectorAll('.desktop-icon-container');
 const margin = 10;
 const menuHeight = 40;
 
@@ -7,8 +9,16 @@ desktopIcons.forEach((desktopIcon) => {
   const pane = desktopIcon.querySelector('.pane');
   const icon = desktopIcon.querySelector('.desktop-icon-sub-container')
   const panelName = desktopIcon.getAttribute("data-openWindow");
+  const iconFunction = desktopIcon.getAttribute('data-iconFunction');
+
   desktopIcon.addEventListener("click", () => {
-    activatePanel(panelName);
+    console.log(iconFunction);
+    if (iconFunction == "openPanel") {
+      activatePanel(panelName);
+    } else if (iconFunction == "navigate") {
+      const navigateTo = desktopIcon.getAttribute('data-navigateTo')
+      navigate(navigateTo);
+    }
   });
 
 });
