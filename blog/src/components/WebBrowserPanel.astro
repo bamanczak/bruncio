@@ -23,11 +23,12 @@ import { Icon } from "astro-icon/components";
     }
 </style>
 <script>
-    import { closePanelByName } from "../scripts/panesOpener.ts";
+    import { closePanelByName, activatePanel } from "../scripts/panesOpener.ts";
     const content = document.querySelector(
         ".internet-container",
     ) as HTMLElement;
     content!.addEventListener("mousedown", () => {
         closePanelByName("internet");
+        activatePanel("Error");
     });
 </script>

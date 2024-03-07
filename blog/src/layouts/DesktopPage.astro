@@ -12,6 +12,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 import Hello from "../components/hello.astro";
 import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
 import { Content as WebBrowser } from "../pages/special/web.mdx";
+import { Content as CrashAlert } from "../pages/special/alert.mdx";
+import Pane from "../components/Pane.astro";
 ---
 
 <!doctype html>
@@ -46,7 +48,9 @@ import { Content as WebBrowser } from "../pages/special/web.mdx";
 			/>
 			<DesktopIcon
 				iconName="pixelarticons:user"
-				label="Author"
+				label="author"
+				iconFunction="navigate"
+				navigateTo="/about"
 				position_x={22}
 				position_y={180}
 			/>
@@ -70,17 +74,16 @@ import { Content as WebBrowser } from "../pages/special/web.mdx";
 				position_x={340}
 				position_y={190}
 			/>
-
-			<!-- <h1>🧑‍🚀 Hello, Astronaut! 👋 👋🏻</h1> -->
-			<!-- <h1 class="text-center justify-center select-none">
-				<div class="waving-hand">👋</div>
-			</h1> -->
-			<!-- <p>
-				Welcome to the official <a href="https://astro.build/">Astro</a>
-				blog starter template. This template serves as a lightweight, minimally-styled
-				starting point for anyone looking to build a personal website, blog,
-				or portfolio with Astro.
-			</p> -->
+			<Pane
+				title="System Error"
+				classes="invisible"
+				windowName="Error"
+				position="left: calc(50vw - 240px); top: calc(50vh - 115px); width:480px; height: 230px;"
+				showExpand={false}
+				footnote=""
+			>
+				<CrashAlert />
+			</Pane>
 			<slot />
 		</main>
 		<script>

@@ -1,0 +1,31 @@
+---
+const { text = "OK", panelToClose } = Astro.props;
+---
+
+<text-button class="flex flex-row grow justify-center items-center gap-3">
+    <button
+        data-panelToClose={panelToClose}
+        class="text-button bg-myyellow hover:bg-black focus:bg-black hover:text-white focus:text-white text-black font-bold py-2 px-4 text-center align-middle rounded"
+    >
+        <p class="m-0">{text}</p>
+    </button>
+</text-button>
+
+<script>
+    import { closePanelByName } from "../scripts/panesOpener.ts";
+
+    class AstroTextButton extends HTMLElement {
+        constructor() {
+            super();
+
+            const button = this.querySelector(".text-button") as HTMLElement;
+            button.addEventListener("click", () => {
+                closePanelByName(
+                    button.getAttribute("data-panelToClose") as string,
+                );
+            });
+        }
+    }
+
+    customElements.define("text-button", AstroTextButton);
+</script>

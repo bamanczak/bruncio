@@ -3,8 +3,9 @@ const {
     title,
     classes,
     windowName,
-    position = "left: calc(50vw - 320px); top: calc(50vh - 80px)",
+    position = "left: calc(50vw - 320px); top: calc(50vh - 80px); width: var(--pane-default-width); height: var(--pane-default-height);",
     footnote = "Bla bla",
+    showExpand = true,
 } = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
@@ -31,14 +32,18 @@ import "animate.css";
                 <div
                     class="window-opener change-on-drag button-inner-container flex flex-row gap-1 items-center justify-end bg-mywhite"
                 >
-                    <BeautifulButton
-                        classes="button-expand"
-                        iconName="material-symbols:expand-content"
-                    />
-                    <BeautifulButton
-                        classes="button-close"
-                        iconName="material-symbols:close"
-                    />
+                    <div class={showExpand ? " " : "invisible"}>
+                        <BeautifulButton
+                            classes="button-expand"
+                            iconName="material-symbols:expand-content"
+                        />
+                    </div>
+                    <div>
+                        <BeautifulButton
+                            classes="button-close"
+                            iconName="material-symbols:close"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,8 +74,6 @@ import "animate.css";
 <style>
     .pane {
         position: absolute;
-        width: var(--pane-default-width);
-        height: var(--pane-default-height);
 
         display: grid;
         /* Ta linijka przesuwa w dół content, nie wiem jak działa, wcześniej było:
