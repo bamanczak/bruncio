@@ -14,6 +14,12 @@ import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
 import { Content as WebBrowser } from "../pages/special/web.mdx";
 import { Content as CrashAlert } from "../pages/special/alert.mdx";
 import Pane from "../components/Pane.astro";
+
+import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
+import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
+import { Content as TermsOfUse } from "../pages/special/termsOfUse.md";
+import { Content as A11y } from "../pages/special/a11y.md";
+import { Content as Environment } from "../pages/special/environment.md";
 ---
 
 <!doctype html>
@@ -35,7 +41,7 @@ import Pane from "../components/Pane.astro";
 				position_x={20}
 				position_y={60}
 				iconFunction="navigate"
-				navigateTo="blog"
+				navigateTo="/blog"
 			>
 				<MyPost />
 			</DesktopIcon>
@@ -84,10 +90,49 @@ import Pane from "../components/Pane.astro";
 			>
 				<CrashAlert />
 			</Pane>
+
+			<!-- LEGAL NOTICES -->
+			<Pane
+				title="Cookie Notice"
+				classes="invisible"
+				windowName="CokkieNotice"
+				position="left: calc(100vw - 470px); top: 80px; width: var(--pane-default-width); height: var(--pane-default-height);"
+			>
+				<CookieNotice />
+			</Pane>
+			<Pane
+				title="Privacy Policy"
+				classes="invisible"
+				windowName="PrivacyPolicy"
+				position="left: calc(50vw - 150px); top: calc(50vh - 200px); width: var(--pane-default-width); height: var(--pane-default-height);"
+			>
+				<PrivacyPolicy />
+			</Pane>
+			<Pane
+				title="Privacy Policy"
+				classes="invisible"
+				windowName="EnvPolicy"
+				position="left: 50px; top: calc(100vh - 380px); width: var(--pane-default-width); height: var(--pane-default-height);"
+			>
+				<Environment />
+			</Pane>
+			<Pane
+				title="Terms of use"
+				classes="invisible"
+				windowName="TermsOfUse"
+				position="left: 75px; top: 80px; width: var(--pane-default-width); height: var(--pane-default-height);"
+			>
+				<TermsOfUse />
+			</Pane>
+			<Pane
+				title="Accessibility"
+				classes="invisible"
+				windowName="A11y"
+				position="left: calc(100vw - 500px); top: calc(100vh - 400px); width: var(--pane-default-width); height: var(--pane-default-height);"
+			>
+				<A11y />
+			</Pane>
 			<slot />
 		</main>
-		<script>
-			document.documentElement.classList.remove("dark");
-		</script>
 	</body>
 </html>

@@ -187,13 +187,13 @@ blockquote {
 }
 
 ul {
-	list-style-type: square;
-	padding-left: 2rem;
+	list-style-type: square !important;
+	padding-left: 2rem !important;
 }
 
 ol {
-	list-style: decimal;
-	padding-left: 3rem;
+	list-style: decimal !important;
+	padding-left: 3rem !important;
 }
 
 mark {

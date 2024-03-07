@@ -6,14 +6,7 @@ import headImage from "../images/header_head.png";
 import "tippy.js/animations/scale.css";
 import Clock from "./Clock.astro";
 import { Icon } from "astro-icon/components";
-import Pane from "./Pane.astro";
 import MenuDropdown from "../components/MenuDropdown.svelte";
-
-import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
-import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
-import { Content as TermsOfUse } from "../pages/special/termsOfUse.md";
-import { Content as A11y } from "../pages/special/a11y.md";
-import { Content as Environment } from "../pages/special/environment.md";
 ---
 
 <header class="sticky top-0 h-10 bg-mywhite">
@@ -59,17 +52,6 @@ import { Content as Environment } from "../pages/special/environment.md";
 	</nav>
 
 	<style>
-		/* #tippy-1 .tippy-box {
-		background-color: seagreen;
-	}
-	.tippy-box {
-		background-color: red !important;
-		color: yellow;
-		border: 1px solid pink;
-		border-radius: 0.15rem;
-		padding: 0.5rem;
-		word-wrap: break-word;
-	} */
 		header {
 			z-index: 1000;
 		}
@@ -139,46 +121,3 @@ import { Content as Environment } from "../pages/special/environment.md";
 		}
 	</style>
 </header>
-
-<div slot="panels">
-	<Pane
-		title="Cookie Notice"
-		classes="invisible"
-		windowName="CokkieNotice"
-		position="left: calc(100vw - 470px); top: 80px"
-	>
-		<CookieNotice />
-	</Pane>
-	<Pane
-		title="Privacy Policy"
-		classes="invisible"
-		windowName="PrivacyPolicy"
-		position="left: calc(50vw - 150px); top: calc(50vh - 200px)"
-	>
-		<PrivacyPolicy />
-	</Pane>
-	<Pane
-		title="Privacy Policy"
-		classes="invisible"
-		windowName="EnvPolicy"
-		position="left: 50px; top: calc(100vh - 380px)"
-	>
-		<Environment />
-	</Pane>
-	<Pane
-		title="Terms of use"
-		classes="invisible"
-		windowName="TermsOfUse"
-		position="left: 75px; top: 80px"
-	>
-		<TermsOfUse />
-	</Pane>
-	<Pane
-		title="Accessibility"
-		classes="invisible"
-		windowName="A11y"
-		position="left: calc(100vw - 500px); top: calc(100vh - 400px)"
-	>
-		<A11y />
-	</Pane>
-</div>

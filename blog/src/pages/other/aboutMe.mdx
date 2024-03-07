@@ -1,3 +1,22 @@
-Hello fellow humans!
+import { Image } from "astro:assets";
+import headImage from "../../images/header_head.png";
 
-I'm Bruno, a psychologist and cognitive scientist by education, tester by occupation, dad and husband by love. I'm born and raised in Poznań, Poland, where I joined the software development industry in 2013. Since then, I have worked in various roles: test manager, test consultant, testing teacher, test automation engineer, manual tester. I like breaking software but improving things is my passion: human interactions, processes, software. Polish, English, TypeScript, Java and Python are the languages I use most often at work.
+<div class="flex flex-row items-end justify-center gap-3 mb-4">
+        <Image src={headImage} alt="A human head" width={150}/>
+        <Image src={headImage} alt="A human head" width={150}/>
+        <Image src={headImage} alt="A human head" width={150}/>
+        <Image src={headImage} alt="A human head" width={150}/>
+        <Image src={headImage} alt="A human head" width={150}/>
+</div>
+
+<h1>Hey fellow humans!</h1>
+
+
+I'm Bruno:
+- a psychologist and cognitive scientist by education, 
+- tester by occupation, 
+- <mark>dad</mark> and <mark>husband</mark> by love,
+- <mark>copy&paste</mark> developer at night (how do you think I created this site?)
+
+<br/>
+I was born and raised in Poznan, Poland, where I joined the software development industry in 2013. Since then, I have worked in various roles: test manager, test consultant, testing teacher, test automation engineer, manual tester. I like breaking software but improving things is my passion: human interactions, processes, software. Polish, English, TypeScript, Java and Python are the languages I use most often at work.
