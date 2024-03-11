@@ -20,8 +20,8 @@ import { Content as TermsOfUse } from "../pages/special/termsOfUse.md";
 import { Content as A11y } from "../pages/special/a11y.md";
 import { Content as Environment } from "../pages/special/environment.md";
 
-import VirusImage from "../images/VirusWarning.gif";
-import IpadAdImage from "../images/FreeIpad.gif";
+import VirusImage from "../images/VirusFound.gif";
+import IpadAdImage from "../images/YouWonIpad.gif";
 import MilkImage from "../images/HotMilks.gif";
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
@@ -100,7 +100,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				title="Virus found"
 				classes="invisible"
 				windowName="virus"
-				position="left: 10px; top: calc(100vh - 370px); width:200px; height: 350px;"
+				position="left: 10px; top: calc(100vh - 370px); width:200px; height: 275px;"
 				showExpand={false}
 				footnote=""
 			>
@@ -116,7 +116,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				title="You won!"
 				classes="invisible"
 				windowName="ipad"
-				position="left: 10px; top: calc(0vh + 50px); width:400px; height: 200px;"
+				position="left: 10px; top: calc(0vh + 50px); width:300px; height: 200px;"
 				showExpand={false}
 				footnote=""
 			>
@@ -124,7 +124,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					<Image
 						src={IpadAdImage}
 						alt="You won an upad!"
-						width={400}
+						width={250}
 					/>
 				</div>
 			</Pane>
