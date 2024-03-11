@@ -29,7 +29,7 @@ const {
 } = Astro.props;
 ---
 
-<div
+<astro-desktop-icon
     class="max-w-20 desktop-icon-container window-opener"
     data-openWindow={label}
     data-iconFunction={iconFunction}
@@ -50,12 +50,50 @@ const {
             {label}
         </div>
     </div>
-</div>
-<Pane title={label} classes="invisible" windowName={label}>
     <slot />
-</Pane>
+</astro-desktop-icon>
+
 <script>
-    import "../scripts/desktopIcons.js";
+    import {
+        activatePanel,
+        navigateToPanelPage,
+    } from "../scripts/panesOpener.ts";
+    import { moveObject } from "../scripts/windowMover.ts";
+
+    class AstroDesktopIcon extends HTMLElement {
+        constructor() {
+            super();
+
+            const draggableIcon = this.querySelector(
+                ".draggable-icon",
+            ) as HTMLElement;
+
+            draggableIcon.addEventListener("mousedown", (event) => {
+                moveObject(draggableIcon, event as MouseEvent);
+            });
+
+            const panelName = this.getAttribute("data-openWindow") as string;
+            const iconFunction = this.getAttribute(
+                "data-iconFunction",
+            ) as string;
+            draggableIcon.addEventListener("dblclick", () => {
+                if (iconFunction == "openPanel") {
+                    activatePanel(panelName);
+                } else if (iconFunction == "navigate") {
+                    const navigateToPath = this.getAttribute(
+                        "data-navigateTo",
+                    ) as string;
+                    if (window.location.href.endsWith(navigateToPath)) {
+                        activatePanel("mainPanel");
+                    } else {
+                        navigateToPanelPage(navigateToPath);
+                    }
+                }
+            });
+        }
+    }
+
+    customElements.define("astro-desktop-icon", AstroDesktopIcon);
 </script>
 <style>
     .my-shadow {

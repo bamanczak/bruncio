@@ -47,18 +47,18 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				position_y={60}
 				iconFunction="navigate"
 				navigateTo="/blog"
-			>
-				<MyPost />
-			</DesktopIcon>
+			/>
 			<DesktopIcon
 				iconName="pixelarticons:folder"
 				label="test"
 				position_x={94}
 				position_y={130}
-			/>
+			>
+				<Pane title="test" classes="invisible" windowName="test" />
+			</DesktopIcon>
 			<DesktopIcon
 				iconName="pixelarticons:user"
-				label="author"
+				label="About me"
 				iconFunction="navigate"
 				navigateTo="/about"
 				position_x={22}
@@ -69,23 +69,39 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				label="projects"
 				position_x={25}
 				position_y={270}
-			/>
+			>
+				<Pane
+					title="projects"
+					classes="invisible"
+					windowName="projects"
+				/>
+			</DesktopIcon>
 			<DesktopIcon
 				iconName="mdi:web"
 				label="internet"
 				position_x={24}
 				position_y={350}
 			>
-				<WebBrowser />
+				<Pane
+					title="internet"
+					classes="invisible"
+					windowName="internet"
+				>
+					<WebBrowser />
+				</Pane>
 			</DesktopIcon>
 			<DesktopIcon
 				iconName="pixelarticons:trash"
 				label="trash"
 				position_x={340}
 				position_y={190}
-			/>
+			>
+				<Pane title="trash" classes="invisible" windowName="trash">
+					<MyPost />
+				</Pane>
+			</DesktopIcon>
 
-			<!-- PANES -->
+			<!-- ADS IN BROWSER PANES -->
 			<Pane
 				title="System Error"
 				classes="invisible"

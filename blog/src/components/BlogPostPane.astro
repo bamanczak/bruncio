@@ -1,5 +1,10 @@
 ---
-const { title, classes, windowName, footnote = "nothing to add" } = Astro.props;
+const {
+    title,
+    classes = "",
+    windowName,
+    footnote = "nothing to add",
+} = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
 ---

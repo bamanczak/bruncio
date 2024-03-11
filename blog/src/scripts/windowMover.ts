@@ -42,10 +42,10 @@ export function moveObject(myObject: HTMLElement, myEvent: MouseEvent, savePosit
     };
 
     const mouseup = () => {
-        (
-            myObject.querySelector(".change-on-drag") as HTMLElement
-        ).classList.remove("is-dragging");
-        myObject.classList.remove("is-dragging");
+        // (
+        //     myObject.querySelector(".change-on-drag") as HTMLElement
+        // ).classList.remove("is-dragging");
+        // myObject.classList.remove("is-dragging");
 
         document.removeEventListener("mousemove", drag);
         document.removeEventListener("mouseup", mouseup);

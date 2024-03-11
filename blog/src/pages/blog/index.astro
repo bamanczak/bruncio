@@ -44,8 +44,7 @@ import BlogPostsTable from "../../components/BlogPostsTable.svelte";
 	</Pane> -->
 	<Pane
 		title="List of posts"
-		,
-		windowName="postsList"
+		windowName="mainPanel"
 		footnote={posts.length + " items; free NaN GB"}
 	>
 		<BlogPostsTable client:load posts={postMetaData} />

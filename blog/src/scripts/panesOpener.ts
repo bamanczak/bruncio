@@ -1,4 +1,6 @@
 import { zIndex, blogExpanded, blogPositionDefault } from '../store.ts';
+import { navigate } from "astro:transitions/client";
+
 
 export function activatePanel(myElement: HTMLElement | string, delay = 0) {
     if (typeof myElement === "string") {
@@ -27,6 +29,10 @@ export function openOrWigglePanel(myElement: HTMLElement) {
         }, 410);
     }
     showPanelOnTop(myElement)
+}
+
+export function navigateToPanelPage(pageName: string) {
+    navigate(pageName)
 }
 
 export function closePanelByName(panelName: string) {
