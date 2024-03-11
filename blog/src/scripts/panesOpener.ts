@@ -5,6 +5,11 @@ export function activatePanel(myElement: HTMLElement | string, delay = 0) {
         setTimeout(function () {
             openPanelWithId(myElement);
         }, delay);
+        if (myElement == "internet") {
+            activatePanel("virus", 750);
+            activatePanel("ipad", 1500);
+            activatePanel("milk", 2500);
+        }
     } else {
         openOrWigglePanel(myElement);
     }

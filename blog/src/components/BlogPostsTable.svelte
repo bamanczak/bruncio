@@ -149,12 +149,6 @@
         padding-right: 20px;
     }
 
-    /* tr:nth-child(even) */
-    /* tr td.oddClass {
-        background-color: #ebe1db;
-        border-radius: 16px;
-    } */
-
     table {
         text-align: center;
         width: 100%;
@@ -166,12 +160,6 @@
         height: 32px;
         position: sticky;
         inset-block-start: 0;
-    }
-    tfoot {
-        height: 32px;
-        position: sticky;
-        background: #fff;
-        inset-block-end: 0;
     }
     th {
         border-bottom: 1px solid #e0e0e0;

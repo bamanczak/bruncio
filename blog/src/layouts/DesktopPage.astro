@@ -1,25 +1,30 @@
 ---
+import "animate.css";
+
 import { ViewTransitions } from "astro:transitions";
+import { Image } from "astro:assets";
+import { Tooltips } from "astro-tooltips";
+
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
+import Pane from "../components/Pane.astro";
 
-import Floppy from "../components/Floppy.astro";
-import { Tooltips } from "astro-tooltips";
-import "animate.css";
-
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 import Hello from "../components/hello.astro";
 import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
 import { Content as WebBrowser } from "../pages/special/web.mdx";
 import { Content as CrashAlert } from "../pages/special/alert.mdx";
-import Pane from "../components/Pane.astro";
-
 import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
 import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 import { Content as TermsOfUse } from "../pages/special/termsOfUse.md";
 import { Content as A11y } from "../pages/special/a11y.md";
 import { Content as Environment } from "../pages/special/environment.md";
+
+import VirusImage from "../images/VirusWarning.gif";
+import IpadAdImage from "../images/FreeIpad.gif";
+import MilkImage from "../images/HotMilks.gif";
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <!doctype html>
@@ -90,7 +95,54 @@ import { Content as Environment } from "../pages/special/environment.md";
 			>
 				<CrashAlert />
 			</Pane>
-
+			<Pane
+				title="Virus found"
+				classes="invisible"
+				windowName="virus"
+				position="left: 10px; top: calc(100vh - 370px); width:200px; height: 350px;"
+				showExpand={false}
+				footnote=""
+			>
+				<div class="flex items-center justify-center">
+					<Image
+						src={VirusImage}
+						alt="We found a virus!"
+						width={500}
+					/>
+				</div>
+			</Pane>
+			<Pane
+				title="You won!"
+				classes="invisible"
+				windowName="ipad"
+				position="left: 10px; top: calc(0vh + 50px); width:400px; height: 200px;"
+				showExpand={false}
+				footnote=""
+			>
+				<div class="flex items-center justify-center">
+					<Image
+						src={IpadAdImage}
+						alt="You won an upad!"
+						width={400}
+					/>
+				</div>
+			</Pane>
+			<Pane
+				title="Hot MILKs!"
+				classes="invisible"
+				windowName="milk"
+				position="left: calc(100vw - 600px); top: 250px; width:400px; height: 200px;"
+				showExpand={false}
+				footnote=""
+			>
+				<div class="flex items-center justify-center">
+					<Image
+						src={MilkImage}
+						alt="Hot MILKs in your area!"
+						width={400}
+					/>
+				</div>
+			</Pane>
 			<!-- LEGAL NOTICES -->
 			<Pane
 				title="Cookie Notice"
@@ -132,6 +184,7 @@ import { Content as Environment } from "../pages/special/environment.md";
 			>
 				<A11y />
 			</Pane>
+			<Pane />
 			<slot />
 		</main>
 	</body>

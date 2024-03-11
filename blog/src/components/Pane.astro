@@ -3,7 +3,7 @@ const {
     title,
     classes,
     windowName,
-    position = "left: calc(50vw - 320px); top: calc(50vh - 80px); width: var(--pane-default-width); height: var(--pane-default-height);",
+    position = "left: calc(50vw - 350px); top: calc(50vh - 300px); width: 700px; height: 500px",
     footnote = "Bla bla",
     showExpand = true,
 } = Astro.props;
@@ -22,7 +22,7 @@ import "animate.css";
             class="title change-on-drag bg-mywhite grid grid-cols-8 border-b-4 border-black"
         >
             <h2
-                class="change-on-drag col-start-3 col-end-7 flex items-center justify-center bg-mywhite"
+                class="change-on-drag col-start-3 col-end-7 flex items-center justify-center bg-mywhite text-ellipsis line-clamp-1"
             >
                 {title}
             </h2>
@@ -84,7 +84,7 @@ import "animate.css";
 
         box-shadow: 12px 12px 0 rgba(64, 64, 64, 0.8);
         overflow: clip;
-        min-width: 420px;
+        min-width: 300px;
         min-height: 160px;
     }
 
@@ -259,6 +259,7 @@ import "animate.css";
         padding-right: 4px;
     }
 </style>
+
 <script>
     import {
         closePanel,
