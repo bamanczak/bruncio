@@ -12,6 +12,7 @@ import Pane from "../components/Pane.astro";
 
 import Hello from "../components/hello.astro";
 import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
+import { Content as BruncOS } from "../pages/special/bruncOS.mdx";
 import { Content as WebBrowser } from "../pages/special/web.mdx";
 import { Content as CrashAlert } from "../pages/special/alert.mdx";
 import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
@@ -159,6 +160,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						width={400}
 					/>
 				</div>
+			</Pane>
+
+			<!-- Standalone Panels for Menu -->
+
+			<Pane
+				title="About this computer"
+				classes="invisible"
+				windowName="aboutComputer"
+			>
+				<BruncOS />
 			</Pane>
 
 			<!-- LEGAL NOTICES -->

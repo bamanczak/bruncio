@@ -14,6 +14,9 @@
             class="-mt-1 min-w-60 border-4 border-black bg-mywhite p-1 divide-y divide-black"
         >
             <MenuItem
+                on:click={() => {
+                    activatePanel("aboutComputer");
+                }}
                 class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >About BruncOS</MenuItem
             >
