@@ -76,7 +76,7 @@ const {
             const iconFunction = this.getAttribute(
                 "data-iconFunction",
             ) as string;
-            draggableIcon.addEventListener("dblclick", () => {
+            draggableIcon.addEventListener("click", () => {
                 if (iconFunction == "openPanel") {
                     activatePanel(panelName);
                 } else if (iconFunction == "navigate") {

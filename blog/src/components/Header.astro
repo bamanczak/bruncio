@@ -9,41 +9,40 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 ---
 
 <header class="sticky top-0 h-10 bg-mywhite">
-	<nav class="sticky">
-		<div class="hs-dropdown head-container">
-			<MenuDropdown client:load>
-				<Image
-					slot="image"
-					src={headImage}
-					alt="A human head"
-					width={36}
-					class="head"
-				/>
-			</MenuDropdown>
-		</div>
-		<div class="flex flex-row justify-between grow">
-			<div class="internal-links max-lg:invisible">
+	<nav class="flex flex-row justify-between items-center">
+		<div class="flex flex-row items-center">
+			<div class="hs-dropdown head-container">
+				<MenuDropdown client:load>
+					<Image
+						slot="image"
+						src={headImage}
+						alt="A human head"
+						width={36}
+						class="head"
+					/>
+				</MenuDropdown>
+			</div>
+			<div class="internal-links max-md:hidden">
 				<HeaderLink href="/">Home</HeaderLink>
 				<HeaderLink href="/blog">Blog</HeaderLink>
 				<HeaderLink href="/about">About</HeaderLink>
 			</div>
+		</div>
+		<div class="flex flex-row justify-between">
 			<div class="flex flex-row justify-center items-center gap-3">
 				<div
-					class="flex flex-row justify-center items-center gap-1 max-lg:invisible"
+					class="flex flex-row justify-center items-center gap-1 max-md:hidden"
 				>
 					<a href="mailto:bamanczak@gmail.com" class="grey text-sm"
 						>hello@brunc.io</a
 					>
 					<a
 						href="https://www.linkedin.com/in/bruno-manczak/"
-						class="grey hide-mobile"
+						class="grey"
 					>
 						<Icon name="mdi:linkedin" size={26} />
 					</a>
-					<a
-						href="https://github.com/bamanczak"
-						class="grey hide-mobile"
-					>
+					<a href="https://github.com/bamanczak" class="grey">
 						<Icon name="mdi:github" size={26} />
 					</a>
 				</div>
@@ -94,13 +93,6 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 		h2 a.active {
 			text-decoration: none;
 		}
-		nav {
-			display: flex;
-			align-items: center;
-			justify-content: flex-start;
-			/* TO robi ze linki sa na cala dlugosc */
-			/* justify-content: space-between; */
-		}
 		nav > a {
 			/*padding: 1em 0.5em; */
 			color: var(--black);
@@ -113,12 +105,6 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 		nav a.active {
 			text-decoration: none;
 			border-bottom-color: var(--accent);
-		}
-
-		@media (max-width: 720px) {
-			.hide-mobile {
-				display: none;
-			}
 		}
 	</style>
 </header>
