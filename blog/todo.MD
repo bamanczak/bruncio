@@ -5,15 +5,13 @@
 - open image
 - "back" in blogpost
 - mobile styling
+- Floppy!
 ### Polish
 
 - settings (change bg color, maybe more)
 - [tooltip svelte?](https://dev.to/danawoodman/svelte-quick-tip-using-actions-to-integrate-with-javascript-libraries-tippy-tooltips-2m94)
 
 ### Fun:
-
-- browser + popups
-- browser style/animation/doodle: content showing a dummy page and dummy browser
 - floppy assisntant
 - notifications
 

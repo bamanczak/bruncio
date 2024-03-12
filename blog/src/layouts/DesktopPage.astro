@@ -94,7 +94,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			<DesktopIcon
 				iconName="pixelarticons:trash"
 				label="trash"
-				position_x={340}
+				position_x={240}
 				position_y={190}
 			>
 				<Pane title="trash" classes="invisible" windowName="trash">
@@ -190,7 +190,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<PrivacyPolicy />
 			</Pane>
 			<Pane
-				title="Privacy Policy"
+				title="Environment Policy"
 				classes="invisible"
 				windowName="EnvPolicy"
 				position="left: 50px; top: calc(100vh - 380px); width: var(--pane-default-width); height: var(--pane-default-height);"
@@ -213,7 +213,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			>
 				<A11y />
 			</Pane>
-			<Pane />
 			<slot />
 		</main>
 	</body>

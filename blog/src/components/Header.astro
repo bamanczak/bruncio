@@ -22,13 +22,15 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 			</MenuDropdown>
 		</div>
 		<div class="flex flex-row justify-between grow">
-			<div class="internal-links">
+			<div class="internal-links max-lg:invisible">
 				<HeaderLink href="/">Home</HeaderLink>
 				<HeaderLink href="/blog">Blog</HeaderLink>
 				<HeaderLink href="/about">About</HeaderLink>
 			</div>
 			<div class="flex flex-row justify-center items-center gap-3">
-				<div class="flex flex-row justify-center items-center gap-1">
+				<div
+					class="flex flex-row justify-center items-center gap-1 max-lg:invisible"
+				>
 					<a href="mailto:bamanczak@gmail.com" class="grey text-sm"
 						>hello@brunc.io</a
 					>
