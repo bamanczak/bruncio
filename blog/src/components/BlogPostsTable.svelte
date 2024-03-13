@@ -79,7 +79,7 @@
             on:click={() => sortTable("pubDate")}
             class="text-left date-column max-md:hidden">Date</th
         >
-        <th class="empty-column"></th>
+        <th class="empty-column p-0"></th>
     </thead>
 
     <tbody>
@@ -96,15 +96,17 @@
                     /></td
                 >
                 <td class={setRowClass(index) + "text-balance"}>
-                    <p>{post.title}</p>
-                    <p class="text-sm min-[768px]:hidden">
+                    <p class="mb-0">{post.title}</p>
+                    <p class="text-sm min-[768px]:hidden mt-1">
                         {post.pubDate.toISOString().substring(0, 10)}
                     </p>
                 </td>
-                <td class={setRowClass(index) + "text-nowrap max-md:hidden"}
+                <td
+                    class={setRowClass(index) +
+                        " date-column text-nowrap max-md:hidden"}
                     >{post.pubDate.toISOString().substring(0, 10)}</td
                 >
-                <td class="empty-column"></td>
+                <td class={setRowClass(index) + "empty-column p-0"}></td>
             </tr>
             <Tooltip
                 placement="bottom"
@@ -147,12 +149,10 @@
     td:not(:first-child) {
         padding-top: 16px;
         padding-bottom: 16px;
-        padding-right: 20px;
+        padding-right: 16px;
     }
-    td:not(:first-child) {
-        padding-top: 16px;
-        padding-bottom: 16px;
-        padding-right: 20px;
+    td.date-column {
+        padding-right: 0px;
     }
 
     table {
