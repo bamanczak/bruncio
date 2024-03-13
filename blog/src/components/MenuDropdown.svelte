@@ -1,7 +1,7 @@
 <script>
     import { Toggle, Button, MenuItem, Menu } from "svelte-ux";
-    import { showCookiePolicy } from "../store";
     import { activatePanel } from "../scripts/panesOpener";
+    import { navigate } from "astro:transitions/client";
 </script>
 
 <Toggle let:on={open} let:toggle>
@@ -23,10 +23,16 @@
             <hr class="h-px my-1 bg-black border-0" />
 
             <MenuItem
+                on:click={() => {
+                    navigate("/");
+                }}
                 class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >Home</MenuItem
             >
             <MenuItem
+                on:click={() => {
+                    navigate("/blog");
+                }}
                 class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >Blog</MenuItem
             >

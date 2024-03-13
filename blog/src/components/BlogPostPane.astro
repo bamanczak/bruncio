@@ -1,10 +1,5 @@
 ---
-const {
-    title,
-    classes = "",
-    windowName,
-    footnote = "nothing to add",
-} = Astro.props;
+const { title, classes = "", windowName, footnote = "..." } = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
 ---
@@ -71,6 +66,7 @@ import "animate.css";
             top: 37px !important;
             width: calc(100vw - 4px);
             height: calc(100vh - 37px) !important;
+            max-height: calc(100vh - 37px - 55px) !important;
             min-width: calc(100vw - 4px) !important;
             box-shadow: none !important;
         }

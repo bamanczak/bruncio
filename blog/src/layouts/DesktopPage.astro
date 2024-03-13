@@ -9,6 +9,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
 import Pane from "../components/Pane.astro";
+import MobileMenu from "../components/MobileMenu.astro";
 
 import Hello from "../components/hello.astro";
 import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
@@ -20,6 +21,7 @@ import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
 import { Content as TermsOfUse } from "../pages/special/termsOfUse.md";
 import { Content as A11y } from "../pages/special/a11y.md";
 import { Content as Environment } from "../pages/special/environment.md";
+import { Content as Never } from "../pages/special/never.mdx";
 
 import VirusImage from "../images/VirusFound.gif";
 import IpadAdImage from "../images/YouWonIpad.gif";
@@ -50,12 +52,14 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				navigateTo="/blog"
 			/>
 			<DesktopIcon
-				iconName="pixelarticons:folder"
+				iconName="pixelarticons:human-run"
 				label="test"
 				position_x={94}
 				position_y={130}
 			>
-				<Pane title="test" classes="invisible" windowName="test" />
+				<Pane title="test" classes="invisible" windowName="test">
+					<Never />
+				</Pane>
 			</DesktopIcon>
 			<DesktopIcon
 				iconName="pixelarticons:user"
@@ -214,6 +218,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<A11y />
 			</Pane>
 			<slot />
+			<MobileMenu />
 		</main>
 	</body>
 </html>

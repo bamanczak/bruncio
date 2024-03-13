@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="sticky mobile-menu bottom-0 bg-black min-[768px]:hidden">
+	<div class="flex flex-row justify-around items-center">
+		<a href="/" class="flex flex-col items-center m-1">
+			<Icon
+				name="pixelarticons:home"
+				class="head"
+				size={24}
+				color="#FAF4E6"
+			/>
+			<div class="text-sm text-mywhite">Home</div>
+		</a>
+		<a href="/blog" class="flex flex-col items-center m-1">
+			<Icon
+				name="pixelarticons:article-multiple"
+				class="head"
+				size={24}
+				color="#FAF4E6"
+			/>
+			<div class="text-sm text-mywhite">Posts</div>
+		</a>
+		<a href="/about" class="flex flex-col items-center m-1">
+			<Icon
+				name="pixelarticons:user"
+				class="head"
+				size={24}
+				color="#FAF4E6"
+			/>
+			<div class="text-sm text-mywhite">About</div>
+		</a>
+	</div>
+</div>
+<style>
+	.mobile-menu {
+		position: absolute;
+		left: 0px;
+		bottom: 0px;
+		z-index: 9700;
+		width: 100vw;
+		border-top: 4px solid rgba(var(--black), 1);
+	}
+</style>
+
+<script></script>
