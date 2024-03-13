@@ -9,15 +9,12 @@ const {
 } = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
-
-const mobilePositionString =
-    "@media not all and (min-width: 1024px) { left: 0px; top: 36px; width: 100vw; height: calc(100vh - 36px)}";
 ---
 
 <astro-desktop-window
     data-windowName={windowName}
     class=`pane border-4 border-black rounded-2xl animate__animated ${classes}`
-    style={mobilePositionString + position}
+    style={position}
     transition:persist
 >
     <div class="title-container select-none">
