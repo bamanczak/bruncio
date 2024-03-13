@@ -23,7 +23,7 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 				</MenuDropdown>
 			</div>
 			<div class="internal-links max-md:hidden">
-				<HeaderLink href="/">Home</HeaderLink>
+				<!-- <HeaderLink href="/">Home</HeaderLink> -->
 				<HeaderLink href="/blog">Blog</HeaderLink>
 				<HeaderLink href="/about">About</HeaderLink>
 			</div>
@@ -52,10 +52,6 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 	</nav>
 
 	<style>
-		header {
-			z-index: 1000;
-		}
-
 		nav .hs-dropdown-menu {
 			transform: translate3d(20px, 36px, 0px) !important;
 			z-index: 1000;
@@ -83,6 +79,8 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 			margin: 0;
 			padding: 0 1em;
 			border-bottom: 4px solid rgba(var(--black), 1);
+			z-index: 1000;
+			width: 100vw;
 		}
 		h2 {
 			margin: 0;

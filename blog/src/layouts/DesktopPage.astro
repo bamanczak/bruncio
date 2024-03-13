@@ -149,7 +149,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				title="Hot MILKs!"
 				classes="invisible"
 				windowName="milk"
-				position="left: calc(100vw - 600px); top: 250px; width:400px; height: 200px;"
+				position="left: max(calc(100vw - 600px), 2px); top: 250px; width:400px; height: 200px;"
 				showExpand={false}
 				footnote=""
 			>
@@ -177,7 +177,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				title="Cookie Notice"
 				classes="invisible"
 				windowName="CokkieNotice"
-				position="left: calc(100vw - 470px); top: 80px; width: var(--pane-default-width); height: var(--pane-default-height);"
+				position="left: max(calc(100vw - 470px), 1px); top: 80px; width: var(--pane-default-width); height: var(--pane-default-height);"
 			>
 				<CookieNotice />
 			</Pane>
@@ -185,7 +185,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				title="Privacy Policy"
 				classes="invisible"
 				windowName="PrivacyPolicy"
-				position="left: calc(50vw - 150px); top: calc(50vh - 200px); width: var(--pane-default-width); height: var(--pane-default-height);"
+				position="left: min(calc(50vw - 150px), 1px); top: calc(50vh - 200px); width: var(--pane-default-width); height: var(--pane-default-height);"
 			>
 				<PrivacyPolicy />
 			</Pane>
@@ -193,7 +193,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				title="Environment Policy"
 				classes="invisible"
 				windowName="EnvPolicy"
-				position="left: 50px; top: calc(100vh - 380px); width: var(--pane-default-width); height: var(--pane-default-height);"
+				position="left: 2px; top: calc(100vh - 380px); width: var(--pane-default-width); height: var(--pane-default-height);"
 			>
 				<Environment />
 			</Pane>
@@ -201,7 +201,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				title="Terms of use"
 				classes="invisible"
 				windowName="TermsOfUse"
-				position="left: 75px; top: 80px; width: var(--pane-default-width); height: var(--pane-default-height);"
+				position="left: 2px; top: 80px, 1px); width: 200px; height: var(--pane-default-height);"
 			>
 				<TermsOfUse />
 			</Pane>
@@ -209,7 +209,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				title="Accessibility"
 				classes="invisible"
 				windowName="A11y"
-				position="left: calc(100vw - 500px); top: calc(100vh - 400px); width: var(--pane-default-width); height: var(--pane-default-height);"
+				position="left: max(calc(100vw - 500px), 1px); top: calc(100vh - 400px); width: var(--pane-default-width); height: var(--pane-default-height);"
 			>
 				<A11y />
 			</Pane>

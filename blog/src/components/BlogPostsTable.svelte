@@ -75,9 +75,11 @@
     >
         <th class="icon-column"></th>
         <th on:click={() => sortTable("title")} class="text-left">Post</th>
-        <th on:click={() => sortTable("pubDate")} class="text-left date-column"
-            >Date</th
+        <th
+            on:click={() => sortTable("pubDate")}
+            class="text-left date-column max-md:hidden">Date</th
         >
+        <th class="empty-column"></th>
     </thead>
 
     <tbody>
@@ -93,12 +95,16 @@
                         icon="pixelarticons:briefcase-check"
                     /></td
                 >
-                <td class={setRowClass(index) + +"text-balance"}
-                    >{post.title}</td
-                >
-                <td class={setRowClass(index) + "text-nowrap"}
+                <td class={setRowClass(index) + "text-balance"}>
+                    <p>{post.title}</p>
+                    <p class="text-sm min-[768px]:hidden">
+                        {post.pubDate.toISOString().substring(0, 10)}
+                    </p>
+                </td>
+                <td class={setRowClass(index) + "text-nowrap max-md:hidden"}
                     >{post.pubDate.toISOString().substring(0, 10)}</td
                 >
+                <td class="empty-column"></td>
             </tr>
             <Tooltip
                 placement="bottom"

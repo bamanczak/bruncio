@@ -3,7 +3,7 @@ const {
     title,
     classes,
     windowName,
-    position = "left: calc(50vw - 350px); top: calc(50vh - 300px); width: 700px; height: 500px",
+    position = "left: max( calc(50vw - 350px), 1px); top: calc(50vh - 300px); width: 700px; height: 500px",
     footnote = "Bla bla",
     showExpand = true,
 } = Astro.props;
@@ -22,10 +22,10 @@ const mobilePositionString =
 >
     <div class="title-container select-none">
         <div
-            class="title change-on-drag bg-mywhite grid grid-cols-8 border-b-4 border-black"
+            class="title change-on-drag bg-mywhite grid grid-cols-8 border-b-4 border-black flex items-center justify-center"
         >
             <h2
-                class="change-on-drag col-start-3 col-end-7 flex items-center justify-center bg-mywhite text-ellipsis line-clamp-1"
+                class="change-on-drag col-start-3 col-end-7 bg-mywhite text-ellipsis line-clamp-1 text-center"
             >
                 {title}
             </h2>
@@ -75,6 +75,18 @@ const mobilePositionString =
 </astro-desktop-window>
 
 <style>
+    @media (max-width: 1024px) {
+        .pane {
+            /* left: 2px !important; */
+            /* top: 37px !important; */
+            /* width: calc(100vw - 4px); */
+            /* height: calc(100vh - 37px) !important; */
+            min-width: calc(100vw - 4px) !important;
+            max-width: calc(100vw - 4px) !important;
+            box-shadow: none !important;
+        }
+    }
+
     .pane {
         position: absolute;
 
