@@ -4,7 +4,6 @@
 - pane with images
 - open image
 - "back" in blogpost
-- mobile styling
 - Floppy!
 ### Polish
 
@@ -20,12 +19,8 @@
 - second item in top nav
 
 # Chores
-
-- pane use tailwind
+- dblclick on mobile; https://codepen.io/angelthecoder/pen/EJNgVL
 - navbar border bottom width through tailwind (5>4)
-- kontrola gdzie otwiera się okienko, dzięki astro props
-- save position of window to astroprop (zeby sie zapamiętał przy odświezeniu strony)
-- wiggle okienka jeśli nacisniesz ikonke a okienko juz było otwarte
 
 # Bugs
 - zegar mruga po nawigacji

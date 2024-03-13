@@ -25,6 +25,7 @@
     "astro": "^4.3.7",
     "astro-icon": "^1.1.0",
     "astro-tooltips": "^0.6.2",
+    "bowser": "^2.11.0",
     "framer-motion": "^11.0.5",
     "nanostores": "^0.10.0",
     "preline": "^2.0.3",

@@ -55,6 +55,7 @@ const {
 </astro-desktop-icon>
 
 <script>
+    import Bowser from "bowser";
     import {
         activatePanel,
         navigateToPanelPage,
@@ -77,7 +78,14 @@ const {
             const iconFunction = this.getAttribute(
                 "data-iconFunction",
             ) as string;
-            draggableIcon.addEventListener("click", () => {
+
+            const parser = Bowser.getParser(navigator.userAgent);
+            let iconClickEvent = "click";
+            if (parser.getPlatformType() != "mobile") {
+                iconClickEvent = "dblclick";
+            }
+
+            draggableIcon.addEventListener(iconClickEvent, () => {
                 if (iconFunction == "openPanel") {
                     activatePanel(panelName);
                 } else if (iconFunction == "navigate") {
