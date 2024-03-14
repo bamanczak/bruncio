@@ -266,27 +266,13 @@ import "overlayscrollbars/overlayscrollbars.css";
         padding-left: 3px;
         padding-right: 4px;
     }
-
-    .os-scrollbar {
-        --os-track-bg: red !important;
-    }
-    .os-theme-custom .os-scrollbar .os-scrollbar-track {
-        background-color: red;
-    }
-    .os-theme-custom {
-        --os-size: 10px;
-    }
-
-    .os-theme-custom.os-scrollbar-horizontal {
-        --os-size: 10px;
-    }
-    .os-theme-custom.os-scrollbar-vertical {
-        --os-size: 20px;
-    }
 </style>
 <script>
+    import { OverlayScrollbars } from "overlayscrollbars";
+
     import {
         closePanel,
+        hideScrollBars,
         showPanelOnTop,
         expandPanel,
         enableAndDisableAnimatedTransition,
@@ -301,12 +287,6 @@ import "overlayscrollbars/overlayscrollbars.css";
         blogPositionTop,
     } from "../store.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
-    import {
-        OverlayScrollbars,
-        ScrollbarsHidingPlugin,
-        SizeObserverPlugin,
-        ClickScrollPlugin,
-    } from "overlayscrollbars";
 
     class AstroPostDesktopWindow extends HTMLElement {
         constructor() {
@@ -354,16 +334,15 @@ import "overlayscrollbars/overlayscrollbars.css";
                 resizeObject(this, event as MouseEvent, true);
             });
 
-            const scrollUpButton = this.querySelector(".arrow.up");
-            scrollUpButton!.addEventListener("mousedown", () => {
-                scroll(content, -200);
-            });
+            // const scrollUpButton = this.querySelector(".arrow.up");
+            // scrollUpButton!.addEventListener("mousedown", () => {
+            //     scroll(content, -200);
+            // });
 
-            const scrollDownButton = this.querySelector(".arrow.down");
-            scrollDownButton!.addEventListener("mousedown", () => {
-                scroll(content, 200);
-            });
-            //
+            // const scrollDownButton = this.querySelector(".arrow.down");
+            // scrollDownButton!.addEventListener("mousedown", () => {
+            //     scroll(content, 200);
+            // });
         }
     }
 
