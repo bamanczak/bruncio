@@ -530,7 +530,7 @@ body {
 			rgba(0, 0, 0, 1) 1px,
 			transparent 0);
 	background-size: 7px 7px;
-	padding: 10px 0px 10px 0px !important;
+	padding: 0px !important;
 }
 
 .os-scrollbar.invisible {

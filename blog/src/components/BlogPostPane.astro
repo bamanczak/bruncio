@@ -122,7 +122,7 @@ import "overlayscrollbars/overlayscrollbars.css";
     }
 
     /* scrollbar starts here */
-
+    /* 
     .dummy-scrollbar {
         width: 20px;
         height: 16px;
@@ -153,7 +153,7 @@ import "overlayscrollbars/overlayscrollbars.css";
     .arrow.down {
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
-    }
+    } */
     /*
     .scrollable {
         --sb-track-color: #faf4e6;
@@ -307,11 +307,6 @@ import "overlayscrollbars/overlayscrollbars.css";
         SizeObserverPlugin,
         ClickScrollPlugin,
     } from "overlayscrollbars";
-    let overlay: OverlayScrollbars;
-
-    export function hideOverlay() {
-        overlay.off;
-    }
 
     class AstroPostDesktopWindow extends HTMLElement {
         constructor() {
@@ -319,7 +314,7 @@ import "overlayscrollbars/overlayscrollbars.css";
 
             showPanelOnTop(this);
             const content = this.querySelector(".content") as HTMLElement;
-            overlay = OverlayScrollbars(content, {});
+            const overlay = OverlayScrollbars(content, {});
 
             if (blogExpanded.get() == "true") {
                 expandPanel(this);
@@ -337,7 +332,6 @@ import "overlayscrollbars/overlayscrollbars.css";
 
             const buttonClose = this.querySelector(".button-close");
             buttonClose!.addEventListener("click", () => {
-                // hideOverlay();
                 closePanel(this);
             });
 
