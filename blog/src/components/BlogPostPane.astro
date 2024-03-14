@@ -2,6 +2,7 @@
 const { title, classes = "", windowName, footnote = "..." } = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
+import "overlayscrollbars/overlayscrollbars.css";
 ---
 
 <astro-post-desktop-window
@@ -35,7 +36,12 @@ import "animate.css";
             </div>
         </div>
     </div>
-    <div class="bg-mywhite content text-black scrollable">
+    <!-- <custom-scrollbar data-target-id={"pane-" + windowName}></custom-scrollbar> -->
+    <div
+        class="bg-mywhite content text-black scrollable"
+        data-overlayscrollbars-initialize
+        id={"pane-content" + windowName}
+    >
         <slot />
     </div>
     <div class="flex justify-end">
@@ -148,7 +154,7 @@ import "animate.css";
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
     }
-
+    /*
     .scrollable {
         --sb-track-color: #faf4e6;
         --sb-thumb-color: #000000;
@@ -167,10 +173,9 @@ import "animate.css";
         margin-top: 30px;
     }
 
-    .scrollable::-webkit-scrollbar-track {
+    /* .scrollable::-webkit-scrollbar-track {
         background: var(--sb-track-color);
         border-radius: 0px;
-        /* dotted background */
         background-image: radial-gradient(
             circle at 0.8px 0.8px,
             rgba(0, 0, 0, 0.5) 2px,
@@ -180,19 +185,18 @@ import "animate.css";
         margin-top: 16px;
         margin-bottom: 16px;
         border-left: 4px solid #000000;
-    }
+    } */
 
-    .scrollable::-webkit-scrollbar-thumb {
+    /* .scrollable::-webkit-scrollbar-thumb {
         background: var(--sb-thumb-color);
         border-radius: 0px;
-        /* border: 4px solid #faf4e6; */
     }
 
     @supports not selector(::-webkit-scrollbar) {
         .scrollable {
             scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
         }
-    }
+    } */
     /* scrollbar ends here */
 
     /* make image fill the space */
@@ -262,6 +266,23 @@ import "animate.css";
         padding-left: 3px;
         padding-right: 4px;
     }
+
+    .os-scrollbar {
+        --os-track-bg: red !important;
+    }
+    .os-theme-custom .os-scrollbar .os-scrollbar-track {
+        background-color: red;
+    }
+    .os-theme-custom {
+        --os-size: 10px;
+    }
+
+    .os-theme-custom.os-scrollbar-horizontal {
+        --os-size: 10px;
+    }
+    .os-theme-custom.os-scrollbar-vertical {
+        --os-size: 20px;
+    }
 </style>
 <script>
     import {
@@ -280,12 +301,26 @@ import "animate.css";
         blogPositionTop,
     } from "../store.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
+    import {
+        OverlayScrollbars,
+        ScrollbarsHidingPlugin,
+        SizeObserverPlugin,
+        ClickScrollPlugin,
+    } from "overlayscrollbars";
+    let overlay: OverlayScrollbars;
+
+    export function hideOverlay() {
+        overlay.off;
+    }
 
     class AstroPostDesktopWindow extends HTMLElement {
         constructor() {
             super();
 
             showPanelOnTop(this);
+            const content = this.querySelector(".content") as HTMLElement;
+            overlay = OverlayScrollbars(content, {});
+
             if (blogExpanded.get() == "true") {
                 expandPanel(this);
             } else if (blogPositionDefault.get() == "false") {
@@ -302,6 +337,7 @@ import "animate.css";
 
             const buttonClose = this.querySelector(".button-close");
             buttonClose!.addEventListener("click", () => {
+                // hideOverlay();
                 closePanel(this);
             });
 
@@ -324,7 +360,6 @@ import "animate.css";
                 resizeObject(this, event as MouseEvent, true);
             });
 
-            const content = this.querySelector(".content") as HTMLElement;
             const scrollUpButton = this.querySelector(".arrow.up");
             scrollUpButton!.addEventListener("mousedown", () => {
                 scroll(content, -200);
@@ -334,6 +369,7 @@ import "animate.css";
             scrollDownButton!.addEventListener("mousedown", () => {
                 scroll(content, 200);
             });
+            //
         }
     }
 

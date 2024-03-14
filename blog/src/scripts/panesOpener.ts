@@ -43,15 +43,23 @@ export function closePanel(myElement: HTMLElement) {
     myElement.style.setProperty('--animate-duration', '0.4s');
     const animationTriggerClass = "animate__zoomOut"
     myElement.classList.add(animationTriggerClass);
+    const horizontalScrollbar = myElement.querySelector(".os-scrollbar-horizontal") as HTMLElement;
+    const verticalScrollbar = myElement.querySelector(".os-scrollbar-vertical") as HTMLElement;
     setTimeout(function () {
         myElement.classList.add("invisible");
+        horizontalScrollbar.classList.add("invisible");
+        verticalScrollbar.classList.add("invisible");
         myElement.classList.remove(animationTriggerClass);
     }, 410);
 }
 
 export function openPanel(myElement: HTMLElement) {
+    const horizontalScrollbar = myElement.querySelector(".os-scrollbar-horizontal") as HTMLElement;
+    const verticalScrollbar = myElement.querySelector(".os-scrollbar-vertical") as HTMLElement;
     myElement.style.setProperty('--animate-duration', '0.2s');
     myElement.classList.remove("invisible");
+    horizontalScrollbar.classList.remove("invisible");
+    verticalScrollbar.classList.remove("invisible");
 
     myElement.classList.add("animate__zoomIn");
     setTimeout(function () {
