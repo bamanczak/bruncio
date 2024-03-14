@@ -24,7 +24,9 @@
             hour12: false,
         });
         element.innerText = date.substring(0, 5);
-        setTimeout(showTime, 10000);
+        setTimeout(() => {
+            showTime(element);
+        }, 10000);
     }
     class AstroClock extends HTMLElement {
         constructor() {
