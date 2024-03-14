@@ -65,5 +65,4 @@ export default {
 		}
 	},
 	plugins: [preline, svelteUx],
-	darkMode: false,
 }
