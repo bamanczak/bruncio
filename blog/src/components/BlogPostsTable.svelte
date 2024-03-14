@@ -112,7 +112,7 @@
                 placement="bottom"
                 type="custom"
                 defaultClass=""
-                class="p-1 text-xs text-mywhite dark:text-mywhite dark:bg-black bg-black, border-black border-4"
+                class="p-1 text-xs text-mywhite dark:text-mywhite dark:bg-black bg-black border-black border-4"
                 arrow={false}
                 triggeredBy={"#post-no-" + index}>{post.description}</Tooltip
             >
