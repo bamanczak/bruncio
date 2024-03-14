@@ -122,7 +122,7 @@ import "overlayscrollbars/overlayscrollbars.css";
     }
 
     /* scrollbar starts here */
-    /* 
+
     .dummy-scrollbar {
         width: 20px;
         height: 16px;
@@ -132,6 +132,7 @@ import "overlayscrollbars/overlayscrollbars.css";
         right: 0;
     }
     .dummy-scrollbar.top-button {
+        z-index: 8000;
         top: 40px;
     }
     .dummy-scrollbar.bottom-button {
@@ -153,51 +154,7 @@ import "overlayscrollbars/overlayscrollbars.css";
     .arrow.down {
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
-    } */
-    /*
-    .scrollable {
-        --sb-track-color: #faf4e6;
-        --sb-thumb-color: #000000;
-        --sb-size: 20px;
     }
-
-    .scrollable::-webkit-scrollbar {
-        width: var(--sb-size);
-        border-left: 4px solid #000000;
-        background-image: radial-gradient(
-            circle at 0.8px 0.8px,
-            rgba(0, 0, 0, 1) 1px,
-            transparent 0
-        );
-        background-size: 10px 10px;
-        margin-top: 30px;
-    }
-
-    /* .scrollable::-webkit-scrollbar-track {
-        background: var(--sb-track-color);
-        border-radius: 0px;
-        background-image: radial-gradient(
-            circle at 0.8px 0.8px,
-            rgba(0, 0, 0, 0.5) 2px,
-            transparent 0
-        );
-        background-size: 5px 5px;
-        margin-top: 16px;
-        margin-bottom: 16px;
-        border-left: 4px solid #000000;
-    } */
-
-    /* .scrollable::-webkit-scrollbar-thumb {
-        background: var(--sb-thumb-color);
-        border-radius: 0px;
-    }
-
-    @supports not selector(::-webkit-scrollbar) {
-        .scrollable {
-            scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
-        }
-    } */
-    /* scrollbar ends here */
 
     /* make image fill the space */
     .pane .content img {
@@ -225,21 +182,15 @@ import "overlayscrollbars/overlayscrollbars.css";
 
         /* north west to south east */
         cursor: nwse-resize;
-
-        /* background-color: red; */
     }
+
     .corner-inner {
-        /* margin: 4px; */
         width: 21px;
         height: 21px;
         background-image: linear-gradient(
             -45deg,
             rgba(0, 0, 0, 0) 0%,
-            /* rgba(0, 0, 0, 0) 6.25%,
-            #faf4e6 6.25%,
-            #faf4e6 12.5%,
-            rgba(0, 0, 0, 0) 12.5%, */
-                rgba(0, 0, 0, 0) 18.75%,
+            rgba(0, 0, 0, 0) 18.75%,
             #faf4e6 18.75%,
             #faf4e6 25%,
             rgba(0, 0, 0, 0) 25%,
@@ -272,11 +223,9 @@ import "overlayscrollbars/overlayscrollbars.css";
 
     import {
         closePanel,
-        hideScrollBars,
         showPanelOnTop,
         expandPanel,
         enableAndDisableAnimatedTransition,
-        scroll,
     } from "../scripts/panesOpener.ts";
     import {
         blogExpanded,
@@ -294,7 +243,8 @@ import "overlayscrollbars/overlayscrollbars.css";
 
             showPanelOnTop(this);
             const content = this.querySelector(".content") as HTMLElement;
-            const overlay = OverlayScrollbars(content, {});
+            const scrollbar = OverlayScrollbars(content, {});
+            const viewport = scrollbar.elements();
 
             if (blogExpanded.get() == "true") {
                 expandPanel(this);
@@ -334,15 +284,21 @@ import "overlayscrollbars/overlayscrollbars.css";
                 resizeObject(this, event as MouseEvent, true);
             });
 
-            // const scrollUpButton = this.querySelector(".arrow.up");
-            // scrollUpButton!.addEventListener("mousedown", () => {
-            //     scroll(content, -200);
-            // });
+            const scrollUpButton = this.querySelector(".arrow.up");
+            scrollUpButton!.addEventListener("mousedown", () => {
+                viewport.content.scrollBy({
+                    top: -200,
+                    behavior: "smooth",
+                });
+            });
 
-            // const scrollDownButton = this.querySelector(".arrow.down");
-            // scrollDownButton!.addEventListener("mousedown", () => {
-            //     scroll(content, 200);
-            // });
+            const scrollDownButton = this.querySelector(".arrow.down");
+            scrollDownButton!.addEventListener("mousedown", () => {
+                viewport.content.scrollBy({
+                    top: 200,
+                    behavior: "smooth",
+                });
+            });
         }
     }
 

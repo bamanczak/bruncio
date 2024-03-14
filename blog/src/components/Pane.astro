@@ -126,7 +126,22 @@ import "animate.css";
         height: 20px;
     }
 
-    /* .arrow {
+    .dummy-scrollbar {
+        width: 20px;
+        height: 16px;
+        background-color: black;
+        border-left: 4px solid #000000;
+        position: absolute;
+        right: 0;
+    }
+    .dummy-scrollbar.top-button {
+        top: 40px;
+    }
+    .dummy-scrollbar.bottom-button {
+        bottom: 20px;
+    }
+
+    .arrow {
         border: solid white;
         border-width: 0 3px 3px 0;
         display: inline-block;
@@ -141,7 +156,7 @@ import "animate.css";
     .arrow.down {
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
-    } */
+    }
 
     /* make image fill the space */
     .pane .content img {
@@ -210,7 +225,6 @@ import "animate.css";
         closePanel,
         showPanelOnTop,
         expandPanel,
-        scroll,
     } from "../scripts/panesOpener.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
 
@@ -219,9 +233,11 @@ import "animate.css";
             super();
 
             const content = this.querySelector(".content") as HTMLElement;
-            const overlay = OverlayScrollbars(content, {
+            const scrollbar = OverlayScrollbars(content, {
                 scrollbars: { theme: "invisible" },
             });
+            const viewport = scrollbar.elements();
+
             this.addEventListener("mousedown", () => {
                 showPanelOnTop(this);
             });
@@ -250,15 +266,21 @@ import "animate.css";
                 resizeObject(this, event as MouseEvent);
             });
 
-            // const scrollUpButton = this.querySelector(".arrow.up");
-            // scrollUpButton!.addEventListener("mousedown", () => {
-            //     scroll(content, -200);
-            // });
+            const scrollUpButton = this.querySelector(".arrow.up");
+            scrollUpButton!.addEventListener("mousedown", () => {
+                viewport.content.scrollBy({
+                    top: -200,
+                    behavior: "smooth",
+                });
+            });
 
-            // const scrollDownButton = this.querySelector(".arrow.down");
-            // scrollDownButton!.addEventListener("mousedown", () => {
-            //     scroll(content, 200);
-            // });
+            const scrollDownButton = this.querySelector(".arrow.down");
+            scrollDownButton!.addEventListener("mousedown", () => {
+                viewport.content.scrollBy({
+                    top: 200,
+                    behavior: "smooth",
+                });
+            });
         }
     }
 

@@ -121,10 +121,6 @@ export function expandPanel(panel: HTMLElement, savePosition = false, isBlogPost
     }
 }
 
-export function scroll(myObject: HTMLElement, scrollValue: number) {
-    myObject.scrollTop += scrollValue;
-}
-
 export function enableAndDisableAnimatedTransition(myObject: HTMLElement, time = "0.3s") {
     myObject.style.transition = `all ${time} ease-in-out`;
     setTimeout(function () {
