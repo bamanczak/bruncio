@@ -257,6 +257,7 @@ hr {
 	--pane-default-width: 320px;
 	--pane-default-height: 360px;
 	--pane-border-radius: 8px;
+	--app-height: 100%;
 }
 
 body {

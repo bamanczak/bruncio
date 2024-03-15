@@ -60,9 +60,18 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 
 <script>
 	const appHeight = () => {
-		const doc = document.documentElement;
-		doc.style.setProperty(" — app-height", `${window.innerHeight}px`);
+		const doc = document.querySelector(":root") as HTMLElement;
+
+		// doc.style.setProperty("--pane-default-width", "777px");
+		doc.style.setProperty(
+			"--app-height",
+			`${window.innerHeight - 37 - 55}px`,
+			"important",
+		);
+		console.log(doc);
+		console.log("set to: " + window.innerHeight);
 	};
 	window.addEventListener("resize", appHeight);
 	appHeight();
+	console.log("I was here!");
 </script>
