@@ -538,3 +538,7 @@ body {
 .os-scrollbar.invisible {
 	display: none !important;
 }
+
+.hidemeplease {
+	display: none;
+}
