@@ -532,6 +532,7 @@ body {
 			transparent 0);
 	background-size: 7px 7px;
 	padding: 0px !important;
+	margin-bottom: -4px !important;
 }
 
 .os-scrollbar.invisible {
