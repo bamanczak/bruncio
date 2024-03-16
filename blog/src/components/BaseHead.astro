@@ -61,7 +61,6 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <script>
 	const appHeight = () => {
 		const doc = document.querySelector(":root") as HTMLElement;
-
 		doc.style.setProperty(
 			"--app-height",
 			`${window.innerHeight - 37 - 55}px`,
@@ -69,5 +68,6 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 		);
 	};
 	window.addEventListener("resize", appHeight);
+	document.addEventListener("astro:after-swap", appHeight);
 	appHeight();
 </script>
