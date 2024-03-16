@@ -23,7 +23,6 @@
 - navbar border bottom width through tailwind (5>4)
 
 # Bugs
-- na mobile na kliku pojawia się tooltip na tabelce z postami
 - polepsić wyniki https://pagespeed.web.dev/analysis/https-astroblog-five-vercel-app/s7yu3bac7t?form_factor=desktop
 - zegar mruga po nawigacji
 - cosmetic: scrollbar jest ciut przykryty buttonami, scrollowania do końca nie widać
