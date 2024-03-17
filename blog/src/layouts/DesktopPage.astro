@@ -12,7 +12,6 @@ import Pane from "../components/Pane.astro";
 import MobileMenu from "../components/MobileMenu.astro";
 
 import Hello from "../components/hello.astro";
-import { Content as MyPost } from "../content/blog/markdown-style-guide.md";
 import { Content as BruncOS } from "../pages/special/bruncOS.mdx";
 import { Content as WebBrowser } from "../pages/special/web.mdx";
 import { Content as CrashAlert } from "../pages/special/alert.mdx";
@@ -101,9 +100,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				position_x={240}
 				position_y={190}
 			>
-				<Pane title="trash" classes="invisible" windowName="trash">
-					<MyPost />
-				</Pane>
+				<Pane title="trash" classes="invisible" windowName="trash" />
 			</DesktopIcon>
 
 			<!-- ADS IN BROWSER PANES -->

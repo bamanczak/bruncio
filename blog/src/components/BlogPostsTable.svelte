@@ -39,6 +39,7 @@
         });
         sortItems.set(sorted);
     }
+    sortTable("pubDate");
 
     const dateOptions = {
         year: "numeric",
