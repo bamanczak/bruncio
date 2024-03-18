@@ -25,6 +25,7 @@ import { Content as Never } from "../pages/special/never.mdx";
 import VirusImage from "../images/VirusFound.gif";
 import IpadAdImage from "../images/YouWonIpad.gif";
 import MilkImage from "../images/HotMilks.gif";
+import TrashImage from "../images/trash.png";
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
@@ -96,7 +97,19 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				position_x={240}
 				position_y={190}
 			>
-				<Pane title="trash" classes="invisible" windowName="trash" />
+				<Pane title="trash" classes="invisible" windowName="trash">
+					<div
+						class="flex flex-col justify-center items-center ml-1 mb-1"
+					>
+						<Image
+							src={TrashImage}
+							alt="Picture of a pile of trash"
+							width={300}
+							class="border-4 border-black"
+						/>
+						<p>nothing to see here</p>
+					</div>
+				</Pane>
 			</DesktopIcon>
 
 			<!-- ADS IN BROWSER PANES -->
