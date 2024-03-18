@@ -71,15 +71,11 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			<DesktopIcon
 				iconName="mdi:photo-library"
 				label="projects"
+				iconFunction="navigate"
+				navigateTo="/projects"
 				position_x={25}
 				position_y={270}
-			>
-				<Pane
-					title="projects"
-					classes="invisible hidemeplease"
-					windowName="projects"
-				/>
-			</DesktopIcon>
+			/>
 			<DesktopIcon
 				iconName="mdi:web"
 				label="internet"

@@ -1,0 +1,64 @@
+---
+import DesktopPage from "../layouts/DesktopPage.astro";
+import Pane from "../components/BlogPostPane.astro";
+import { Image } from "astro:assets";
+import workerImage from "../images/UnderConstruction.png";
+---
+
+<DesktopPage
+	title="About Me"
+	description="Lorem ipsum dolor sit amet"
+	pubDate={new Date("August 08 2021")}
+	heroImage="/blog-placeholder-about.jpg"
+>
+	<Pane title="Page not found" windowName="mainPanel">
+		<div class="flex flex-col justify-center items-center ml-1 mb-1">
+			<h2>Under construction</h2>
+			<Image
+				src={workerImage}
+				alt="Picture of a worker with a shovel"
+				width={300}
+				class="border-4 border-black"
+			/>
+			<p>
+				This page is still under construction. Please try again in the
+				future.
+			</p>
+			<div class="marquee">
+				<span>- Under Construction -</span>
+				<span>- Under Construction -</span>
+				<span>- Under Construction -</span>
+				<span>- Under Construction -</span>
+				<span>- Under Construction -</span>
+			</div>
+		</div>
+	</Pane>
+</DesktopPage>
+
+<style>
+	@keyframes marquee {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+
+	.marquee {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		overflow: hidden;
+		width: 90%;
+	}
+
+	.marquee span {
+		text-transform: uppercase;
+		will-change: transform;
+		transform: translateX(0);
+		white-space: nowrap;
+		animation: marquee 12s linear infinite;
+		font-size: 48px;
+	}
+</style>
