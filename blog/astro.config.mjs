@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 import icon from "astro-icon";
 
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
       "pixelarticons": ["*"]
     }
   }), svelte()],
-  output: "static",
+  output: "server",
   adapter: vercel({
     webAnalytics: { enabled: true }
   })
