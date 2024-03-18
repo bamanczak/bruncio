@@ -20,7 +20,7 @@ export default defineConfig({
       "pixelarticons": ["*"]
     }
   }), svelte()],
-  output: "server",
+  output: "hybrid",
   adapter: vercel({
     webAnalytics: { enabled: true }
   })
