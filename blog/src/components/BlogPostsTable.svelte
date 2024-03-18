@@ -91,10 +91,7 @@
                 on:click={() => openPost(slugger.slug(post.id))}
             >
                 <td class={setRowClass(index)}
-                    ><Icon
-                        class="inline-icon"
-                        icon="pixelarticons:briefcase-check"
-                    /></td
+                    ><Icon class="inline-icon" icon={post.icon} /></td
                 >
                 <td class={setRowClass(index) + "text-balance"}>
                     <p class="mb-0">{post.title}</p>
