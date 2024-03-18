@@ -22,13 +22,7 @@ const { Content } = await post.render();
 ---
 
 <DesktopPage {...post.data}>
-	<Pane
-		title={post.data.title}
-		,
-		windowName={post.id}
-		,
-		showBackButton="true"
-	>
+	<Pane title={post.data.title} windowName={post.id} showBackButton="true">
 		<Content />
 	</Pane>
 </DesktopPage>
