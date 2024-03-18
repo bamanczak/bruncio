@@ -12,7 +12,7 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 	<nav class="flex flex-row justify-between items-center">
 		<div class="flex flex-row items-center">
 			<div class="hs-dropdown head-container">
-				<MenuDropdown client:load>
+				<MenuDropdown client:visible>
 					<Image
 						slot="image"
 						src={headImage}
