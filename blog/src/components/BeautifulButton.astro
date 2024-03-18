@@ -5,8 +5,9 @@ interface Props {
         | "material-symbols:close-small"
         | "material-symbols:close"
         | "material-symbols:expand-content";
+    ariaLabel: "Close the panel" | "Toggle fullscreen mode for the panel";
 }
-const { classes, iconName } = Astro.props;
+const { classes, iconName, ariaLabel } = Astro.props;
 import { Icon } from "astro-icon/components";
 ---
 
@@ -14,6 +15,7 @@ import { Icon } from "astro-icon/components";
     class=`baton beautiful-button ${classes} rounded-2xl button-shadow h-4 w-4 p-2 border-4 border-black
     flex justify-center items-center text-sm font-semibold
     text-white hover:bg-red`
+    aria-label={ariaLabel}
 >
     <Icon name=`${iconName}` />
 </button>
