@@ -18,7 +18,7 @@
                     activatePanel("aboutComputer");
                 }}
                 class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
-                >About BruncOS</MenuItem
+                >About BruncIO</MenuItem
             >
             <hr class="h-px my-1 bg-black border-0" />
 

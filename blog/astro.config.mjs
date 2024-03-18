@@ -10,7 +10,7 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://brunc.io',
   integrations: [mdx(), sitemap(), react(), tailwind(), icon({
     include: {
       mdi: ["*"],
