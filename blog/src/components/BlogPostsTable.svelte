@@ -57,7 +57,7 @@
 
     function setRowClass(number) {
         let baseClasses =
-            "text-justify pl-3 text-base group-hover:bg-black group-focus:bg-black group-hover:text-white dark:text-black dark:group-focus:text-white group-focus:text-white dark:group-hover:text-white";
+            "text-justify pl-3 group-hover:bg-black group-focus:bg-black group-hover:text-white dark:text-black dark:group-focus:text-white group-focus:text-white dark:group-hover:text-white";
         if (isEven(number)) {
             return baseClasses;
         } else {
@@ -90,10 +90,10 @@
                 class="group cursor-pointer"
                 on:click={() => openPost(slugger.slug(post.id))}
             >
-                <td class={setRowClass(index)}
-                    ><Icon class="inline-icon" icon={post.icon} /></td
-                >
-                <td class={setRowClass(index) + "text-balance"}>
+                <td class={"text-2xl content-center" + setRowClass(index)}>
+                    <Icon class="" icon={post.icon} />
+                </td>
+                <td class={setRowClass(index) + " text-balance text-base"}>
                     <p class="mb-0">{post.title}</p>
                     <p class="text-sm min-[768px]:hidden mt-1">
                         {post.pubDate.toISOString().substring(0, 10)}
@@ -101,7 +101,7 @@
                 </td>
                 <td
                     class={setRowClass(index) +
-                        " date-column text-nowrap max-md:hidden"}
+                        " date-column text-nowrap max-md:hidden text-base"}
                     >{post.pubDate.toISOString().substring(0, 10)}</td
                 >
                 <td class={setRowClass(index) + "empty-column p-0"}></td>
@@ -119,6 +119,9 @@
 </table>
 
 <style>
+    .inline-icon {
+        font-size: 3rem !important;
+    }
     .sticky {
         position: -webkit-sticky;
         position: sticky;

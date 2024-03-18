@@ -4,8 +4,12 @@ interface Props {
     iconName?:
         | "material-symbols:close-small"
         | "material-symbols:close"
-        | "material-symbols:expand-content";
-    ariaLabel: "Close the panel" | "Toggle fullscreen mode for the panel";
+        | "material-symbols:expand-content"
+        | "material-symbols:arrow-left-alt";
+    ariaLabel:
+        | "Close the panel"
+        | "Toggle fullscreen mode for the panel"
+        | "Go back to the posts list";
 }
 const { classes, iconName, ariaLabel } = Astro.props;
 import { Icon } from "astro-icon/components";
@@ -26,9 +30,6 @@ import { Icon } from "astro-icon/components";
     .button-close {
         background-color: red;
     }
-    .button-expand {
-        /* background-color: blue; */
-    }
     .button-shadow {
         box-shadow: 2px 2px 0 rgba(64, 64, 64, 0.8);
     }
@@ -36,10 +37,7 @@ import { Icon } from "astro-icon/components";
     [data-icon] {
         margin: -7px;
     }
-    .button-close > [data-icon] {
-        color: black;
-    }
-    .button-expand > [data-icon] {
+    .baton > [data-icon] {
         color: black;
     }
 </style>

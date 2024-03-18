@@ -1,5 +1,11 @@
 ---
-const { title, classes = "", windowName, footnote = "..." } = Astro.props;
+const {
+    title,
+    classes = "",
+    windowName,
+    footnote = "...",
+    showBackButton = false,
+} = Astro.props;
 import BeautifulButton from "./BeautifulButton.astro";
 import "animate.css";
 import "overlayscrollbars/overlayscrollbars.css";
@@ -13,6 +19,16 @@ import "overlayscrollbars/overlayscrollbars.css";
         <div
             class="title change-on-drag bg-mywhite grid grid-cols-8 border-b-4 border-black flex items-center justify-center"
         >
+            <div
+                class="col-start-1 col-end-1 flex items-center justify-start button-container window-opener change-on-drag button-inner-container"
+            >
+                <BeautifulButton
+                    classes={"button-back-to-posts " +
+                        (showBackButton ? " " : "hidden")}
+                    iconName="material-symbols:arrow-left-alt"
+                    ariaLabel="Go back to the posts list"
+                />
+            </div>
             <h2
                 class="change-on-drag col-start-3 col-end-7 bg-mywhite text-ellipsis line-clamp-1 text-center"
             >
@@ -235,6 +251,7 @@ import "overlayscrollbars/overlayscrollbars.css";
         blogPositionTop,
     } from "../store.ts";
     import { moveObject, resizeObject } from "../scripts/windowMover.ts";
+    import { navigate } from "astro:transitions/client";
 
     class AstroPostDesktopWindow extends HTMLElement {
         constructor() {
@@ -259,6 +276,11 @@ import "overlayscrollbars/overlayscrollbars.css";
 
             this.addEventListener("mousedown", () => {
                 showPanelOnTop(this);
+            });
+
+            const buttonBack = this.querySelector(".button-back-to-posts");
+            buttonBack!.addEventListener("click", () => {
+                navigate("/blog");
             });
 
             const buttonClose = this.querySelector(".button-close");
