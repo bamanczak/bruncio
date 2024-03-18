@@ -3,7 +3,7 @@ const {
     title,
     classes,
     windowName,
-    position = "left: max( calc(50vw - 350px), 1px); top: calc(50vh - 300px); width: 700px; height: 500px",
+    position = "left: max( calc(50vw - 350px), 1px); top: max(calc(50vh - 300px), 36px); width: 700px; height: 500px",
     footnote = "Bla bla",
     showExpand = true,
 } = Astro.props;
@@ -43,10 +43,7 @@ import "animate.css";
             </div>
         </div>
     </div>
-    <div
-        class="bg-mywhite content text-black scrollable"
-        data-overlayscrollbars-initialize
-    >
+    <div class="bg-mywhite content text-black scrollable">
         <slot />
     </div>
     <div class="flex justify-end">
