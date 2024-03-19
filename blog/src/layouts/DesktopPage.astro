@@ -12,15 +12,15 @@ import Pane from "../components/Pane.astro";
 import MobileMenu from "../components/MobileMenu.astro";
 
 import Hello from "../components/hello.astro";
-import { Content as Brunc } from "../pages/special/bruncOS.mdx";
-import { Content as WebBrowser } from "../pages/special/web.mdx";
-import { Content as CrashAlert } from "../pages/special/alert.mdx";
-import { Content as CookieNotice } from "../pages/special/cookieNotice.md";
-import { Content as PrivacyPolicy } from "../pages/special/privacyPolicy.md";
-import { Content as TermsOfUse } from "../pages/special/termsOfUse.md";
-import { Content as A11y } from "../pages/special/a11y.md";
-import { Content as Environment } from "../pages/special/environment.md";
-import { Content as Never } from "../pages/special/never.mdx";
+import { Content as Brunc } from "../content/special/bruncOS.mdx";
+import { Content as WebBrowser } from "../content/special/web.mdx";
+import { Content as CrashAlert } from "../content/special/alert.mdx";
+import { Content as CookieNotice } from "../content/special/cookieNotice.md";
+import { Content as PrivacyPolicy } from "../content/special/privacyPolicy.md";
+import { Content as TermsOfUse } from "../content/special/termsOfUse.md";
+import { Content as A11y } from "../content/special/a11y.md";
+import { Content as Environment } from "../content/special/environment.md";
+import { Content as Never } from "../content/special/never.mdx";
 
 import VirusImage from "../images/VirusFound.gif";
 import IpadAdImage from "../images/YouWonIpad.gif";
@@ -57,7 +57,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				position_x={94}
 				position_y={130}
 			>
-				<Pane title="test" classes="invisible" windowName="test">
+				<Pane
+					title="test"
+					classes="invisible"
+					windowName="test"
+					footnote="RickRoll!"
+				>
 					<Never />
 				</Pane>
 			</DesktopIcon>
@@ -87,6 +92,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					title="internet"
 					classes="invisible hidemeplease"
 					windowName="internet"
+					footnote="web browser"
 				>
 					<WebBrowser />
 				</Pane>
@@ -97,7 +103,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				position_x={240}
 				position_y={190}
 			>
-				<Pane title="trash" classes="invisible" windowName="trash">
+				<Pane
+					title="trash"
+					classes="invisible"
+					windowName="trash"
+					footnote=""
+				>
 					<div
 						class="flex flex-col justify-center items-center ml-1 mb-1"
 					>
