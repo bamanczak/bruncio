@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import IconDropdown from "../components/IconDropdown.svelte";
 
 interface Props {
     iconName?:
@@ -27,6 +28,8 @@ const {
     iconFunction = "openPanel",
     navigateTo = "",
 } = Astro.props;
+
+export let menu = true;
 ---
 
 <astro-desktop-icon
@@ -37,17 +40,28 @@ const {
     transition:persist
 >
     <div
-        class="draggable-icon desktop-icon-sub-container cursor-pointer grow select-none flex flex-col items-center justify-center
-        border-4 p-1 border-mywhite border-opacity-0
-        hover:bg-mywhite hover:bg-opacity-25 hover:border-opacity-100
-        rounded-xl group"
+        class="draggable-icon flex flex-row"
         style=`left:${position_x}px; top:${position_y}px;`
     >
-        <Icon name={iconName} class="head" size={36} />
         <div
-            class="text-base px-1 mt-1 bg-mywhite group-hover:bg-black group-hover:text-mywhite group-focus:bg-black group-focus:text-mywhite"
+            class="desktop-icon-sub-container grow select-none group flex flex-col items-center justify-center
+        border-4 p-1 border-mywhite border-opacity-0
+        hover:bg-mywhite hover:bg-opacity-25 hover:border-opacity-100
+        rounded-xl"
         >
-            {label}
+            <Icon name={iconName} class="head" size={36} />
+            <div
+                class="text-base px-1 mt-1 bg-mywhite group-hover:bg-black group-hover:text-mywhite group-focus:bg-black group-focus:text-mywhite"
+            >
+                {label}
+            </div>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+            <div
+                class="dropdownHover z-100 ml-1 invisible bg-black dark:bg-black divide-y divide-mywhite rounded-lg text:xs dark:text-mywhite text-mywhite"
+            >
+                <div class="p-2 cursor-pointer menu-pane-opener">Open</div>
+            </div>
         </div>
     </div>
     <slot />
@@ -60,6 +74,8 @@ const {
         navigateToPanelPage,
     } from "../scripts/panesOpener.ts";
     import { moveObject } from "../scripts/windowMover.ts";
+
+    function handleMyAction() {}
 
     class AstroDesktopIcon extends HTMLElement {
         constructor() {
@@ -84,20 +100,45 @@ const {
                 iconClickEvent = "dblclick";
             }
 
+            const menuContainer = this.querySelector(".dropdownHover");
+            let openHint = false;
+            draggableIcon.addEventListener("mouseover", () => {
+                openHint = true;
+                setTimeout(function () {
+                    if (openHint) {
+                        menuContainer!.classList.remove("invisible");
+                    }
+                }, 200);
+            });
+            draggableIcon.addEventListener("mouseleave", () => {
+                openHint = false;
+                menuContainer!.classList.add("invisible");
+            });
+
+            const menuPaneOpener = this.querySelector(".menu-pane-opener");
+            menuPaneOpener!.addEventListener("click", () => {
+                handleIconAction();
+            });
+
             draggableIcon.addEventListener(iconClickEvent, () => {
+                handleIconAction();
+            });
+
+            const navigateToPath = this.getAttribute(
+                "data-navigateTo",
+            ) as string;
+
+            function handleIconAction() {
                 if (iconFunction == "openPanel") {
                     activatePanel(panelName);
                 } else if (iconFunction == "navigate") {
-                    const navigateToPath = this.getAttribute(
-                        "data-navigateTo",
-                    ) as string;
                     if (window.location.href.endsWith(navigateToPath)) {
                         activatePanel("mainPanel");
                     } else {
                         navigateToPanelPage(navigateToPath);
                     }
                 }
-            });
+            }
         }
     }
 
@@ -110,5 +151,6 @@ const {
 
     .draggable-icon {
         position: absolute;
+        min-width: 150px;
     }
 </style>
