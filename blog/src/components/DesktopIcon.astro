@@ -100,9 +100,13 @@ export let menu = true;
                 iconClickEvent = "dblclick";
             }
 
+            draggableIcon.addEventListener(iconClickEvent, () => {
+                handleIconAction();
+            });
+
             const menuContainer = this.querySelector(".dropdownHover");
             let openHint = false;
-            draggableIcon.addEventListener("mouseover", () => {
+            draggableIcon.addEventListener("mouseenter", () => {
                 openHint = true;
                 setTimeout(function () {
                     if (openHint) {
@@ -117,10 +121,6 @@ export let menu = true;
 
             const menuPaneOpener = this.querySelector(".menu-pane-opener");
             menuPaneOpener!.addEventListener("click", () => {
-                handleIconAction();
-            });
-
-            draggableIcon.addEventListener(iconClickEvent, () => {
                 handleIconAction();
             });
 
