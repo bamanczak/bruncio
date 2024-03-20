@@ -100,19 +100,23 @@ export let menu = true;
                 iconClickEvent = "dblclick";
             }
 
-            draggableIcon.addEventListener(iconClickEvent, () => {
+            draggableIcon.addEventListener(iconClickEvent, (e) => {
+                e.stopPropagation();
                 handleIconAction();
             });
 
             const menuContainer = this.querySelector(".dropdownHover");
             let openHint = false;
-            draggableIcon.addEventListener("mouseenter", () => {
-                openHint = true;
-                setTimeout(function () {
-                    if (openHint) {
-                        menuContainer!.classList.remove("invisible");
-                    }
-                }, 200);
+            draggableIcon.addEventListener("mouseenter", (e) => {
+                e.stopPropagation();
+                if (parser.getPlatformType() != "mobile") {
+                    openHint = true;
+                    setTimeout(function () {
+                        if (openHint) {
+                            menuContainer!.classList.remove("invisible");
+                        }
+                    }, 200);
+                }
             });
             draggableIcon.addEventListener("mouseleave", () => {
                 openHint = false;
