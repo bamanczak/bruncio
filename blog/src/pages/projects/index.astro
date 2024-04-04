@@ -4,8 +4,11 @@ import { getCollection } from "astro:content";
 
 let postMetaData: any[] = [];
 const posts = await (
-	await getCollection("blog")
+	await getCollection("projects")
 ).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+console.log("I will log posts!");
+
+console.log(posts);
 posts.forEach((post) => {
 	let postData = post.data;
 	postMetaData.push(postData);
@@ -17,10 +20,14 @@ import BlogPostsTable from "../../components/BlogPostsTable.svelte";
 
 <DesktopPage title={SITE_TITLE} , description={SITE_DESCRIPTION}>
 	<Pane
-		title="List of posts"
+		title="List of projects"
 		windowName="mainPanel"
 		footnote={posts.length + " items; free NaN GB"}
 	>
-		<BlogPostsTable client:load posts={postMetaData} />
+		<BlogPostsTable
+			client:load
+			posts={postMetaData}
+			linksPrefix="projects"
+		/>
 	</Pane>
 </DesktopPage>

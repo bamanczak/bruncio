@@ -1,6 +1,7 @@
 ---
 interface Props {
     classes?: string;
+    clickDestination: string;
     iconName?:
         | "material-symbols:close-small"
         | "material-symbols:close"
@@ -9,9 +10,9 @@ interface Props {
     ariaLabel:
         | "Close the panel"
         | "Toggle fullscreen mode for the panel"
-        | "Go back to the posts list";
+        | "Go back to the list";
 }
-const { classes, iconName, ariaLabel } = Astro.props;
+const { classes, iconName, ariaLabel, clickDestination = "" } = Astro.props;
 import { Icon } from "astro-icon/components";
 ---
 
@@ -20,6 +21,7 @@ import { Icon } from "astro-icon/components";
     flex justify-center items-center text-sm font-semibold
     text-white hover:bg-red`
     aria-label={ariaLabel}
+    data-clickDestination={clickDestination}
 >
     <Icon name=`${iconName}` />
 </button>

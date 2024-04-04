@@ -1,0 +1,33 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import DesktopPage from "../../layouts/DesktopPage.astro";
+import Pane from "../../components/BlogPostPane.astro";
+
+export const prerender = true;
+export async function getStaticPaths() {
+	const posts = await getCollection("projects");
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+const posts = await getCollection("projects");
+type Props = CollectionEntry<"projects">;
+
+const { slug } = Astro.params;
+const post = posts.find((page) => page.slug === slug);
+if (!post) return Astro.redirect("/404");
+
+const { Content } = await post.render();
+---
+
+<DesktopPage {...post.data}>
+	<Pane
+		title={post.data.title}
+		windowName={post.id}
+		showBackButton="true"
+		backButtonDestination="projects"
+	>
+		<Content />
+	</Pane>
+</DesktopPage>
