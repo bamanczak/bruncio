@@ -1,19 +1,20 @@
 ---
-title: "'Alphabrum` - Children's book 1"
-id: "ai-book-one"
-description: "An ABC-Book about cars"
-pubDate: "Apr 4 2024"
+title: "Excavator - tough book about an excavator"
+id: "ai-book-two"
+description: "A book about an excavator"
+pubDate: "Dec 24 2023"
 heroImage: "/blog-liftoff.png"
 icon: "pixelarticons:book-open"
 ---
 
 import { Image } from "astro:assets";
-import Cover from "../../images/projects/kokop/Cover.jpg";
-import Inside from "../../images/projects/kokop/Inside.jpg";
-import Broken from "../../images/projects/alphabrum/Broken.jpg";
-import letterYImage from "../../images/projects/alphabrum/Letter_Y.jpg";
+import Cover from "../../images/projects/kopkop/Cover.jpg";
+import Inside from "../../images/projects/kopkop/Inside.jpg";
+import Page2 from "../../images/projects/kopkop/KopKop_2.png";
+import Page20 from "../../images/projects/kopkop/KopKop_20.png";
+import Page21 from "../../images/projects/kopkop/KopKop_21.png";
 
-<h1>Alphabrum (my first book for children)</h1>
+<h1>A book about an excavator</h1>
 
 ## Problem statement
 
@@ -22,7 +23,7 @@ My youngest son (2yo) loves excavators and books about excavators. It's hard to 
 ## Result
 
 ### Outside
-<div class="flex flex-col min-[768px]:flex-row justify-between items-center ml-1 mb-1 gap-1">
+<div class="flex flex-col min-[768px]:flex-row justify-center items-center ml-1 mb-1 gap-1">
     <Image src={Cover} alt="Cover of the book" width={300} class="border-4 border-black" />
     <Image src={Inside} alt="Look into inside of the printed book" width={300} class="border-4 border-black" />
 </div>
@@ -32,10 +33,10 @@ My youngest son (2yo) loves excavators and books about excavators. It's hard to 
 ### Inside
 
 <div class="flex flex-col min-[768px]:flex-row justify-between items-center ml-1 mb-1 gap-1">
-    <Image src={Cover} alt="Cover of the book" width={300} class="border-4 border-black" />
-    <Image src={Inside} alt="Look into inside of the printed book" width={300} class="border-4 border-black" />
-    <Image src={letterTImage} alt="Page from the book, showcasing a Tractor and letter T" width={300} class="border-4 border-black" />
-    <Image src={letterYImage} alt="Page from the book, showcasing two bicycles and letter Y" width={300} class="border-4 border-black" />
+    <Image src={Page2} alt="Page 2 of the book" width={300} class="border-4 border-black" />
+    <Image src={Page20} alt="Page 20 of the book" width={300} class="border-4 border-black" />
+    <Image src={Page21} alt="Page 21 of the book" width={300} class="border-4 border-black" />
+
 </div>
 
 ## Tools
@@ -62,11 +63,7 @@ shorter, as some parts seem really off.
 
 ## Next steps
 
-I would like to make few more books in this format. I'm already working on a version about clothes and plants.
-Who knows, maybe it's a series that could really get published?
+I will for sure try to write more poems like this. However creating drawings was really time consuming.
+I'll first focus on better quality of text, before printing more like examples like this.
 
-import letterEImage from "../../images/projects/alphabrum/Letter_E.png";
-
-<div class="flex flex-col min-[768px]:flex-row justify-between items-center ml-1 mb-1 gap-1">
-    <Image src={letterEImage} alt="Page from the next book, about clothes showcasing espadrilles (type of shoes) and letter E" width={300} class="border-4 border-black" />
-</div>
+But hey! My son likes it and we read it from time to time. That's what matters the most for me!
