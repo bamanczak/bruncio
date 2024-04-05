@@ -1,0 +1,72 @@
+---
+title: "'Alphabrum` - Children's book 1"
+id: "ai-book-one"
+description: "An ABC-Book about cars"
+pubDate: "Apr 4 2024"
+heroImage: "/blog-liftoff.png"
+icon: "pixelarticons:book-open"
+---
+
+import { Image } from "astro:assets";
+import Cover from "../../images/projects/kokop/Cover.jpg";
+import Inside from "../../images/projects/kokop/Inside.jpg";
+import Broken from "../../images/projects/alphabrum/Broken.jpg";
+import letterYImage from "../../images/projects/alphabrum/Letter_Y.jpg";
+
+<h1>Alphabrum (my first book for children)</h1>
+
+## Problem statement
+
+My youngest son (2yo) loves excavators and books about excavators. It's hard to stop him from tearing out pages from a book.
+
+## Result
+
+### Outside
+<div class="flex flex-col min-[768px]:flex-row justify-between items-center ml-1 mb-1 gap-1">
+    <Image src={Cover} alt="Cover of the book" width={300} class="border-4 border-black" />
+    <Image src={Inside} alt="Look into inside of the printed book" width={300} class="border-4 border-black" />
+</div>
+<br/>
+(Snowid is my artistic alias)
+
+### Inside
+
+<div class="flex flex-col min-[768px]:flex-row justify-between items-center ml-1 mb-1 gap-1">
+    <Image src={Cover} alt="Cover of the book" width={300} class="border-4 border-black" />
+    <Image src={Inside} alt="Look into inside of the printed book" width={300} class="border-4 border-black" />
+    <Image src={letterTImage} alt="Page from the book, showcasing a Tractor and letter T" width={300} class="border-4 border-black" />
+    <Image src={letterYImage} alt="Page from the book, showcasing two bicycles and letter Y" width={300} class="border-4 border-black" />
+</div>
+
+## Tools
+
+As usual, I used Midjourney for generating of images. This time I wanted to create drawings that look as if
+they were drawn by a real artist. I believe the consistency looks awesome. But the details are of course
+far off from what a real artist would achieve. The excavator looks differently almost on every image, and
+there is little connection between the drawing and the poem.
+
+I found a great option for printing sturdy books for children on CEWE website: https://www.cewe.pl/cewe-fotoksiazka/kids.html
+I'm sure this one is not so easy to break :) It's more expensive as well, which made me wonder what are 
+the actual costs of printing such books at scale, as such books don't seem to be that much more expensive
+in regular bookstores.
+
+I tried ChatGPT again for poems but it still was unable to come up with good rhymes in polish. Brain-based 
+solution was again the only option!
+
+However, here I also stumbled upon an interesting challenge, where I had to design **exactly** 22 pages.
+This was the only option available on CEWE. With the previous book, I had a freedom of adding as many/little
+pages as I wanted. Here I had to have exactly 22 pages, and I assumed that evey one of them should have 4
+verses of text. This was a cool way of forcing my brain to think more. But otherwise I would make it slightly
+shorter, as some parts seem really off.
+
+
+## Next steps
+
+I would like to make few more books in this format. I'm already working on a version about clothes and plants.
+Who knows, maybe it's a series that could really get published?
+
+import letterEImage from "../../images/projects/alphabrum/Letter_E.png";
+
+<div class="flex flex-col min-[768px]:flex-row justify-between items-center ml-1 mb-1 gap-1">
+    <Image src={letterEImage} alt="Page from the next book, about clothes showcasing espadrilles (type of shoes) and letter E" width={300} class="border-4 border-black" />
+</div>
