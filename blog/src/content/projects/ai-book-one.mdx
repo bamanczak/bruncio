@@ -8,6 +8,9 @@ icon: "pixelarticons:book-open"
 ---
 
 import { Image } from "astro:assets";
+import Cover from "../../images/projects/alphabrum/Cover.jpg";
+import Inside from "../../images/projects/alphabrum/Inside.jpg";
+
 import letterFImage from "../../images/projects/alphabrum/Letter_F.jpg";
 import letterKImage from "../../images/projects/alphabrum/Letter_K.jpg";
 import letterTImage from "../../images/projects/alphabrum/Letter_T.jpg";
@@ -22,6 +25,11 @@ My children love cars. I wanted to teach them new letters. I was unable to find 
 ## Result
 
 ### Outside
+<div class="flex flex-col min-[768px]:flex-row justify-center items-center ml-1 mb-1 gap-1">
+    <Image src={Cover} alt="Cover of the book" width={300} class="border-4 border-black" />
+    <Image src={Inside} alt="Look into inside of the printed book" width={300} class="border-4 border-black" />
+</div>
+<br/>
 
 
 ### Inside
