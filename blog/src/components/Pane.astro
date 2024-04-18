@@ -178,6 +178,7 @@ import "animate.css";
         right: 0;
         width: 24px;
         height: 24px;
+
         /* north west to south east */
         cursor: nwse-resize;
     }
@@ -233,7 +234,7 @@ import "animate.css";
 
             const content = this.querySelector(".content") as HTMLElement;
             const scrollbar = OverlayScrollbars(content, {
-                scrollbars: { visibility: "visible" },
+                scrollbars: { theme: "invisible", visibility: "visible" },
             });
             const viewport = scrollbar.elements();
 
