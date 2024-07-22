@@ -21,7 +21,11 @@ if (!post) return Astro.redirect("/404");
 const { Content } = await post.render();
 ---
 
-<DesktopPage {...post.data}>
+<DesktopPage
+	{...post.data}
+	title={post.data.title}
+	description={post.data.description}
+>
 	<Pane title={post.data.title} windowName={post.id} showBackButton="true">
 		<Content />
 	</Pane>
