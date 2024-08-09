@@ -147,15 +147,44 @@ main .pagination-loader-container {
     color: #FAF4E6;
 }
 
+
+
 .gsc-direct-reaction-buttons>button:hover .gsc-social-reaction-summary-item-count {
     color: #000000;
 }
 
-.gsc-reactions-button.gsc-social-reaction-summary-item {
+.gsc-reactions-button.gsc-social-reaction-summary-item,
+.gsc-direct-reaction-buttons button {
     border: 0;
 }
 
+.gsc-reactions-button:hover {
+    background-color: #000000;
+    color: #ECB337;
+}
+
+.color-bg-overlay {
+    background-color: #ECB337;
+    border-width: 2px;
+}
+
+#__next .color-bg-overlay .color-border-primary.my-2.border-t {
+    border-top-width: 2px;
+}
+
 .BtnGroup-item>button:hover {
+    background: #000000;
+    color: #FAF4E6;
+}
+
+.BtnGroup-item.BtnGroup-item--selected {
+    background-color: #FAF4E6;
+    color: #000000;
+}
+
+.BtnGroup-item.BtnGroup-item--selected:hover button,
+.BtnGroup-item.BtnGroup-item--selected:hover {
+    background-color: #000000;
     color: #FAF4E6;
 }
 
