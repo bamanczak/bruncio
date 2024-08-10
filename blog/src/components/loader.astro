@@ -69,11 +69,11 @@ const { animationDuration = 800, threshold = 200 } = Astro.props;
         }
     }
     .rotating {
-        -webkit-animation: rotating 2s linear infinite;
-        -moz-animation: rotating 2s linear infinite;
-        -ms-animation: rotating 2s linear infinite;
-        -o-animation: rotating 2s linear infinite;
-        animation: rotating 2s linear infinite;
+        -webkit-animation: rotating 4s linear infinite;
+        -moz-animation: rotating 4s linear infinite;
+        -ms-animation: rotating 4s linear infinite;
+        -o-animation: rotating 4s linear infinite;
+        animation: rotating 4s linear infinite;
     }
     .loader-overlay {
         position: absolute;
@@ -154,14 +154,6 @@ const { animationDuration = 800, threshold = 200 } = Astro.props;
         }
 
         hideLoaders();
-        // setTimeout(function () {
-
-        // }, 2000);
-
-        document.addEventListener("DOMContentLoaded", () => {
-            // hideElement(overlay);
-            // hideElement(loader);
-        });
 
         document.addEventListener("astro:before-preparation", () => {
             thresholdTimeout = setTimeout(() => {
@@ -169,59 +161,15 @@ const { animationDuration = 800, threshold = 200 } = Astro.props;
             }, threshold);
         });
 
-        // document.addEventListener("astro:after-swap", (ev) => {
-        //     hideElement(overlay);
-        //     hideElement(loader);
-        // });
-
-        // document.addEventListener("astro:page-load", (ev) => {
-        //     window.setTimeout(() => {
-        //         setOpacity(0);
-        //         hideElement(overlay);
-        //         hideElement(loader);
-        //     }, animationDuration / 2);
-        //     hideElement(overlay);
-        //     hideElement(loader);
-        // });
-
         document.addEventListener("astro:before-swap", (ev) => {
             if (!thresholdTimeout) {
                 return;
             }
             window.clearTimeout(thresholdTimeout);
 
-            // ev.newDocument.body.prepend(element);
-            // window.clearInterval(trickleInterval);
-            // trickleInterval = undefined;
-
-            // setProgress(1);
             window.setTimeout(() => {
                 hideLoaders();
             }, animationDuration / 2);
-
-            // window.setTimeout(() => {
-            //     setProgress(0.25);
-            // }, animationDuration * 2);
         });
     })();
 </script>
-
-<!-- <script>
-    const overlay = document.querySelector(".loader-overlay") as HTMLElement;
-    const loader = document.querySelector(".loader-container") as HTMLElement;
-
-    function hideElement(myElement: HTMLElement) {
-        myElement.style.setProperty("--animate-duration", "0.4s");
-        const animationTriggerClass = "animate__zoomOut";
-        myElement.classList.add(animationTriggerClass);
-        setTimeout(function () {
-            myElement.classList.add("hidden");
-            myElement.classList.remove(animationTriggerClass);
-        }, 410);
-    }
-
-    setTimeout(function () {
-        hideElement(overlay);
-        hideElement(loader);
-    }, 2000);
-</script> -->
