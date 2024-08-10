@@ -2,7 +2,6 @@
 import HeaderLink from "./HeaderLink.astro";
 import { Image } from "astro:assets";
 import headImage from "../images/header_head.png";
-import "tippy.js/animations/scale.css";
 import Clock from "./Clock.astro";
 import { Icon } from "astro-icon/components";
 import MenuDropdown from "../components/MenuDropdown.svelte";
@@ -18,7 +17,7 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 						src={headImage}
 						alt="A human head"
 						width={36}
-						class="head"
+						class="head animate__animated"
 					/>
 				</MenuDropdown>
 			</div>
@@ -67,8 +66,10 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 		nav .head-container {
 			max-height: 36px;
 			overflow: hidden;
+			overflow-x: visible;
 			border-bottom: 0px;
 			margin-bottom: 0px;
+			padding-left: 4px;
 		}
 
 		.head-container .head {
@@ -77,6 +78,7 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 			transition: top ease-in-out 0.25s;
 			overflow-clip-margin: content-box;
 			overflow: clip;
+			animation-duration: 1s;
 		}
 		.head-container:hover .head {
 			/* naprawić, bo to się do 2 elementów daje */
@@ -113,3 +115,34 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 		}
 	</style>
 </header>
+<script>
+	const animationClass = "animate__wobble";
+	const interval = 60000;
+	const animationDuration = 1000;
+	const initialDelay = 20000;
+
+	function startAnimation() {
+		const head = document.querySelector(
+			".head-container .head",
+		) as HTMLElement;
+		head.classList.add(animationClass);
+		setTimeout(function () {
+			stopAnimation();
+		}, animationDuration);
+	}
+
+	function stopAnimation() {
+		const head = document.querySelector(
+			".head-container .head",
+		) as HTMLElement;
+
+		head.classList.remove(animationClass);
+		setTimeout(function () {
+			startAnimation();
+		}, interval);
+	}
+
+	setTimeout(function () {
+		startAnimation();
+	}, initialDelay);
+</script>

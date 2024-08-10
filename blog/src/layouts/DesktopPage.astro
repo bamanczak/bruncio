@@ -3,7 +3,6 @@ import "animate.css";
 
 import { ViewTransitions } from "astro:transitions";
 import { Image } from "astro:assets";
-import { Tooltips } from "astro-tooltips";
 
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
@@ -26,6 +25,7 @@ import VirusImage from "../images/VirusFound.gif";
 import IpadAdImage from "../images/YouWonIpad.gif";
 import MilkImage from "../images/HotMilks.gif";
 import TrashImage from "../images/trash.png";
+import Loader from "../components/loader.astro";
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
@@ -36,6 +36,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<!-- <Tooltips interactive={false} delay={[15, 100]} /> -->
 		<BaseHead title={title} description={description} />
 		<ViewTransitions />
+		<Loader />
 	</head>
 	<body class="bg-myyellow">
 		<Header />

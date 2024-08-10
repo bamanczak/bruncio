@@ -1,0 +1,175 @@
+---
+import { Image } from "astro:assets";
+import loaderCircle from "../images/loader.png";
+
+export interface Props {
+    /**
+     * The animation duration, in ms.
+     *
+     * @default 300
+     */
+    animationDuration?: number;
+    /**
+     * If the page loads in less than the specified duration (in ms), the indicator
+     * will not be shown. It can be set to `false` to always show it.
+     *
+     * @default 200
+     */
+    threshold?: number | false;
+}
+
+const { animationDuration = 800, threshold = 200 } = Astro.props;
+---
+
+<div
+    class="loader-container animate__animated"
+    aria-hidden="true"
+    transition:persist
+>
+    <Image
+        src={loaderCircle}
+        class="rotating loader"
+        alt="Animated loader"
+        loading="eager"
+    />
+</div>
+<div
+    class="loader-overlay bg-myyellow opacity-90 animate__animated"
+    aria-hidden="true"
+    transition:persist
+>
+</div>
+<style>
+    @-webkit-keyframes rotating /* Safari and Chrome */ {
+        from {
+            -webkit-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes rotating {
+        from {
+            -ms-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to {
+            -ms-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    .rotating {
+        -webkit-animation: rotating 4s linear infinite;
+        -moz-animation: rotating 4s linear infinite;
+        -ms-animation: rotating 4s linear infinite;
+        -o-animation: rotating 4s linear infinite;
+        animation: rotating 4s linear infinite;
+    }
+    .loader-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9988;
+    }
+    .loader-overlay,
+    .loader-container {
+        pointer-events: none;
+    }
+    .loader {
+        width: 50px;
+    }
+    .loader-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -25px;
+        margin-left: -25px;
+        width: 50px;
+        z-index: 9989;
+    }
+</style>
+
+<script is:inline define:vars={{ animationDuration, threshold }}>
+    (() => {
+        // stolen from https://github.com/florian-lefebvre/astro-loading-indicator/blob/main/package/src/LoadingIndicator.astro
+
+        /** @type {number | undefined} */
+        let thresholdTimeout = undefined;
+
+        const animateFadeOutClass = "animate__fadeOut";
+        const animateFadeInClass = "animate__fadeIn";
+
+        function hideElement(myElement, delay = 0, animate = false) {
+            if (animate) {
+                setTimeout(function () {
+                    myElement.style.setProperty("--animate-duration", "0.4s");
+                    myElement.classList.add(animateFadeOutClass);
+                }, delay);
+            }
+            setTimeout(function () {
+                myElement.classList.add("hidden");
+                if (animate) {
+                    myElement.classList.remove(animationTriggerClass);
+                }
+            }, 410 + delay);
+        }
+
+        function hideLoaders(delay = 0) {
+            const overlay = document.querySelector(".loader-overlay");
+            const loader = document.querySelector(".loader-container");
+            hideElement(overlay, 0, false);
+            hideElement(loader, 0, false);
+        }
+
+        function showElement(myElement, delay = 0, animate = false) {
+            myElement.classList.remove("hidden");
+            if (animate) {
+                setTimeout(function () {
+                    myElement.style.setProperty("--animate-duration", "0.4s");
+                    myElement.classList.add(animateFadeInClass);
+                }, delay);
+                setTimeout(function () {
+                    myElement.classList.remove(animateFadeInClass);
+                }, 410 + delay);
+            }
+        }
+
+        function showLoaders() {
+            const overlay = document.querySelector(".loader-overlay");
+            const loader = document.querySelector(".loader-container");
+            showElement(overlay, 0, false);
+            showElement(loader, 0, false);
+        }
+
+        hideLoaders();
+
+        document.addEventListener("astro:before-preparation", () => {
+            thresholdTimeout = setTimeout(() => {
+                showLoaders();
+            }, threshold);
+        });
+
+        document.addEventListener("astro:before-swap", (ev) => {
+            if (!thresholdTimeout) {
+                return;
+            }
+            window.clearTimeout(thresholdTimeout);
+
+            window.setTimeout(() => {
+                hideLoaders();
+            }, animationDuration / 2);
+        });
+    })();
+</script>
