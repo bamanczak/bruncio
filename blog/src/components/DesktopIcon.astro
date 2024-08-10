@@ -56,9 +56,11 @@ export let menu = true;
                 {label}
             </div>
         </div>
-        <div class="flex flex-col items-center justify-center">
+        <div
+            class="flex flex-col items-center justify-center dropdownHover invisible -ml-6"
+        >
             <div
-                class="dropdownHover z-100 ml-1 invisible bg-black dark:bg-black divide-y divide-mywhite rounded-lg text:xs dark:text-mywhite text-mywhite"
+                class="z-100 ml-1 dropdownHoverItem bg-black dark:bg-black divide-y divide-mywhite rounded-lg text:xs dark:text-mywhite text-mywhite"
             >
                 <div class="p-2 cursor-pointer menu-pane-opener">Open</div>
             </div>
@@ -85,7 +87,11 @@ export let menu = true;
                 ".draggable-icon",
             ) as HTMLElement;
 
-            draggableIcon.addEventListener("mousedown", (event) => {
+            const draggableIconContainer = this.querySelector(
+                ".desktop-icon-sub-container",
+            ) as HTMLElement;
+
+            draggableIconContainer.addEventListener("mousedown", (event) => {
                 moveObject(draggableIcon, event as MouseEvent);
             });
 
@@ -100,20 +106,22 @@ export let menu = true;
                 iconClickEvent = "dblclick";
             }
 
-            draggableIcon.addEventListener(iconClickEvent, (e) => {
+            draggableIconContainer.addEventListener(iconClickEvent, (e) => {
                 e.stopPropagation();
                 handleIconAction();
             });
 
             const menuContainer = this.querySelector(".dropdownHover");
+            const menuContainerItem = this.querySelector(".dropdownHoverItem");
             let openHint = false;
-            draggableIcon.addEventListener("mouseenter", (e) => {
+            draggableIconContainer.addEventListener("mouseenter", (e) => {
                 e.stopPropagation();
                 if (parser.getPlatformType() != "mobile") {
                     openHint = true;
                     setTimeout(function () {
                         if (openHint) {
                             menuContainer!.classList.remove("invisible");
+                            menuContainerItem!.classList.remove("invisible");
                         }
                     }, 200);
                 }
@@ -121,6 +129,7 @@ export let menu = true;
             draggableIcon.addEventListener("mouseleave", () => {
                 openHint = false;
                 menuContainer!.classList.add("invisible");
+                menuContainerItem!.classList.add("invisible");
             });
 
             const menuPaneOpener = this.querySelector(".menu-pane-opener");

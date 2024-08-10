@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import DesktopPage from "../../layouts/DesktopPage.astro";
 import Pane from "../../components/BlogPostPane.astro";
+import Comments from "../../components/Comments.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -28,5 +29,6 @@ const { Content } = await post.render();
 >
 	<Pane title={post.data.title} windowName={post.id} showBackButton="true">
 		<Content />
+		<Comments />
 	</Pane>
 </DesktopPage>
