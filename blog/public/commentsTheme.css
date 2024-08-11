@@ -147,6 +147,11 @@ main .pagination-loader-container {
     color: #FAF4E6;
 }
 
+.btn.btn-primary:hover {
+    color: #FAF4E6;
+    background-color: #000000;
+}
+
 
 
 .gsc-direct-reaction-buttons>button:hover .gsc-social-reaction-summary-item-count {
