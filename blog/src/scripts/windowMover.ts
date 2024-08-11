@@ -4,6 +4,11 @@ const menuHeight = 36;
 const margin = 10;
 const fullScreenClass = "full-screen";
 
+function pauseDefaultEvents(event: MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+}
+
 export function moveObject(myObject: HTMLElement, myEvent: MouseEvent, savePosition = false) {
     let startY = myEvent.pageY;
     let startX = myEvent.pageX;
@@ -13,7 +18,7 @@ export function moveObject(myObject: HTMLElement, myEvent: MouseEvent, savePosit
     let offsetLeft = myObject.offsetLeft;
 
     const drag = (event: MouseEvent) => {
-        event.preventDefault();
+        pauseDefaultEvents(event);
         let newValueLeft = offsetLeft + (event.pageX - startX);
         if (newValueLeft < 0) {
             newValueLeft = 0;
@@ -42,11 +47,6 @@ export function moveObject(myObject: HTMLElement, myEvent: MouseEvent, savePosit
     };
 
     const mouseup = () => {
-        // (
-        //     myObject.querySelector(".change-on-drag") as HTMLElement
-        // ).classList.remove("is-dragging");
-        // myObject.classList.remove("is-dragging");
-
         document.removeEventListener("mousemove", drag);
         document.removeEventListener("mouseup", mouseup);
     };
@@ -74,9 +74,10 @@ export function resizeObject(myObject: HTMLElement, event: MouseEvent, savePosit
     let offsetLeft = myObject.offsetLeft;
     let objectWidth = myObject.clientWidth;
     let objectHeight = myObject.clientHeight;
+    pauseDefaultEvents(event);
 
     const drag = (event: MouseEvent) => {
-        event.preventDefault();
+        pauseDefaultEvents(event);
 
         document.body.style.cursor = "nwse-resize";
 
