@@ -1,8 +1,5 @@
 import { zIndex, blogExpanded, blogPositionDefault } from '../store.ts';
 import { navigate } from "astro:transitions/client";
-import { OverlayScrollbars } from "overlayscrollbars";
-
-
 
 export function activatePanel(myElement: HTMLElement | string, delay = 0) {
     if (typeof myElement === "string") {
