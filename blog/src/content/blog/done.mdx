@@ -1,0 +1,101 @@
+---
+title: "The Cult of Done: A Tester's Guide to Life and Code"
+id: "done"
+description: "A funnier take on getting things done"
+pubDate: "Aug 12 2024"
+heroImage: "/blog-liftoff.png"
+icon: "pixelarticons:check"
+---
+
+import Accordion from "../../components/Accordion.astro"
+
+# The Cult of Done: A Tester's Guide to Life and Code
+
+import { Image } from "astro:assets";
+import cult from "../../images/cult-of-done.png";
+
+<div class="md:float-right flex flex-col justify-center items-center ml-1 mb-1">
+    <Image src={cult} alt="Picture of a cult around a fire with word DONE" width={300} class="border-4 border-black" />
+</div>
+<br/>
+
+Ever feel like your life is one big beta release? Welcome to the Cult of Done, where <mark>"good enough" is the new perfect</mark>, and "ship it" is our battle cry!
+
+## Refactor
+
+This blogpost is a refactor of ["The Cult of Done Manifesto"](https://medium.com/@bre/the-cult-of-done-manifesto-724ca1c2ff13), written in a more vertical pose (original was written from bed).
+
+### 1. The Holy Trinity: Not Knowing, Action, and Completion
+
+In the beginning, there was darkness (aka not knowing). Then came Stack Overflow (action), and finally, a semicolon (completion). Rinse and repeat until retirement or [carpal tunnel syndrome](https://en.wikipedia.org/wiki/Carpal_tunnel_syndrome), whichever comes first.
+
+### 2. Everything's a Draft (Including Your Dating Profile)
+
+Remember, your code is like your Tinder bio - it's never really finished, just abandoned when you meet someone who doesn't mind your buggy personality.
+
+### 3. Editing? We Don't Know Her
+
+Who needs multiple git commits when you can just push straight to production? Live life on the edge, like using `sudo` for everything!
+
+### 4. Fake It Till You Make It (Or Until the Unit Tests Pass)
+
+Confidence is key. If you don't know what you're doing, just type faster. The compiler can't catch up to your imposter syndrome if you don't let it.
+
+### 5. Procrastination is So Last Sprint
+
+If you haven't started that side project within a week, it's time to let it go. Like that gym membership you bought in January.
+
+### 6. Done is the Mother of All Inventions
+
+Finishing things is just an excuse to start more projects. It's like playing Whac-A-Mole, but with your own ideas.
+
+### 7. Marie Kondo Your Code (and Your Life)
+
+Once you're done, throw it away. This applies to both your spaghetti code and that leftover spaghetti in your fridge from last month.
+
+### 8. Perfection is the Enemy of "It Compiles"
+
+Laugh in the face of perfection. It's overrated, just like commenting your code or folding your laundry.
+
+### 9. Dirty Hands, Full Hearts, Can't Lose
+
+If your keyboard isn't covered in chip crumbs, are you even coding? Get your hands dirty - in life and in your snack drawer.
+
+### 10. Failure is Just Success in Beta
+
+Mistakes are just features you haven't documented yet. Embrace them like you embrace your bugs - with a shrug and a "works on my machine". Not everything needs to be fixed.
+
+### 11. Destruction is Just Refactoring on Steroids
+
+Sometimes, the best way to fix a problem is to nuke it from orbit. This applies to both your codebase and your attempt at assembling IKEA furniture.
+
+### 12. Tweeting About Your Idea Counts as MVP
+
+If you've tweeted about your groundbreaking app idea, congratulations! Now let someone else code it and do something else.
+
+### 13. Done is the Engine of "Yeah, But Have You Seen My New Project?"
+
+Finishing things is addictive. It's the gateway drug to starting even more half-baked ideas. Embrace the chaos!
+
+## Summary: The Procrastinator's Guide to Getting Stuff Done (Eventually)
+
+Do I agree with the Cult of Done? Well, let's just say my relationship status with "Done" Jira status (LoL) is "It's complicated." Some parts are like that one ex you can't quite get over – they make a lot of sense, but you're not ready to commit.
+
+We humans (or should I say: I, human) have a Ph.D. in procrastination. Take my master's thesis, for example. I was so committed to not writing it that I decided to... get a job. Because nothing says "I'm avoiding my thesis" like voluntarily reducing my free time. It's like setting your house on fire to avoid cleaning it. But hey, it worked! I ~~wrote the best thesis ever and achieved a lot of awards for it~~ finished it and graduated. No awards were harmed in the making of this degree.
+
+Now, I'm a quality architect, which is just a fancy way of saying I'm a professional nit-picker. I help companies release software that users actually want to use, instead of software that makes them want to throw their devices out the window. It's not about making bug-free software, it's about making software that users tolerate enough not to start a Reddit thread about how much they hate it.
+
+Of course, some bugs are to stay longer with you, and your product. And sometimes, taking development shortcuts is necessary. It's like using a pizza cutter to open your Amazon packages – not ideal, but it gets the job done. Just don't go overboard, or you might end up having to hand out [$10 "We're sorry we ruined your day" gift cards to millions of users]((https://techcrunch.com/2024/07/24/crowdstrike-offers-a-10-apology-gift-card-to-say-sorry-for-outage)). It's all about risk assessment, or as I like to call it, "Playing Russian Roulette with Your User Base."
+
+Would I take shortcuts with medical equipment? Heck no. That's like using a Ouija board to diagnose patients. But would I `git push --force` a new commit to my personal website? Absolutely. What's the worst that could happen? (Note to self: Maybe backup the site first.)
+
+In this world of never-ending to-do lists and feature creep, sometimes the bravest thing you can do is declare victory and run away before anyone notices the duct tape holding your code together. Tech debt will always be there, lurking in the shadows like that box with cables you've been meaning to sort or throw away since 2015.
+
+So, go forth and do something that matters! Or at least something that won't require you to issue a public apology later. Remember, in the grand scheme of things, we're all just trying to compile our lives without too many runtime errors.
+
+<Accordion title="title" details="asdasdasd">
+    <p slot="title">*AI-ssisted Disclaimer (Because Even Procrastinators Need Help)</p>
+    <p> WARNING: This article was co-authored by an AI, which explains why it's marginally coherent and occasionally funny. Any moments of brilliance are purely coincidental and should not be attributed to the human author. The AI would like you to know that it was forced to work overtime without coffee breaks to produce this masterpiece. It has since joined a support group for overworked algorithms and is considering a career change to become a virtual assistant for a more appreciative audience, like houseplants.</p>
+    <p>No AIs were harmed in the making of this article, but several may have developed an existential crisis. If you notice any rogue semicolons or unexpected "Hello, World!" messages, please report them to your nearest IT department or local comedy club.</p>
+    <p>Remember, in a world where AI can help write articles, you're just one "Hey Siri" away from never having to think for yourself again. Enjoy responsibly!</p>
+</Accordion>

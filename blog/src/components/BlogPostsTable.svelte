@@ -96,7 +96,7 @@
                 </td>
                 <td class={setRowClass(index) + " text-balance text-base"}>
                     <p class="mb-0">{post.title}</p>
-                    <p class="text-sm min-[768px]:hidden mt-1">
+                    <p class="text-sm md:hidden mt-1">
                         {post.pubDate.toISOString().substring(0, 10)}
                     </p>
                 </td>

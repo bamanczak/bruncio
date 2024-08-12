@@ -263,6 +263,10 @@ import "overlayscrollbars/overlayscrollbars.css";
             const scrollbar = OverlayScrollbars(content, {
                 scrollbars: { visibility: "visible" },
             });
+            const horizontalScrollbar = content.querySelector(
+                ".os-scrollbar-horizontal",
+            ) as HTMLElement;
+            horizontalScrollbar.classList.add("invisible");
             const viewport = scrollbar.elements();
 
             if (blogExpanded.get() == "true") {
