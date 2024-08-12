@@ -58,7 +58,7 @@
 
     function setRowClass(number) {
         let baseClasses =
-            "text-justify pl-3 group-hover:bg-black group-focus:bg-black group-hover:text-white dark:text-black dark:group-focus:text-white group-focus:text-white dark:group-hover:text-white";
+            "text-left pl-3 group-hover:bg-black group-focus:bg-black group-hover:text-white dark:text-black dark:group-focus:text-white group-focus:text-white dark:group-hover:text-white";
         if (isEven(number)) {
             return baseClasses;
         } else {
