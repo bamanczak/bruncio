@@ -22,7 +22,8 @@
 - navbar border bottom width through tailwind (5>4)
 
 # Bugs
-
+- obrazki w blogach: dodać globalna klase i style zeby sie dodawaly ladnie w linijce (`display:inline-block`) i przesuwaly do nastepnego wiersza jesli nie ma miejsca. Teraz psuja resize
+- po zmianie strony okienko się animuje do rozmiaru jeśli było mniejsze (usuwać/dodawać klasę animacyjną przy expandzie?)
 - polepsić wyniki https://pagespeed.web.dev/analysis/https-astroblog-five-vercel-app/s7yu3bac7t?form_factor=desktop
 - cosmetic: scrollbar jest ciut przykryty buttonami, scrollowania do końca nie widać
 - scrollbar breaks on some browsers (Edge)
