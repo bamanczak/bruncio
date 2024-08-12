@@ -1,7 +1,6 @@
 import { zIndex, blogExpanded, blogPositionDefault } from '../store.ts';
 import { navigate } from "astro:transitions/client";
 
-
 export function activatePanel(myElement: HTMLElement | string, delay = 0) {
     if (typeof myElement === "string") {
         setTimeout(function () {
@@ -53,24 +52,24 @@ export function closePanel(myElement: HTMLElement) {
 }
 
 export function hideScrollBars(myElement: HTMLElement) {
-    const horizontalScrollbar = myElement.querySelector(".os-scrollbar-horizontal") as HTMLElement;
+    // const horizontalScrollbar = myElement.querySelector(".os-scrollbar-horizontal") as HTMLElement;
     const verticalScrollbar = myElement.querySelector(".os-scrollbar-vertical") as HTMLElement;
-    horizontalScrollbar.classList.add("invisible");
-    horizontalScrollbar.classList.add("hidemeplease");
+
+    // horizontalScrollbar.classList.add("invisible");
+    // horizontalScrollbar.classList.add("hidemeplease");
     verticalScrollbar.classList.add("invisible");
     verticalScrollbar.classList.add("hidemeplease");
 }
 
 export function openPanel(myElement: HTMLElement) {
-    const horizontalScrollbar = myElement.querySelector(".os-scrollbar-horizontal") as HTMLElement;
+    // const horizontalScrollbar = myElement.querySelector(".os-scrollbar-horizontal") as HTMLElement;
     const verticalScrollbar = myElement.querySelector(".os-scrollbar-vertical") as HTMLElement;
     myElement.style.setProperty('--animate-duration', '0.2s');
     myElement.classList.remove("invisible");
     myElement.classList.remove("hidemeplease");
 
-    horizontalScrollbar.classList.remove("invisible");
-    horizontalScrollbar.classList.remove("hidemeplease");
-
+    // horizontalScrollbar.classList.remove("invisible");
+    // horizontalScrollbar.classList.remove("hidemeplease");
     verticalScrollbar.classList.remove("invisible");
     verticalScrollbar.classList.remove("hidemeplease");
 
