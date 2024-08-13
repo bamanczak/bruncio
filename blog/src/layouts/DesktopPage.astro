@@ -24,7 +24,7 @@ import { Content as Never } from "../content/special/never.mdx";
 import VirusImage from "../images/VirusFound.gif";
 import IpadAdImage from "../images/you-won-ipad.gif";
 import MilkImage from "../images/HotMilks.gif";
-import TrashImage from "../images/trash.png";
+import TrashImage from "../images/trash.jpg";
 import Loader from "../components/loader.astro";
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
@@ -118,6 +118,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 							alt="Picture of a pile of trash"
 							width={300}
 							class="border-4 border-black"
+							loading="lazy"
 						/>
 						<p>nothing to see here</p>
 					</div>
