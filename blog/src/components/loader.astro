@@ -126,7 +126,7 @@ const { animationDuration = 800, threshold = 200 } = Astro.props;
             }, 410 + delay);
         }
 
-        function hideLoaders(delay = 0) {
+        function hideLoaders() {
             const overlay = document.querySelector(".loader-overlay");
             const loader = document.querySelector(".loader-container");
             hideElement(overlay, 0, false);
@@ -161,7 +161,7 @@ const { animationDuration = 800, threshold = 200 } = Astro.props;
             }, threshold);
         });
 
-        document.addEventListener("astro:before-swap", (ev) => {
+        document.addEventListener("astro:before-swap", () => {
             if (!thresholdTimeout) {
                 return;
             }

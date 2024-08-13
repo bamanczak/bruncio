@@ -1,6 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-import IconDropdown from "../components/IconDropdown.svelte";
 
 interface Props {
     iconName?:
@@ -76,8 +75,6 @@ export let menu = true;
         navigateToPanelPage,
     } from "../scripts/panesOpener.ts";
     import { moveObject } from "../scripts/windowMover.ts";
-
-    function handleMyAction() {}
 
     class AstroDesktopIcon extends HTMLElement {
         constructor() {

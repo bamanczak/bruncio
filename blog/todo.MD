@@ -29,8 +29,5 @@
 - scrollbar breaks on some browsers (Edge)
 - horizontal scrollbar sometimes appears, sometimes just for some elements
 - Giscus
-    - sign in with Github has wrong onhover
-    - mobile styling bad
     - mobile reaction popup is transparent
-- resizing window sometimes highlights text from other windows
 - browser: when crashed it still opens new windows
