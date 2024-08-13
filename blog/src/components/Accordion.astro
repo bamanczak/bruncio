@@ -4,10 +4,9 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
     title: string;
-    details: string;
 }
 
-const { title, details } = Astro.props as Props;
+const { title } = Astro.props as Props;
 ---
 
 <div
@@ -38,8 +37,6 @@ const { title, details } = Astro.props as Props;
     >
         <p class="prose mb-4 mt-1 max-w-full transition-[height]">
             <slot />
-
-            <!-- {details} -->
         </p>
     </div>
 </div>

@@ -1,6 +1,4 @@
 import { vitePreprocess } from '@astrojs/svelte';
-import svelte from "@astrojs/svelte";
-
 
 export default {
 	preprocess: vitePreprocess(),
