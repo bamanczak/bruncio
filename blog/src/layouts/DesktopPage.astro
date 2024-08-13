@@ -27,14 +27,15 @@ import MilkImage from "../images/HotMilks.gif";
 import TrashImage from "../images/trash.jpg";
 import Loader from "../components/loader.astro";
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, ogImage } =
+	Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<!-- <Tooltips interactive={false} delay={[15, 100]} /> -->
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={ogImage} />
 		<ViewTransitions />
 		<Loader />
 	</head>

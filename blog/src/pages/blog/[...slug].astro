@@ -26,6 +26,7 @@ const { Content } = await post.render();
 	{...post.data}
 	title={post.data.title}
 	description={post.data.description}
+	ogImage=`https://brunc.io/og/${post.slug}.png`
 >
 	<Pane title={post.data.title} windowName={post.id} showBackButton="true">
 		<Content />

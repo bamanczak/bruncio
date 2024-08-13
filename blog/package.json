@@ -27,6 +27,7 @@
     "animate.css": "^4.1.1",
     "astro": "^4.12.2",
     "astro-icon": "^1.1.0",
+    "astro-og-canvas": "^0.5.3",
     "astro-tooltips": "^0.6.2",
     "bowser": "^2.11.0",
     "framer-motion": "^11.3.8",
