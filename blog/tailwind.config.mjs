@@ -48,7 +48,7 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: [
-					'PixChicago', ...defaultTheme.fontFamily.sans
+					'NeuePixelSans', ...defaultTheme.fontFamily.sans
 				],
 			},
 		},

@@ -17,7 +17,7 @@
                 on:click={() => {
                     activatePanel("aboutComputer");
                 }}
-                class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
+                class="pixelated flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >About Brunc.io</MenuItem
             >
             <hr class="h-px my-1 bg-black border-0" />
@@ -26,14 +26,14 @@
                 on:click={() => {
                     navigate("/");
                 }}
-                class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
+                class="pixelated flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >Home</MenuItem
             >
             <MenuItem
                 on:click={() => {
                     navigate("/blog");
                 }}
-                class="flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
+                class="pixelated flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >Blog</MenuItem
             >
             <MenuItem
@@ -44,7 +44,7 @@
                     activatePanel("TermsOfUse", 900);
                     activatePanel("PrivacyPolicy", 1200);
                 }}
-                class="legal-opener flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
+                class="pixelated legal-opener flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >Legal</MenuItem
             >
         </Menu>

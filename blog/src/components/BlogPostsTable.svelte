@@ -73,7 +73,7 @@
 
 <table>
     <thead
-        class="text-base bg-black dark:bg-black text-mywhite dark:text-mywhite sticky p-0"
+        class="text-lg bg-black dark:bg-black text-mywhite dark:text-mywhite sticky p-0"
     >
         <th class="icon-column"></th>
         <th on:click={() => sortTable("title")} class="text-left">Post</th>
@@ -94,15 +94,15 @@
                 <td class={"text-2xl content-center" + setRowClass(index)}>
                     <Icon class="" icon={post.icon} />
                 </td>
-                <td class={setRowClass(index) + " text-balance text-base"}>
+                <td class={setRowClass(index) + " text-balance text-lg"}>
                     <p class="mb-0">{post.title}</p>
-                    <p class="text-sm md:hidden mt-1">
+                    <p class="text-base md:hidden mt-1">
                         {post.pubDate.toISOString().substring(0, 10)}
                     </p>
                 </td>
                 <td
                     class={setRowClass(index) +
-                        " date-column text-nowrap max-md:hidden text-base"}
+                        " date-column text-nowrap max-md:hidden text-lg"}
                     >{post.pubDate.toISOString().substring(0, 10)}</td
                 >
                 <td class={setRowClass(index) + "empty-column p-0"}></td>
@@ -111,7 +111,7 @@
                 placement="bottom"
                 type="custom"
                 defaultClass=""
-                class="p-1 text-xs text-mywhite dark:text-mywhite dark:bg-black bg-black border-black border-4 max-md:hidden"
+                class="p-1 text-base text-mywhite dark:text-mywhite dark:bg-black bg-black border-black border-4 max-md:hidden"
                 arrow={false}
                 triggeredBy={"#post-no-" + index}
             >
@@ -164,6 +164,7 @@
         width: 100%;
         border-collapse: separate;
         border-spacing: 0;
+        font-size: 16px;
     }
     thead {
         /* background: #fff; */
