@@ -43,7 +43,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
                     color: [0, 0, 0],
                     families: ["PixChicago"],
                     size: 24,
-                    lineHeight: 1.2,
+                    lineHeight: 1.6,
                 }
             },
             fonts: ["./public/fonts/PixChicago.woff"]
