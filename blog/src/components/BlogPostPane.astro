@@ -243,7 +243,6 @@ import "overlayscrollbars/overlayscrollbars.css";
         closePanel,
         showPanelOnTop,
         expandPanel,
-        enableAndDisableAnimatedTransition,
     } from "../scripts/panesOpener.ts";
     import {
         blogExpanded,
@@ -274,7 +273,6 @@ import "overlayscrollbars/overlayscrollbars.css";
             if (blogExpanded.get() == "true") {
                 expandPanel(this);
             } else if (blogPositionDefault.get() == "false") {
-                enableAndDisableAnimatedTransition(this);
                 this.style.width = blogWidth.get() + "px";
                 this.style.height = blogHeight.get() + "px";
                 this.style.left = blogPositionLeft.get() + "px";
