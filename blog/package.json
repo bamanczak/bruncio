@@ -31,7 +31,7 @@
     "astro-tooltips": "^0.6.2",
     "bowser": "^2.11.0",
     "framer-motion": "^11.3.24",
-    "nanostores": "^0.10.0",
+    "nanostores": "^0.11.2",
     "overlayscrollbars": "^2.10.0",
     "preline": "^2.4.1",
     "react": "^18.3.1",
