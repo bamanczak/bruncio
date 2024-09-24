@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import DesktopPage from "../../layouts/DesktopPage.astro";
 import Pane from "../../components/BlogPostPane.astro";
 import Comments from "../../components/Comments.astro";
+import BlogImage from "../../components/BlogImage.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -29,6 +30,8 @@ const { Content } = await post.render();
 	ogImage=`https://brunc.io/og/${post.slug}.png`
 >
 	<Pane title={post.data.title} windowName={post.id} showBackButton="true">
+		<h1>{post.data.title}</h1>
+		<BlogImage imagePath={post.data.heroImage} imageAlt="Iceberg" />
 		<Content />
 		<Comments />
 	</Pane>
