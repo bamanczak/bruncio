@@ -21,7 +21,6 @@
                 >About Brunc.io</MenuItem
             >
             <hr class="h-px my-1 bg-black border-0" />
-
             <MenuItem
                 on:click={() => {
                     navigate("/");

@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import BlogImage from "../components/BlogImage.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -58,18 +59,6 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{
-						heroImage && (
-							<img
-								width={1020}
-								height={510}
-								src={heroImage}
-								alt=""
-							/>
-						)
-					}
-				</div>
 				<div class="prose">
 					<div class="title">
 						<div class="date">
@@ -84,8 +73,13 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 							}
 						</div>
 						<h1>{title}</h1>
-						<hr />
+						<hr
+							class="w-72 h-1 mx-auto my-4 bg-black border-0 rounded md:my-10 dark:bg-gray-700"
+						/>
+						<!-- <hr /> -->
 					</div>
+					<BlogImage imagePath={heroImage} imageAlt="No alt YET" />
+
 					<slot />
 				</div>
 			</article>

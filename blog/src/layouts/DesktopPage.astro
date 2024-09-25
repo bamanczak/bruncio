@@ -26,6 +26,7 @@ import IpadAdImage from "../images/you-won-ipad.gif";
 import MilkImage from "../images/HotMilks.gif";
 import TrashImage from "../images/trash.jpg";
 import Loader from "../components/loader.astro";
+import Switcher from "../components/Switcher.svelte";
 
 const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 	Astro.props;
@@ -42,6 +43,13 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 	<body class="bg-myyellow">
 		<Header />
 		<main>
+			<Switcher
+				client:load
+				isChecked={true}
+				pathname={Astro.url.pathname}
+				transition:persist
+			/>
+
 			<Hello />
 
 			<!-- DESKTOP ICONS-->
@@ -52,12 +60,34 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				position_y={60}
 				iconFunction="navigate"
 				navigateTo="/blog"
+				draggable={true}
 			/>
+			<DesktopIcon
+				iconName="pixelarticons:user"
+				label="About me"
+				iconFunction="navigate"
+				navigateTo="/about"
+				position_x={22}
+				position_y={180}
+				draggable={true}
+			/>
+			<DesktopIcon
+				iconName="mdi:photo-library"
+				label="projects"
+				iconFunction="navigate"
+				navigateTo="/projects"
+				position_x={25}
+				position_y={270}
+				draggable={true}
+			/>
+
+			<!-- FUN ICONS -->
 			<DesktopIcon
 				iconName="pixelarticons:human-run"
 				label="test"
 				position_x={94}
 				position_y={130}
+				draggable={true}
 			>
 				<Pane
 					title="test"
@@ -69,26 +99,11 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				</Pane>
 			</DesktopIcon>
 			<DesktopIcon
-				iconName="pixelarticons:user"
-				label="About me"
-				iconFunction="navigate"
-				navigateTo="/about"
-				position_x={22}
-				position_y={180}
-			/>
-			<DesktopIcon
-				iconName="mdi:photo-library"
-				label="projects"
-				iconFunction="navigate"
-				navigateTo="/projects"
-				position_x={25}
-				position_y={270}
-			/>
-			<DesktopIcon
 				iconName="mdi:web"
 				label="internet"
 				position_x={24}
 				position_y={350}
+				draggable={true}
 			>
 				<Pane
 					title="internet"
@@ -104,6 +119,7 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				label="trash"
 				position_x={240}
 				position_y={190}
+				draggable={true}
 			>
 				<Pane
 					title="trash"

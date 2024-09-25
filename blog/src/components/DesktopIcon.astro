@@ -18,6 +18,7 @@ interface Props {
     position_y: number;
     iconFunction?: "navigate" | "openPanel";
     navigateTo?: string;
+    draggable: boolean;
 }
 const {
     iconName,
@@ -26,6 +27,7 @@ const {
     position_y,
     iconFunction = "openPanel",
     navigateTo = "",
+    draggable,
 } = Astro.props;
 
 export let menu = true;
@@ -36,10 +38,11 @@ export let menu = true;
     data-openWindow={label}
     data-iconFunction={iconFunction}
     data-navigateTo={navigateTo}
+    data-draggable={draggable}
     transition:persist
 >
     <div
-        class="pixelated draggable-icon flex flex-row"
+        class=`pixelated draggable-icon flex flex-row ${draggable === true ? '' : 'position-fixed'}`
         style=`left:${position_x}px; top:${position_y}px;`
     >
         <div
@@ -80,6 +83,10 @@ export let menu = true;
         constructor() {
             super();
 
+            const fixed = this.querySelector(".draggable-icon.position-fixed");
+
+            const draggable = this.getAttribute("data-draggable") != null;
+
             const draggableIcon = this.querySelector(
                 ".draggable-icon",
             ) as HTMLElement;
@@ -89,7 +96,9 @@ export let menu = true;
             ) as HTMLElement;
 
             draggableIconContainer.addEventListener("mousedown", (event) => {
-                moveObject(draggableIcon, event as MouseEvent);
+                if (draggable) {
+                    moveObject(draggableIcon, event as MouseEvent);
+                }
             });
 
             const panelName = this.getAttribute("data-openWindow") as string;
@@ -99,7 +108,7 @@ export let menu = true;
 
             const parser = Bowser.getParser(navigator.userAgent);
             let iconClickEvent = "click";
-            if (parser.getPlatformType() != "mobile") {
+            if (parser.getPlatformType() != "mobile" && draggable) {
                 iconClickEvent = "dblclick";
             }
 
@@ -113,7 +122,7 @@ export let menu = true;
             let openHint = false;
             draggableIconContainer.addEventListener("mouseenter", (e) => {
                 e.stopPropagation();
-                if (parser.getPlatformType() != "mobile") {
+                if (parser.getPlatformType() != "mobile" && draggable) {
                     openHint = true;
                     setTimeout(function () {
                         if (openHint) {
@@ -162,5 +171,9 @@ export let menu = true;
     .draggable-icon {
         position: absolute;
         min-width: 150px;
+    }
+
+    .draggable-icon.position-fixed {
+        position: fixed;
     }
 </style>

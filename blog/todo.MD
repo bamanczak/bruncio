@@ -4,6 +4,12 @@
 - pane with images
 - open image
 - Floppy!
+- "simple" view mode
+    - toggle https://svelte-switcher.vercel.app/
+    - inny font na tekst
+    - hero image -> style adjust
+    - comments -> path mapping update?
+    - menu -> keep as is, but adjust navigation
 
 ### Polish
 
