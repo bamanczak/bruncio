@@ -19,71 +19,77 @@ type Props = CollectionEntry<"blog">;
 
 const { slug } = Astro.params;
 const post = posts.find((page) => page.slug === slug);
-if (!post) return Astro.redirect("/404");
+if (!post) return Astro.redirect("/simple/404");
 
 const { Content } = await post.render();
 ---
 
 <link
 	rel="preload"
-	href="/fonts/atkinson-regular.woff"
+	href="/fonts/atkinson-regular.woff2"
 	as="font"
-	type="font/woff"
+	type="font/woff2"
 	crossorigin="anonymous"
 />
 
-<div class="bg-mywhite simple-container">
-	<DesktopIcon
-		iconName="pixelarticons:article-multiple"
-		label="posts"
-		position_x={20}
-		position_y={60}
-		iconFunction="navigate"
-		navigateTo="/blog"
-		draggable={false}
-	/>
-	<DesktopIcon
-		iconName="pixelarticons:user"
-		label="About me"
-		iconFunction="navigate"
-		navigateTo="/about"
-		position_x={22}
-		position_y={180}
-		draggable={false}
-	/>
-	<DesktopIcon
-		iconName="mdi:photo-library"
-		label="projects"
-		iconFunction="navigate"
-		navigateTo="/projects"
-		position_x={25}
-		position_y={270}
-		draggable={false}
-	/>
-	<BlogPost
-		{...post.data}
-		title={post.data.title}
-		description={post.data.description}
-		ogImage=`https://brunc.io/og/${post.slug}.png`
-	>
-		<Content />
+<!-- AlbertSans-Regular.woff2 -->
 
-		<!-- <Pane title={post.data.title} windowName={post.id} showBackButton="true">
+<BlogPost
+	{...post.data}
+	title={post.data.title}
+	description={post.data.description}
+	ogImage=`https://brunc.io/og/${post.slug}.png`
+>
+	<div class="bg-mywhite simple-container">
+		<DesktopIcon
+			iconName="pixelarticons:article-multiple"
+			label="posts"
+			position_x={20}
+			position_y={60}
+			iconFunction="navigate"
+			navigateTo="/blog"
+			draggable={false}
+		/>
+		<DesktopIcon
+			iconName="pixelarticons:user"
+			label="About me"
+			iconFunction="navigate"
+			navigateTo="/about"
+			position_x={22}
+			position_y={180}
+			draggable={false}
+		/>
+		<DesktopIcon
+			iconName="mdi:photo-library"
+			label="projects"
+			iconFunction="navigate"
+			navigateTo="/projects"
+			position_x={25}
+			position_y={270}
+			draggable={false}
+		/>
+		<Content />
+		<Switcher
+			client:load
+			isChecked={false}
+			pathname={Astro.url.pathname}
+			transition:persist
+		/>
+	</div>
+
+	<!-- <Pane title={post.data.title} windowName={post.id} showBackButton="true">
 		<Content />
 		<Comments />
 	</Pane> -->
-	</BlogPost>
-	<Switcher
-		client:load
-		isChecked={false}
-		pathname={Astro.url.pathname}
-		transition:persist
-	/>
-</div>
+</BlogPost>
 
 <style>
 	.simple-container {
 		font-family: "Atkinson";
 		font-size: 16px;
+		/* width: 100vw; */
+	}
+	body {
+		background-color: #faf4e6;
 	}
 </style>
