@@ -18,7 +18,7 @@
 
 @font-face {
 	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-regular.woff') format('woff');
+	src: url('/fonts/atkinson-regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -284,11 +284,6 @@ hr {
 body {
 	font-size: 12px;
 	background: var(--desktop-color);
-
-	/* if outside of the window, clip */
-	height: 100vh;
-	/* TUTAJ WYŁĄCZA SIĘ SCROLL */
-	overflow: clip;
 }
 
 body.scrollablebody {
