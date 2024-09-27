@@ -48,10 +48,7 @@
 
 <style>
     .switcher-container {
-        /* height: 50px;
-        width: 50px; */
         position: fixed;
-        /* position: absolute; */
         bottom: 20px;
         left: 20px;
         padding: 5px;
