@@ -32,11 +32,9 @@ jobs:
       - name: Run E2E tests
         run: npm run test:e2e
 
-      - name: Save test report
-        run: npx playwright show-report --output=report.html
-
-      - name: Upload test report
-        uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
-          name: e2e-test-report
-          path: report.html
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
