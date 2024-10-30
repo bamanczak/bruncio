@@ -1,0 +1,37 @@
+name: E2E Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Start the app
+        run: npm start &
+        env:
+          PORT: 4321
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+
+      - name: Report test results
+        if: failure()
+        run: npx playwright show-report

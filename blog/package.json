@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
@@ -47,6 +48,7 @@
     "@iconify-json/pixelarticons": "^1.1.10",
     "@iconify/svelte": "^3.1.6",
     "flowbite": "^2.3.0",
-    "flowbite-svelte": "^0.44.24"
+    "flowbite-svelte": "^0.44.24",
+    "@playwright/test": "^1.30.0"
   }
 }
