@@ -1,9 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import BlogPost from "../../../layouts/BlogPost.astro";
-import Switcher from "../../../components/Switcher.svelte";
-import DesktopIcon from "../../../components/DesktopIcon.astro";
-import Comments from "../../../components/Comments.astro";
+import BoringPage from "../../../layouts/BoringPage.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -31,59 +28,13 @@ const { Content, headings } = await post.render();
 	crossorigin="anonymous"
 />
 
-<BlogPost
+<BoringPage
 	{...post.data}
 	title={post.data.title}
 	description={post.data.description}
 	ogImage=`https://brunc.io/og/${post.slug}.png`
 >
-	<div class="bg-mywhite simple-container">
-		<DesktopIcon
-			iconName="pixelarticons:article-multiple"
-			label="posts"
-			position_x={20}
-			position_y={60}
-			iconFunction="navigate"
-			navigateTo="/blog"
-			draggable={false}
-		/>
-		<DesktopIcon
-			iconName="pixelarticons:user"
-			label="About me"
-			iconFunction="navigate"
-			navigateTo="/about"
-			position_x={22}
-			position_y={180}
-			draggable={false}
-		/>
-		<DesktopIcon
-			iconName="mdi:photo-library"
-			label="projects"
-			iconFunction="navigate"
-			navigateTo="/projects"
-			position_x={25}
-			position_y={270}
-			draggable={false}
-		/>
-		<!-- <TableOfContents headings={headings} /> -->
-		<Content />
-		<Switcher
-			client:load
-			isChecked={false}
-			pathname={Astro.url.pathname}
-			transition:persist
-		/>
-	</div>
-	<!-- <Comments /> -->
-</BlogPost>
-
-<style>
-	.simple-container {
-		font-family: "Atkinson";
-		font-size: 16px;
-		/* width: 100vw; */
-	}
-	body {
-		background-color: #faf4e6;
-	}
-</style>
+	<!-- <TableOfContents headings={headings} /> -->
+	<Content />
+</BoringPage>
+<!-- <Comments /> -->

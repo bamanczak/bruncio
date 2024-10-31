@@ -1,14 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import BlogPost from "../../../layouts/BlogPost.astro";
-import Switcher from "../../../components/Switcher.svelte";
-import DesktopIcon from "../../../components/DesktopIcon.astro";
 import BlogPostsTable from "../../../components/BlogPostsTable.svelte";
-import TableOfContents from "../../../components/TableOfContents.astro";
-import Comments from "../../../components/Comments.astro";
 import BoringPage from "../../../layouts/BoringPage.astro";
-// import Pane from "../../components/BlogPostPane.astro";
-// import Comments from "../../components/Comments.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -19,7 +12,6 @@ export async function getStaticPaths() {
 	}));
 }
 type Props = CollectionEntry<"projects">;
-
 
 let postMetaData: any[] = [];
 const posts = await (
@@ -36,5 +28,5 @@ posts.forEach((post) => {
 	description="all blog posts"
 	ogImage=`https://brunc.io/og/asd.png`
 >
-	<BlogPostsTable client:load posts={postMetaData} linksPrefix="projects"/>
+	<BlogPostsTable client:load posts={postMetaData} linksPrefix="projects" />
 </BoringPage>

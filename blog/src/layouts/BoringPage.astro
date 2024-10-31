@@ -9,15 +9,15 @@ import Switcher from "../components/Switcher.svelte";
 import MobileMenu from "../components/MobileMenu.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+// type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, ogImage } =
+const { title, description, ogImage, pubDate, updatedDate, heroImage } =
 	Astro.props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} , image={ogImage} />
+		<BaseHead title={title} description={description} image={ogImage} />
 		<link
 			rel="preload"
 			href="/fonts/atkinson-regular.woff2"
@@ -107,11 +107,35 @@ const { title, description, ogImage } =
 				<article>
 					<div class="prose">
 						<div class="title">
+							{
+								pubDate && (
+									<div class="date">
+										<FormattedDate date={pubDate} />
+										{updatedDate && (
+											<div class="last-updated-on">
+												Last updated on{" "}
+												<FormattedDate
+													date={updatedDate}
+												/>
+											</div>
+										)}
+									</div>
+								)
+							}
 							<h1>{title}</h1>
 							<hr
 								class="w-72 h-1 mx-auto my-4 bg-black border-0 rounded md:my-10 dark:bg-gray-700"
 							/>
 						</div>
+						{
+							heroImage && (
+								<BlogImage
+									imagePath={heroImage}
+									imageAlt="No alt YET"
+								/>
+							)
+						}
+
 						<slot />
 					</div>
 				</article>
