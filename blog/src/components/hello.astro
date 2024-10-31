@@ -37,21 +37,41 @@ import helloAnimation from "../images/hello-animated.gif";
     }
 </style>
 <script>
+    import { hasSeenHello } from "../store.ts";
+
     const overlay = document.querySelector(".overlay") as HTMLElement;
     const hello = document.querySelector(".hello-container") as HTMLElement;
+    let bypassAnimations = hasSeenHello.get() == "true" ? true : false;
 
-    function hideElement(myElement: HTMLElement) {
-        myElement.style.setProperty("--animate-duration", "0.4s");
+    function hideElement(myElement: HTMLElement, animate = true) {
         const animationTriggerClass = "animate__zoomOut";
-        myElement.classList.add(animationTriggerClass);
+        let animationDelay = 0;
+
+        if (animate) {
+            myElement.style.setProperty("--animate-duration", "0.4s");
+            myElement.classList.add(animationTriggerClass);
+            animationDelay = 410;
+        }
+
         setTimeout(function () {
             myElement.classList.add("hidden");
-            myElement.classList.remove(animationTriggerClass);
-        }, 410);
+            if (animate) {
+                myElement.classList.remove(animationTriggerClass);
+            }
+        }, animationDelay);
+    }
+
+    let hideDelay = 500;
+    let hideAnimate = true;
+
+    if (bypassAnimations) {
+        hideDelay = 0;
+        hideAnimate = false;
     }
 
     setTimeout(function () {
-        hideElement(overlay);
-        hideElement(hello);
-    }, 500);
+        hideElement(overlay, hideAnimate);
+        hideElement(hello, hideAnimate);
+        hasSeenHello.set("true");
+    }, hideDelay);
 </script>

@@ -2,7 +2,7 @@ import { atom } from 'nanostores';
 import { persistentAtom } from '@nanostores/persistent'
 
 export const zIndex = atom(1);
-export const hasSeenHello = atom(false);
+export const hasSeenHello = persistentAtom<string>('seenHello', 'false');
 export const useFunMode = persistentAtom<string>('useFunMode', 'true');
 
 // TODO: switch to persistentMap someDay
