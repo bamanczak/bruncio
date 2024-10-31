@@ -19,6 +19,8 @@ interface Props {
     iconFunction?: "navigate" | "openPanel";
     navigateTo?: string;
     draggable: boolean;
+    customClass?: string;
+    hideOnLg?: boolean;
 }
 const {
     iconName,
@@ -28,13 +30,15 @@ const {
     iconFunction = "openPanel",
     navigateTo = "",
     draggable,
+    customClass = "",
+    hideOnLg = false,
 } = Astro.props;
 
 export let menu = true;
 ---
 
 <astro-desktop-icon
-    class="max-w-20 desktop-icon-container window-opener"
+    class=`max-w-20 desktop-icon-container window-opener ${hideOnLg === true ? '' : 'max-lg:hidden'}`
     data-openWindow={label}
     data-iconFunction={iconFunction}
     data-navigateTo={navigateTo}
@@ -42,7 +46,7 @@ export let menu = true;
     transition:persist
 >
     <div
-        class=`pixelated draggable-icon flex flex-row ${draggable === true ? '' : 'position-fixed'}`
+        class=`pixelated draggable-icon flex flex-row ${draggable === true ? '' : 'position-fixed'} ${customClass}`
         style=`left:${position_x}px; top:${position_y}px;`
     >
         <div

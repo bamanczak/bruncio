@@ -31,66 +31,10 @@ posts.forEach((post) => {
 });
 ---
 
-<link
-	rel="preload"
-	href="/fonts/atkinson-regular.woff2"
-	as="font"
-	type="font/woff2"
-	crossorigin="anonymous"
-/>
-
 <BoringPage
 	title="all blogposts"
 	description="all blog posts"
 	ogImage=`https://brunc.io/og/asd.png`
 >
-	<div class="bg-mywhite simple-container">
-		<DesktopIcon
-			iconName="pixelarticons:article-multiple"
-			label="posts"
-			position_x={20}
-			position_y={60}
-			iconFunction="navigate"
-			navigateTo="/blog"
-			draggable={false}
-		/>
-		<DesktopIcon
-			iconName="pixelarticons:user"
-			label="About me"
-			iconFunction="navigate"
-			navigateTo="/about"
-			position_x={22}
-			position_y={180}
-			draggable={false}
-		/>
-		<DesktopIcon
-			iconName="mdi:photo-library"
-			label="projects"
-			iconFunction="navigate"
-			navigateTo="/projects"
-			position_x={25}
-			position_y={270}
-			draggable={false}
-		/>
-		<!-- <TableOfContents headings={headings} /> -->
-		<BlogPostsTable client:load posts={postMetaData} />
-		<Switcher
-			client:load
-			isChecked={false}
-			pathname={Astro.url.pathname}
-			transition:persist
-		/>
-	</div>
-	<!-- <Comments /> -->
+	<BlogPostsTable client:load posts={postMetaData} />
 </BoringPage>
-
-<style>
-	.simple-container {
-		font-family: "Atkinson";
-		font-size: 16px;
-		/* width: 100vw; */
-	}
-	body {
-		background-color: #faf4e6;
-	}
-</style>

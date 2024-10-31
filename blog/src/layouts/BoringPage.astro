@@ -4,6 +4,10 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import BlogImage from "../components/BlogImage.astro";
+import Switcher from "../components/Switcher.svelte";
+
+import MobileMenu from "../components/MobileMenu.astro";
+import DesktopIcon from "../components/DesktopIcon.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -14,7 +18,21 @@ const { title, description, ogImage } =
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} , image={ogImage} />
+		<link
+			rel="preload"
+			href="/fonts/atkinson-regular.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin="anonymous"
+		/>
 		<style>
+			.simple-container {
+				font-family: "Atkinson";
+				font-size: 16px;
+			}
+			body {
+				background-color: #faf4e6;
+			}
 			main {
 				width: calc(100% - 2em);
 				max-width: 100%;
@@ -58,18 +76,53 @@ const { title, description, ogImage } =
 	<body>
 		<Header />
 		<main>
-			<article>
-				<div class="prose">
-					<div class="title">
-						<h1>{title}</h1>
-						<hr
-							class="w-72 h-1 mx-auto my-4 bg-black border-0 rounded md:my-10 dark:bg-gray-700"
-						/>
-						<!-- <hr /> -->
+			<div class="bg-mywhite simple-container">
+				<DesktopIcon
+					iconName="pixelarticons:article-multiple"
+					label="posts"
+					position_x={20}
+					position_y={60}
+					iconFunction="navigate"
+					navigateTo="/blog"
+					draggable={false}
+				/>
+				<DesktopIcon
+					iconName="pixelarticons:user"
+					label="About me"
+					iconFunction="navigate"
+					navigateTo="/about"
+					position_x={22}
+					position_y={180}
+					draggable={false}
+				/>
+				<DesktopIcon
+					iconName="mdi:photo-library"
+					label="projects"
+					iconFunction="navigate"
+					navigateTo="/projects"
+					position_x={25}
+					position_y={270}
+					draggable={false}
+				/>
+				<article>
+					<div class="prose">
+						<div class="title">
+							<h1>{title}</h1>
+							<hr
+								class="w-72 h-1 mx-auto my-4 bg-black border-0 rounded md:my-10 dark:bg-gray-700"
+							/>
+						</div>
+						<slot />
 					</div>
-					<slot />
-				</div>
-			</article>
+				</article>
+				<Switcher
+					client:load
+					isChecked={false}
+					pathname={Astro.url.pathname}
+					transition:persist
+				/>
+			</div>
+			<MobileMenu />
 		</main>
 		<script>
 			import "preline/dist/preline.js";
