@@ -11,8 +11,15 @@ import DesktopIcon from "../components/DesktopIcon.astro";
 
 // type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, ogImage, pubDate, updatedDate, heroImage } =
-	Astro.props;
+const {
+	title,
+	description,
+	ogImage,
+	pubDate,
+	updatedDate,
+	heroImage,
+	is404 = false,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -144,6 +151,7 @@ const { title, description, ogImage, pubDate, updatedDate, heroImage } =
 					isChecked={false}
 					pathname={Astro.url.pathname}
 					transition:persist
+					is404={is404}
 				/>
 			</div>
 			<MobileMenu />

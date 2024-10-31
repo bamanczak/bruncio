@@ -28,8 +28,15 @@ import TrashImage from "../images/trash.jpg";
 import Loader from "../components/loader.astro";
 import Switcher from "../components/Switcher.svelte";
 
-const { title, description, pubDate, updatedDate, heroImage, ogImage } =
-	Astro.props;
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	ogImage,
+	is404 = false,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -48,6 +55,7 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				isChecked={true}
 				pathname={Astro.url.pathname}
 				transition:persist
+				is404={is404}
 			/>
 
 			<Hello />

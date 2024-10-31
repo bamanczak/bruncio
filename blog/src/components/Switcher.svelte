@@ -5,6 +5,7 @@
     import { useFunMode } from "../store.ts";
     export let isChecked: boolean;
     export let pathname: string;
+    export let is404: boolean;
 
     function switchFunMode() {
         if (isChecked) {
@@ -15,6 +16,14 @@
             navigate(`${pathname.replace("simple/", "")}`);
         }
     }
+
+    function checkIf404AndVerifyPath() {
+        if (useFunMode.get() != "true" && is404) {
+            navigate("/simple/404");
+        }
+    }
+
+    checkIf404AndVerifyPath();
 </script>
 
 <div

@@ -4,8 +4,6 @@
   - hero image -> style adjust
   - comments -> path mapping update?
   - index page
-  - 404 page
-  - remove `BlogPost.astro` layout
   - test and fix og images for boring views
   - Legal - show up panes for boring as well
 
