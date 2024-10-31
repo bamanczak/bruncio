@@ -5,8 +5,6 @@
   - comments -> path mapping update?
   - index page
   - 404 page
-  - about page
-  - remove `SimplePage.astro` layout
   - remove `BlogPost.astro` layout
   - test and fix og images for boring views
   - Legal - show up panes for boring as well
@@ -41,4 +39,4 @@
 - horizontal scrollbar sometimes appears, sometimes just for some elements
 - Giscus
     - mobile reaction popup is transparent
-- browser: when crashed it still opens new windows
+- internet browser: when crashed it still opens new windows

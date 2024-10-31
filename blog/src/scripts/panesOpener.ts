@@ -1,4 +1,4 @@
-import { zIndex, blogExpanded, blogPositionDefault } from '../store.ts';
+import { zIndex, blogExpanded, blogPositionDefault, useFunMode } from '../store.ts';
 import { navigate } from "astro:transitions/client";
 
 export function activatePanel(myElement: HTMLElement | string, delay = 0) {
@@ -17,21 +17,24 @@ export function activatePanel(myElement: HTMLElement | string, delay = 0) {
 }
 
 export function openOrWigglePanel(myElement: HTMLElement) {
-    if (myElement.classList.contains("invisible")) {
-        openPanel(myElement);
-    } else {
-        myElement.style.setProperty('--animate-duration', '0.4s');
-        const animationTriggerClass = "animate__pulse"
-        myElement.classList.add(animationTriggerClass);
-        setTimeout(function () {
-            myElement.classList.remove(animationTriggerClass);
-        }, 410);
+    if (useFunMode.get() == 'true') {
+        if (myElement.classList.contains("invisible")) {
+            openPanel(myElement);
+        } else {
+            myElement.style.setProperty('--animate-duration', '0.4s');
+            const animationTriggerClass = "animate__pulse"
+            myElement.classList.add(animationTriggerClass);
+            setTimeout(function () {
+                myElement.classList.remove(animationTriggerClass);
+            }, 410);
+        }
+        showPanelOnTop(myElement)
     }
-    showPanelOnTop(myElement)
 }
 
 export function navigateToPanelPage(pageName: string) {
-    navigate(pageName)
+    const updatedPath = `${useFunMode.get() == 'true' ? '' : '/simple'}${pageName}`;
+    navigate(updatedPath)
 }
 
 export function closePanelByName(panelName: string) {

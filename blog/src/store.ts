@@ -2,9 +2,8 @@ import { atom } from 'nanostores';
 import { persistentAtom } from '@nanostores/persistent'
 
 export const zIndex = atom(1);
-
-export const showPrivacyPolicy = atom(false);
-export const showCookiePolicy = atom(false);
+export const hasSeenHello = atom(false);
+export const useFunMode = persistentAtom<string>('useFunMode', 'true');
 
 // TODO: switch to persistentMap someDay
 export const blogHeight = persistentAtom<string>('blogHeight', '0');
@@ -21,4 +20,5 @@ export function resetStore() {
     blogPositionDefault.set('true');
     blogPositionLeft.set('0');
     blogPositionTop.set('0');
+    useFunMode.set('true');
 }

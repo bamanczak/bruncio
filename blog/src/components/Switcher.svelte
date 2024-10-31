@@ -2,19 +2,19 @@
     import { navigate } from "astro:transitions/client";
     import { Switch } from "svelte-ux";
     import Icon from "@iconify/svelte";
+    import { useFunMode } from "../store.ts";
     export let isChecked: boolean;
     export let pathname: string;
 
     function switchFunMode() {
         if (isChecked) {
-            const newPath = `/simple${pathname}`;
-            console.log("New path: " + newPath);
+            useFunMode.set("false");
             navigate(`/simple${pathname}`);
         } else {
+            useFunMode.set("true");
             navigate(`${pathname.replace("simple/", "")}`);
         }
     }
-    console.log("Pathname is:" + pathname);
 </script>
 
 <div
@@ -29,7 +29,6 @@
             color="success"
             classes={{
                 switch: "bg-surface-100 border-black data-[checked=false]:bg-black data-[checked=false]:border-black data-[checked=true]:bg-myyellow data-[checked=true]:border-myyellow",
-                // data-[checked=false]:bg-my-yellow data-[checked=true]:bg-success
                 toggle: "bg-mywhite",
             }}
         >
