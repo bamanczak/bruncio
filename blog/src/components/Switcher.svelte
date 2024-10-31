@@ -10,7 +10,11 @@
     function switchFunMode() {
         if (isChecked) {
             useFunMode.set("false");
-            navigate(`/simple${pathname}`);
+            if (pathname == "/") {
+                navigate("/simple/blog");
+            } else {
+                navigate(`/simple${pathname}`);
+            }
         } else {
             useFunMode.set("true");
             navigate(`${pathname.replace("simple/", "")}`);
@@ -18,8 +22,12 @@
     }
 
     function checkIf404AndVerifyPath() {
-        if (useFunMode.get() != "true" && is404) {
-            navigate("/simple/404");
+        if (useFunMode.get() != "true") {
+            if (is404) {
+                navigate("/simple/404");
+            } else if (pathname == "/") {
+                navigate("/simple/blog");
+            }
         }
     }
 

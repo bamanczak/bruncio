@@ -3,9 +3,8 @@
 ### Boring view
   - hero image -> style adjust
   - comments -> path mapping update?
-  - index page
   - test and fix og images for boring views
-  - Legal - show up panes for boring as well
+  - decrease spacing
 
 ### Big
 - pane with images

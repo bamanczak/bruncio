@@ -2,6 +2,7 @@
     import { Toggle, Button, MenuItem, Menu } from "svelte-ux";
     import { activatePanel } from "../scripts/panesOpener";
     import { navigate } from "astro:transitions/client";
+    import { useFunMode } from "../store";
 </script>
 
 <Toggle let:on={open} let:toggle>
@@ -23,7 +24,11 @@
             <hr class="h-px my-1 bg-black border-0" />
             <MenuItem
                 on:click={() => {
-                    navigate("/");
+                    if (useFunMode.get() == "true") {
+                        navigate("/");
+                    } else {
+                        navigate("/simple/blog");
+                    }
                 }}
                 class="pixelated flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >Home</MenuItem

@@ -20,5 +20,4 @@ export function resetStore() {
     blogPositionDefault.set('true');
     blogPositionLeft.set('0');
     blogPositionTop.set('0');
-    useFunMode.set('true');
 }

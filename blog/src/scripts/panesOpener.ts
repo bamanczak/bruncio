@@ -17,19 +17,18 @@ export function activatePanel(myElement: HTMLElement | string, delay = 0) {
 }
 
 export function openOrWigglePanel(myElement: HTMLElement) {
-    if (useFunMode.get() == 'true') {
-        if (myElement.classList.contains("invisible")) {
-            openPanel(myElement);
-        } else {
-            myElement.style.setProperty('--animate-duration', '0.4s');
-            const animationTriggerClass = "animate__pulse"
-            myElement.classList.add(animationTriggerClass);
-            setTimeout(function () {
-                myElement.classList.remove(animationTriggerClass);
-            }, 410);
-        }
-        showPanelOnTop(myElement)
+    if (myElement.classList.contains("invisible")) {
+        openPanel(myElement);
+    } else {
+        myElement.style.setProperty('--animate-duration', '0.4s');
+        const animationTriggerClass = "animate__pulse"
+        myElement.classList.add(animationTriggerClass);
+        setTimeout(function () {
+            myElement.classList.remove(animationTriggerClass);
+        }, 410);
     }
+    showPanelOnTop(myElement)
+
 }
 
 export function navigateToPanelPage(pageName: string) {
@@ -65,6 +64,9 @@ export function hideScrollBars(myElement: HTMLElement) {
 }
 
 export function openPanel(myElement: HTMLElement) {
+    if (useFunMode.get() != 'true') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // const horizontalScrollbar = myElement.querySelector(".os-scrollbar-horizontal") as HTMLElement;
     const verticalScrollbar = myElement.querySelector(".os-scrollbar-vertical") as HTMLElement;
     myElement.style.setProperty('--animate-duration', '0.2s');
