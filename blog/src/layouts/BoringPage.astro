@@ -8,6 +8,7 @@ import Switcher from "../components/Switcher.svelte";
 
 import MobileMenu from "../components/MobileMenu.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
+import LegalNotices from "../components/LegalNotices.astro";
 
 // type Props = CollectionEntry<"blog">["data"];
 
@@ -111,6 +112,8 @@ const {
 					position_y={270}
 					draggable={false}
 				/>
+				<LegalNotices />
+
 				<article>
 					<div class="prose">
 						<div class="title">
