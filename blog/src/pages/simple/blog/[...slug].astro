@@ -3,10 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import BlogPost from "../../../layouts/BlogPost.astro";
 import Switcher from "../../../components/Switcher.svelte";
 import DesktopIcon from "../../../components/DesktopIcon.astro";
-import TableOfContents from "../../../components/TableOfContents.astro";
 import Comments from "../../../components/Comments.astro";
-// import Pane from "../../components/BlogPostPane.astro";
-// import Comments from "../../components/Comments.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {

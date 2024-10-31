@@ -18,7 +18,7 @@
 </script>
 
 <div
-    class="switcher-container rounded-full border-4 border-black bg-mywhite grid place-items-center"
+    class="switcher-container max-md:hidden rounded-full border-4 border-black bg-mywhite grid place-items-center"
 >
     <label for="fun-mode" class="flex gap-2 items-center text-sm">
         <Switch
