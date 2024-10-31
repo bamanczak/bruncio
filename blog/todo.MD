@@ -1,18 +1,23 @@
 ## Features
 
+### Boring view
+  - hero image -> style adjust
+  - comments -> path mapping update?
+  - index page
+  - 404 page
+  - about page
+  - remove `SimplePage.astro` layout
+  - remove `BlogPost.astro` layout
+  - test and fix og images for boring views
+  - Legal - show up panes for boring as well
+
 ### Big
 - pane with images
 - open image
 - Floppy!
-- "simple" view mode
-    - toggle https://svelte-switcher.vercel.app/
-    - inny font na tekst
-    - hero image -> style adjust
-    - comments -> path mapping update?
-    - menu -> keep as is, but adjust navigation
 
 ### Polish
-
+- table of contents for boring view
 - settings (change bg color, maybe more)
 - [tooltip svelte?](https://dev.to/danawoodman/svelte-quick-tip-using-actions-to-integrate-with-javascript-libraries-tippy-tooltips-2m94)
 
