@@ -52,5 +52,6 @@
         bottom: 20px;
         left: 20px;
         padding: 5px;
+        z-index: 9989;
     }
 </style>
