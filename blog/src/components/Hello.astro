@@ -3,10 +3,10 @@ import { Image } from "astro:assets";
 import helloAnimation from "../images/hello-animated.gif";
 ---
 
-<div class="hello-container animate__animated" transition:persist>
+<div class="hello-container animate__animated hidden" transition:persist>
     <Image src={helloAnimation} alt="Animated hello" loading="eager" />
 </div>
-<div class="overlay bg-myyellow animate__animated" transition:persist></div>
+<div class="overlay bg-myyellow animate__animated hidden" transition:persist></div>
 <style>
     .overlay {
         position: absolute;
@@ -38,10 +38,11 @@ import helloAnimation from "../images/hello-animated.gif";
 </style>
 <script>
     import { hasSeenHello } from "../store.ts";
+    import {useFunMode} from "../store";
 
     const overlay = document.querySelector(".overlay") as HTMLElement;
     const hello = document.querySelector(".hello-container") as HTMLElement;
-    let bypassAnimations = hasSeenHello.get() == "true" ? true : false;
+    let bypassAnimations = hasSeenHello.get() === 'true';
 
     function hideElement(myElement: HTMLElement, animate = true) {
         const animationTriggerClass = "animate__zoomOut";
@@ -61,13 +62,21 @@ import helloAnimation from "../images/hello-animated.gif";
         }, animationDelay);
     }
 
-    let hideDelay = 500;
+    function showElement (myElement: HTMLElement) {
+        myElement.classList.remove("hidden");
+    }
+
+    let hideDelay = 1000;
     let hideAnimate = true;
 
     if (bypassAnimations) {
         hideDelay = 0;
         hideAnimate = false;
+    } else {
+        showElement(overlay);
+        showElement(hello);
     }
+
 
     setTimeout(function () {
         hideElement(overlay, hideAnimate);
