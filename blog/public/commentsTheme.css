@@ -142,9 +142,12 @@ main .pagination-loader-container {
     border-radius: 12px;
 }
 
-.gsc-comment-box-buttons button.btn:hover:not([disabled]),
-.gsc-social-reaction-summary-item-count {
+.gsc-comment-box-buttons button.btn:hover:not([disabled]) {
     color: #FAF4E6;
+}
+
+.gsc-social-reaction-summary-item-count {
+    color: #000000;
 }
 
 .btn.btn-primary:hover {

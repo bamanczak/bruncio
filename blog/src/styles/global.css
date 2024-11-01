@@ -18,7 +18,7 @@
 
 @font-face {
 	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-regular.woff') format('woff');
+	src: url('/fonts/atkinson-regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -158,12 +158,21 @@ p {
 	margin-bottom: 1em;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin-top: 1em;
+}
+
 h2.change-on-drag {
+	margin-top: 0;
 	margin-bottom: 0;
 }
 
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
 
 textarea {
@@ -284,11 +293,6 @@ hr {
 body {
 	font-size: 12px;
 	background: var(--desktop-color);
-
-	/* if outside of the window, clip */
-	height: 100vh;
-	/* TUTAJ WYŁĄCZA SIĘ SCROLL */
-	overflow: clip;
 }
 
 body.scrollablebody {
@@ -312,7 +316,7 @@ body.scrollablebody {
 
 h1 {
 	/* color: var(--desktop-text-color); */
-	padding: 32px;
+	padding: 24px;
 	font-size: 1.5rem;
 }
 

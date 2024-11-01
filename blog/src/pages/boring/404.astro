@@ -1,0 +1,10 @@
+---
+import BoringPage from "../../layouts/BoringPage.astro";
+
+const errorTitle = "Page missing";
+const errorMessage = "This page was not found. Please go elsewhere.";
+---
+
+<BoringPage title={errorTitle} description={errorMessage}>
+	<p>{errorMessage}</p>
+</BoringPage>

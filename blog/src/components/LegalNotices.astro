@@ -1,0 +1,51 @@
+---
+import Pane from "../components/Pane.astro";
+
+import { Content as CookieNotice } from "../content/special/cookieNotice.md";
+import { Content as PrivacyPolicy } from "../content/special/privacyPolicy.md";
+import { Content as TermsOfUse } from "../content/special/termsOfUse.md";
+import { Content as A11y } from "../content/special/a11y.md";
+import { Content as Environment } from "../content/special/environment.md";
+---
+
+<!-- LEGAL NOTICES -->
+<Pane
+    title="Cookie Notice"
+    classes="invisible hidemeplease"
+    windowName="CokkieNotice"
+    position="left: max(calc(100vw - 470px), 1px); top: 80px; width: var(--pane-default-width); height: var(--pane-default-height);"
+>
+    <CookieNotice />
+</Pane>
+<Pane
+    title="Privacy Policy"
+    classes="invisible hidemeplease"
+    windowName="PrivacyPolicy"
+    position="left: min(calc(50vw - 150px), 1px); top: calc(50vh - 200px); width: var(--pane-default-width); height: var(--pane-default-height);"
+>
+    <PrivacyPolicy />
+</Pane>
+<Pane
+    title="Environment Policy"
+    classes="invisible hidemeplease"
+    windowName="EnvPolicy"
+    position="left: 2px; top: calc(100vh - 380px); width: var(--pane-default-width); height: var(--pane-default-height);"
+>
+    <Environment />
+</Pane>
+<Pane
+    title="Terms of use"
+    classes="invisible hidemeplease"
+    windowName="TermsOfUse"
+    position="left: 2px; top: 80px, 1px); width: 200px; height: var(--pane-default-height);"
+>
+    <TermsOfUse />
+</Pane>
+<Pane
+    title="Accessibility"
+    classes="invisible hidemeplease"
+    windowName="A11y"
+    position="left: max(calc(100vw - 500px), 1px); top: calc(100vh - 400px); width: var(--pane-default-width); height: var(--pane-default-height);"
+>
+    <A11y />
+</Pane>
