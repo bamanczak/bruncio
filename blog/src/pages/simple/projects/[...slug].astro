@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import BoringPage from "../../../layouts/BoringPage.astro";
+import Comments from "../../../components/Comments.astro";
 
 export const prerender = true;
 
@@ -28,4 +29,5 @@ const { Content, headings } = await post.render();
 	ogImage=`https://brunc.io/og/${post.slug}.png`
 >
 	<Content />
+	<Comments />
 </BoringPage>

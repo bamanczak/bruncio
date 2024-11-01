@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import BoringPage from "../../../layouts/BoringPage.astro";
+import Comments from "../../../components/Comments.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -36,5 +37,6 @@ const { Content, headings } = await post.render();
 >
 	<!-- <TableOfContents headings={headings} /> -->
 	<Content />
+	<Comments />
 </BoringPage>
 <!-- <Comments /> -->

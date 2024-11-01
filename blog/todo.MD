@@ -1,10 +1,8 @@
 ## Features
 
 ### Boring view
-  - hero image -> style adjust
   - comments -> path mapping update?
   - test and fix og images for boring views
-  - decrease spacing
 
 ### Big
 - pane with images

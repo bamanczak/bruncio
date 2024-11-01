@@ -158,12 +158,21 @@ p {
 	margin-bottom: 1em;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin-top: 1em;
+}
+
 h2.change-on-drag {
+	margin-top: 0;
 	margin-bottom: 0;
 }
 
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
 
 textarea {
@@ -307,7 +316,7 @@ body.scrollablebody {
 
 h1 {
 	/* color: var(--desktop-text-color); */
-	padding: 32px;
+	padding: 24px;
 	font-size: 1.5rem;
 }
 

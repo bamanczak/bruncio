@@ -8,7 +8,7 @@ import Switcher from "../components/Switcher.svelte";
 import MobileMenu from "../components/MobileMenu.astro";
 import DesktopIcon from "../components/DesktopIcon.astro";
 import LegalNotices from "../components/LegalNotices.astro";
-import {ViewTransitions} from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 import Loader from "../components/loader.astro";
 
 // type Props = CollectionEntry<"blog">["data"];
@@ -91,7 +91,7 @@ const {
 				<DesktopIcon
 					iconName="pixelarticons:article-multiple"
 					label="posts"
-					position_x={20}
+					position_x={27}
 					position_y={60}
 					iconFunction="navigate"
 					navigateTo="/blog"
@@ -111,7 +111,7 @@ const {
 					label="projects"
 					iconFunction="navigate"
 					navigateTo="/projects"
-					position_x={25}
+					position_x={29}
 					position_y={270}
 					draggable={false}
 				/>
@@ -137,7 +137,7 @@ const {
 							}
 							<h1>{title}</h1>
 							<hr
-								class="w-72 h-1 mx-auto my-4 bg-black border-0 rounded md:my-10 dark:bg-gray-700"
+								class="w-72 h-1 mx-auto my-4 bg-black border-0 rounded md:my-6 dark:bg-gray-700"
 							/>
 						</div>
 						{
