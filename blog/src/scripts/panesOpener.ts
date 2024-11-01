@@ -32,7 +32,7 @@ export function openOrWigglePanel(myElement: HTMLElement) {
 }
 
 export function navigateToPanelPage(pageName: string) {
-    const updatedPath = `${useFunMode.get() == 'true' ? '' : '/simple'}${pageName}`;
+    const updatedPath = `${useFunMode.get() == 'true' ? '' : '/boring'}${pageName}`;
     navigate(updatedPath)
 }
 

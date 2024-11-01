@@ -1,9 +1,5 @@
 ## Features
 
-### Boring view
-  - comments -> path mapping update?
-  - test and fix og images for boring views
-
 ### Big
 - pane with images
 - open image

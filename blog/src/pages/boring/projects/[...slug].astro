@@ -17,7 +17,7 @@ type Props = CollectionEntry<"projects">;
 
 const { slug } = Astro.params;
 const post = posts.find((page) => page.slug === slug);
-if (!post) return Astro.redirect("/simple/404");
+if (!post) return Astro.redirect("/boring/404");
 
 const { Content, headings } = await post.render();
 ---
