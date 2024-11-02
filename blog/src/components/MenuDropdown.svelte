@@ -27,7 +27,7 @@
                     if (useFunMode.get() == "true") {
                         navigate("/");
                     } else {
-                        navigate("/simple/blog");
+                        navigate("/boring/blog");
                     }
                 }}
                 class="pixelated flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"

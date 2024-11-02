@@ -28,5 +28,9 @@ posts.forEach((post) => {
 	description="all blog posts"
 	ogImage=`https://brunc.io/og/asd.png`
 >
-	<BlogPostsTable client:load posts={postMetaData} />
+	<BlogPostsTable
+		client:load
+		posts={postMetaData}
+		linksPrefix="/boring/blog"
+	/>
 </BoringPage>
