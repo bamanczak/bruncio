@@ -21,17 +21,19 @@
         }
     }
 
-    function checkIf404AndVerifyPath() {
+    function checkIfCorrectMode() {
         if (useFunMode.get() != "true") {
             if (is404) {
                 navigate("/boring/404");
             } else if (pathname == "/") {
                 navigate("/boring/blog");
+            } else if (!pathname.includes("boring")) {
+                navigate(`/boring${pathname}`);
             }
         }
     }
 
-    checkIf404AndVerifyPath();
+    checkIfCorrectMode();
 </script>
 
 <!-- max-md:hidden -->

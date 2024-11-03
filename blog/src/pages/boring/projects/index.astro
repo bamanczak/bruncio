@@ -24,9 +24,13 @@ posts.forEach((post) => {
 ---
 
 <BoringPage
-	title="all blogposts"
-	description="all blog posts"
+	title="List of projects"
+	description="all projects"
 	ogImage=`https://brunc.io/og/asd.png`
 >
-	<BlogPostsTable client:load posts={postMetaData} linksPrefix="projects" />
+	<BlogPostsTable
+		client:load
+		posts={postMetaData}
+		linksPrefix="/boring/projects"
+	/>
 </BoringPage>
