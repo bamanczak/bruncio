@@ -1,0 +1,86 @@
+---
+import { Image } from "astro:assets";
+import helloAnimation from "../images/hello-animated.gif";
+---
+
+<div class="hello-container animate__animated hidden" transition:persist>
+    <Image src={helloAnimation} alt="Animated hello" loading="eager" />
+</div>
+<div class="overlay bg-myyellow animate__animated hidden" transition:persist></div>
+<style>
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9990;
+    }
+    .hello-container {
+        /* width: 300px;
+        height: 200px; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -70px;
+        margin-left: -200px;
+        width: 400px;
+        z-index: 9991;
+    }
+    #hello-container {
+        height: 100%;
+        width: 0;
+        position: fixed; /* Stay in place */
+        z-index: 9999; /* Sit on top */
+        left: 0;
+        top: 0;
+    }
+</style>
+<script>
+    import { hasSeenHello } from "../store.ts";
+    import {useFunMode} from "../store";
+
+    const overlay = document.querySelector(".overlay") as HTMLElement;
+    const hello = document.querySelector(".hello-container") as HTMLElement;
+    let bypassAnimations = hasSeenHello.get() === 'true';
+
+    function hideElement(myElement: HTMLElement, animate = true) {
+        const animationTriggerClass = "animate__zoomOut";
+        let animationDelay = 0;
+
+        if (animate) {
+            myElement.style.setProperty("--animate-duration", "0.4s");
+            myElement.classList.add(animationTriggerClass);
+            animationDelay = 410;
+        }
+
+        setTimeout(function () {
+            myElement.classList.add("hidden");
+            if (animate) {
+                myElement.classList.remove(animationTriggerClass);
+            }
+        }, animationDelay);
+    }
+
+    function showElement (myElement: HTMLElement) {
+        myElement.classList.remove("hidden");
+    }
+
+    let hideDelay = 1000;
+    let hideAnimate = true;
+
+    if (bypassAnimations) {
+        hideDelay = 0;
+        hideAnimate = false;
+    } else {
+        showElement(overlay);
+        showElement(hello);
+    }
+
+
+    setTimeout(function () {
+        hideElement(overlay, hideAnimate);
+        hideElement(hello, hideAnimate);
+        hasSeenHello.set("true");
+    }, hideDelay);
+</script>

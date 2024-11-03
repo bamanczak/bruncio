@@ -1,9 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import DesktopPage from "../../layouts/DesktopPage.astro";
-import Pane from "../../components/BlogPostPane.astro";
-import Comments from "../../components/Comments.astro";
-import BlogImage from "../../components/BlogImage.astro";
+import BoringPage from "../../../layouts/BoringPage.astro";
+import Comments from "../../../components/Comments.astro";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -18,21 +16,26 @@ type Props = CollectionEntry<"blog">;
 
 const { slug } = Astro.params;
 const post = posts.find((page) => page.slug === slug);
-if (!post) return Astro.redirect("/404");
+if (!post) return Astro.redirect("/boring/404");
 
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 ---
 
-<DesktopPage
+<link
+	rel="preload"
+	href="/fonts/atkinson-regular.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin="anonymous"
+/>
+
+<BoringPage
 	{...post.data}
 	title={post.data.title}
 	description={post.data.description}
 	ogImage=`https://brunc.io/og/${post.slug}.png`
 >
-	<Pane title={post.data.title} windowName={post.id} showBackButton="true">
-		<h1>{post.data.title}</h1>
-		<BlogImage imagePath={post.data.heroImage} imageAlt="Iceberg" />
-		<Content />
-		<Comments />
-	</Pane>
-</DesktopPage>
+	<!-- <TableOfContents headings={headings} /> -->
+	<Content />
+	<Comments />
+</BoringPage>

@@ -1,10 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const { linkPrefix = "/" } = Astro.props;
 ---
 
 <div class="sticky mobile-menu bottom-0 bg-black md:hidden">
 	<div class="flex flex-row justify-around items-center">
-		<a href="/" class="flex flex-col items-center m-1">
+		<a href={`/`} class="flex flex-col items-center m-1">
 			<Icon
 				name="pixelarticons:home"
 				class="head"
@@ -13,7 +15,19 @@ import { Icon } from "astro-icon/components";
 			/>
 			<div class="text-sm text-mywhite">Home</div>
 		</a>
-		<a href="/blog" class="flex flex-col items-center m-1">
+		<a
+			href={`${linkPrefix}projects`}
+			class="flex flex-col items-center m-1"
+		>
+			<Icon
+				name="pixelarticons:image-gallery"
+				class="head"
+				size={24}
+				color="#FAF4E6"
+			/>
+			<div class="text-sm text-mywhite">Projects</div>
+		</a>
+		<a href={`${linkPrefix}blog`} class="flex flex-col items-center m-1">
 			<Icon
 				name="pixelarticons:article-multiple"
 				class="head"
@@ -22,7 +36,7 @@ import { Icon } from "astro-icon/components";
 			/>
 			<div class="text-sm text-mywhite">Posts</div>
 		</a>
-		<a href="/about" class="flex flex-col items-center m-1">
+		<a href={`${linkPrefix}about`} class="flex flex-col items-center m-1">
 			<Icon
 				name="pixelarticons:user"
 				class="head"
@@ -35,7 +49,7 @@ import { Icon } from "astro-icon/components";
 </div>
 <style>
 	.mobile-menu {
-		position: absolute;
+		position: fixed;
 		left: 0px;
 		bottom: 0px;
 		z-index: 9700;

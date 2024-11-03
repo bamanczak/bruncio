@@ -2,7 +2,7 @@
     import { navigate } from "astro:transitions/client";
 
     export let posts;
-    export let linksPrefix = "blog";
+    export let linksPrefix = "/blog";
     import GithubSlugger from "github-slugger";
     const slugger = new GithubSlugger();
     import Icon from "@iconify/svelte";
@@ -95,7 +95,7 @@
                     <Icon class="" icon={post.icon} />
                 </td>
                 <td class={setRowClass(index) + " text-balance text-lg"}>
-                    <p class="mb-0">{post.title}</p>
+                    <span class="mb-0">{post.title}</span>
                     <p class="text-base md:hidden mt-1">
                         {post.pubDate.toISOString().substring(0, 10)}
                     </p>

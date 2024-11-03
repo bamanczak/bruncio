@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+const { imagePath, imageAlt = "", imageWidth = 300 } = Astro.props;
+const fullImagePath = "images/" + imagePath;
+---
+
+<div class="md:float-right flex flex-col justify-center items-center ml-1 mb-1">
+    <Image
+        src={imagePath}
+        alt={imageAlt}
+        width={imageWidth}
+        class="border-4 border-black"
+    />
+</div>

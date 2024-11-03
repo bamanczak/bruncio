@@ -10,6 +10,7 @@ export default {
 		'./public/**/*.astro',
 		'node_modules/preline/dist/*.js',
 		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
+		'./node_modules/svelte-ux/**/*.{svelte,js}',
 	],
 	theme: {
 		backgroundColor: {

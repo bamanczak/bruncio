@@ -1,4 +1,4 @@
-import { zIndex, blogExpanded, blogPositionDefault } from '../store.ts';
+import { zIndex, blogExpanded, blogPositionDefault, useFunMode } from '../store.ts';
 import { navigate } from "astro:transitions/client";
 
 export function activatePanel(myElement: HTMLElement | string, delay = 0) {
@@ -28,10 +28,12 @@ export function openOrWigglePanel(myElement: HTMLElement) {
         }, 410);
     }
     showPanelOnTop(myElement)
+
 }
 
 export function navigateToPanelPage(pageName: string) {
-    navigate(pageName)
+    const updatedPath = `${useFunMode.get() == 'true' ? '' : '/boring'}${pageName}`;
+    navigate(updatedPath)
 }
 
 export function closePanelByName(panelName: string) {
@@ -62,6 +64,9 @@ export function hideScrollBars(myElement: HTMLElement) {
 }
 
 export function openPanel(myElement: HTMLElement) {
+    if (useFunMode.get() != 'true') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // const horizontalScrollbar = myElement.querySelector(".os-scrollbar-horizontal") as HTMLElement;
     const verticalScrollbar = myElement.querySelector(".os-scrollbar-vertical") as HTMLElement;
     myElement.style.setProperty('--animate-duration', '0.2s');

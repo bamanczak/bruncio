@@ -10,15 +10,10 @@ import DesktopIcon from "../components/DesktopIcon.astro";
 import Pane from "../components/Pane.astro";
 import MobileMenu from "../components/MobileMenu.astro";
 
-import Hello from "../components/hello.astro";
+import Hello from "../components/Hello.astro";
 import { Content as Brunc } from "../content/special/bruncOS.mdx";
 import { Content as WebBrowser } from "../content/special/web.mdx";
 import { Content as CrashAlert } from "../content/special/alert.mdx";
-import { Content as CookieNotice } from "../content/special/cookieNotice.md";
-import { Content as PrivacyPolicy } from "../content/special/privacyPolicy.md";
-import { Content as TermsOfUse } from "../content/special/termsOfUse.md";
-import { Content as A11y } from "../content/special/a11y.md";
-import { Content as Environment } from "../content/special/environment.md";
 import { Content as Never } from "../content/special/never.mdx";
 
 import VirusImage from "../images/VirusFound.gif";
@@ -26,9 +21,18 @@ import IpadAdImage from "../images/you-won-ipad.gif";
 import MilkImage from "../images/HotMilks.gif";
 import TrashImage from "../images/trash.jpg";
 import Loader from "../components/loader.astro";
+import Switcher from "../components/Switcher.svelte";
+import LegalNotices from "../components/LegalNotices.astro";
 
-const { title, description, pubDate, updatedDate, heroImage, ogImage } =
-	Astro.props;
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	ogImage,
+	is404 = false,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -42,6 +46,14 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 	<body class="bg-myyellow">
 		<Header />
 		<main>
+			<Switcher
+				client:load
+				isChecked={true}
+				pathname={Astro.url.pathname}
+				transition:persist
+				is404={is404}
+			/>
+
 			<Hello />
 
 			<!-- DESKTOP ICONS-->
@@ -52,12 +64,34 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				position_y={60}
 				iconFunction="navigate"
 				navigateTo="/blog"
+				draggable={true}
 			/>
+			<DesktopIcon
+				iconName="pixelarticons:user"
+				label="About me"
+				iconFunction="navigate"
+				navigateTo="/about"
+				position_x={22}
+				position_y={180}
+				draggable={true}
+			/>
+			<DesktopIcon
+				iconName="pixelarticons:image-gallery"
+				label="projects"
+				iconFunction="navigate"
+				navigateTo="/projects"
+				position_x={25}
+				position_y={270}
+				draggable={true}
+			/>
+
+			<!-- FUN ICONS -->
 			<DesktopIcon
 				iconName="pixelarticons:human-run"
 				label="test"
 				position_x={94}
 				position_y={130}
+				draggable={true}
 			>
 				<Pane
 					title="test"
@@ -69,26 +103,11 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				</Pane>
 			</DesktopIcon>
 			<DesktopIcon
-				iconName="pixelarticons:user"
-				label="About me"
-				iconFunction="navigate"
-				navigateTo="/about"
-				position_x={22}
-				position_y={180}
-			/>
-			<DesktopIcon
-				iconName="mdi:photo-library"
-				label="projects"
-				iconFunction="navigate"
-				navigateTo="/projects"
-				position_x={25}
-				position_y={270}
-			/>
-			<DesktopIcon
 				iconName="mdi:web"
 				label="internet"
 				position_x={24}
 				position_y={350}
+				draggable={true}
 			>
 				<Pane
 					title="internet"
@@ -104,6 +123,7 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				label="trash"
 				position_x={240}
 				position_y={190}
+				draggable={true}
 			>
 				<Pane
 					title="trash"
@@ -186,6 +206,8 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				</div>
 			</Pane>
 
+			<LegalNotices />
+
 			<!-- Standalone Panels for Menu -->
 
 			<Pane
@@ -196,47 +218,6 @@ const { title, description, pubDate, updatedDate, heroImage, ogImage } =
 				<Brunc />
 			</Pane>
 
-			<!-- LEGAL NOTICES -->
-			<Pane
-				title="Cookie Notice"
-				classes="invisible hidemeplease"
-				windowName="CokkieNotice"
-				position="left: max(calc(100vw - 470px), 1px); top: 80px; width: var(--pane-default-width); height: var(--pane-default-height);"
-			>
-				<CookieNotice />
-			</Pane>
-			<Pane
-				title="Privacy Policy"
-				classes="invisible hidemeplease"
-				windowName="PrivacyPolicy"
-				position="left: min(calc(50vw - 150px), 1px); top: calc(50vh - 200px); width: var(--pane-default-width); height: var(--pane-default-height);"
-			>
-				<PrivacyPolicy />
-			</Pane>
-			<Pane
-				title="Environment Policy"
-				classes="invisible hidemeplease"
-				windowName="EnvPolicy"
-				position="left: 2px; top: calc(100vh - 380px); width: var(--pane-default-width); height: var(--pane-default-height);"
-			>
-				<Environment />
-			</Pane>
-			<Pane
-				title="Terms of use"
-				classes="invisible hidemeplease"
-				windowName="TermsOfUse"
-				position="left: 2px; top: 80px, 1px); width: 200px; height: var(--pane-default-height);"
-			>
-				<TermsOfUse />
-			</Pane>
-			<Pane
-				title="Accessibility"
-				classes="invisible hidemeplease"
-				windowName="A11y"
-				position="left: max(calc(100vw - 500px), 1px); top: calc(100vh - 400px); width: var(--pane-default-width); height: var(--pane-default-height);"
-			>
-				<A11y />
-			</Pane>
 			<slot />
 			<MobileMenu />
 		</main>

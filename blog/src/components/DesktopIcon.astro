@@ -12,12 +12,16 @@ interface Props {
         | "pixelarticons:trash"
         | "pixelarticons:user"
         | "pixelarticons:human-run"
+        | "pixelarticons:image-gallery"
         | "pixelarticons:folder";
     label: string;
     position_x: number;
     position_y: number;
     iconFunction?: "navigate" | "openPanel";
     navigateTo?: string;
+    draggable: boolean;
+    customClass?: string;
+    hideOnLg?: boolean;
 }
 const {
     iconName,
@@ -26,20 +30,23 @@ const {
     position_y,
     iconFunction = "openPanel",
     navigateTo = "",
+    draggable,
+    customClass = "",
+    hideOnLg = false,
 } = Astro.props;
 
 export let menu = true;
 ---
 
 <astro-desktop-icon
-    class="max-w-20 desktop-icon-container window-opener"
+    class=`max-w-20 desktop-icon-container window-opener ${hideOnLg === true ? 'max-lg:hidden' : ''}`
     data-openWindow={label}
     data-iconFunction={iconFunction}
     data-navigateTo={navigateTo}
-    transition:persist
+    data-draggable={draggable}
 >
     <div
-        class="pixelated draggable-icon flex flex-row"
+        class=`pixelated draggable-icon flex flex-row ${draggable === true ? '' : 'position-fixed'} ${customClass}`
         style=`left:${position_x}px; top:${position_y}px;`
     >
         <div
@@ -80,6 +87,10 @@ export let menu = true;
         constructor() {
             super();
 
+            const fixed = this.querySelector(".draggable-icon.position-fixed");
+
+            const draggable = this.getAttribute("data-draggable") != null;
+
             const draggableIcon = this.querySelector(
                 ".draggable-icon",
             ) as HTMLElement;
@@ -89,7 +100,9 @@ export let menu = true;
             ) as HTMLElement;
 
             draggableIconContainer.addEventListener("mousedown", (event) => {
-                moveObject(draggableIcon, event as MouseEvent);
+                if (draggable) {
+                    moveObject(draggableIcon, event as MouseEvent);
+                }
             });
 
             const panelName = this.getAttribute("data-openWindow") as string;
@@ -99,7 +112,7 @@ export let menu = true;
 
             const parser = Bowser.getParser(navigator.userAgent);
             let iconClickEvent = "click";
-            if (parser.getPlatformType() != "mobile") {
+            if (parser.getPlatformType() != "mobile" && draggable) {
                 iconClickEvent = "dblclick";
             }
 
@@ -113,7 +126,7 @@ export let menu = true;
             let openHint = false;
             draggableIconContainer.addEventListener("mouseenter", (e) => {
                 e.stopPropagation();
-                if (parser.getPlatformType() != "mobile") {
+                if (parser.getPlatformType() != "mobile" && draggable) {
                     openHint = true;
                     setTimeout(function () {
                         if (openHint) {
@@ -162,5 +175,11 @@ export let menu = true;
     .draggable-icon {
         position: absolute;
         min-width: 150px;
+        cursor: move;
+    }
+
+    .draggable-icon.position-fixed {
+        position: fixed;
+        cursor: pointer;
     }
 </style>
