@@ -38,7 +38,7 @@ export let menu = true;
 ---
 
 <astro-desktop-icon
-    class=`max-w-20 desktop-icon-container window-opener ${hideOnLg === true ? '' : 'max-lg:hidden'}`
+    class=`max-w-20 desktop-icon-container window-opener ${hideOnLg === true ? 'max-lg:hidden' : ''}`
     data-openWindow={label}
     data-iconFunction={iconFunction}
     data-navigateTo={navigateTo}

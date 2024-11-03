@@ -34,8 +34,11 @@
     checkIf404AndVerifyPath();
 </script>
 
+<!-- max-md:hidden -->
 <div
-    class="switcher-container max-md:hidden rounded-full border-4 border-black bg-mywhite grid place-items-center"
+    class="switcher-container rounded-full border-black grid place-items-center
+    md:border-4 md:bottom-5 md:left-5 md:bg-mywhite
+    max-md:border-0 max-md:bg-transparent max-md:top-0.5 max-md:right-16"
 >
     <label for="fun-mode" class="flex gap-2 items-center text-sm">
         <Switch
@@ -65,9 +68,7 @@
 <style>
     .switcher-container {
         position: fixed;
-        bottom: 20px;
-        left: 20px;
         padding: 5px;
-        z-index: 9989;
+        z-index: 9970;
     }
 </style>
