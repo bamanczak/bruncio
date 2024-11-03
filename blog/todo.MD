@@ -7,9 +7,7 @@
 
 ### Polish
 - mobile:
-    - should switcjer move to the right and hide the clock?
-    - projects missing from menu?
-
+    - should switcher move to the right and hide the clock?
 - table of contents for boring view
 - settings (change bg color, maybe more)
 - [tooltip svelte?](https://dev.to/danawoodman/svelte-quick-tip-using-actions-to-integrate-with-javascript-libraries-tippy-tooltips-2m94)
