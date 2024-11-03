@@ -30,6 +30,10 @@
             } else if (!pathname.includes("boring")) {
                 navigate(`/boring${pathname}`);
             }
+        } else if (useFunMode.get() == "true") {
+            if (pathname.includes("boring")) {
+                navigate(`${pathname.replace("/boring", "")}`);
+            }
         }
     }
 
