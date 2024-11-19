@@ -8,7 +8,7 @@ icon: "pixelarticons:bullseye-arrow"
 ---
 import BlogImage from "../../components/BlogImage.astro"
 
-Why is it hard to follow the test pyramid, and what should you do about it?
+Why is it hard to follow the test pyramid, and what should we do about it?
 
 ## The Test Pyramid: Not Just Another Food Group
 
@@ -22,7 +22,7 @@ Why have our testing diets gone so horribly wrong?
 
 ## Test Pyramid
 
-The Test Pyramid is preached in lots of testing sermons and printed on t-shirts worn by hip QA engineers. Yet, in practice, lots of projects end up with struggling while embracing the pyramid in the test strategy 
+The Test Pyramid is preached in lots of testing sermons and yet, in practice, lots of projects end up struggling while embracing the pyramid in the test strategy 
 
 Why? Because we're suffering from a severe case of UI-tis. We've spent more time figuring out how to click that pesky button in Selenium than we have contemplating the meaning of tests. But don't worry, you're not alone in this chronic condition.
 
@@ -35,7 +35,7 @@ import iceberg_down from "../../images/posts/iceberg_down.png";
 Enter the Test Iceberg – a concept so cool it might just give you brainfreeze.
 
 What you see above the water – the UI, the buttons, the pretty colors – that's just the tip of the iceberg. 
-Beneath the surface lies a vast, complex world of logic, databases, and probably a few sea monsters (also known as legacy code). Contrary to the pyramid, the full picture is not visible to us at a first glance, it takes effort to look and understand what lies down.
+Beneath the surface lies a vast, complex world of logic, databases, and probably a few sea monsters (also known as legacy code). Contrary to the pyramid, the full picture is not visible to us at a first glance, it takes effort to look **and understand** what lies down.
 
 The problem arises when we tend to focus all your testing efforts on what we can see. A tester might be tempted to focus the automation on the UI only, creating a top-heavy testing strategy that slowly starts to resemble a mushroom.
 
@@ -43,7 +43,7 @@ However, the same concept applies to developers, who sometimes might get too bur
 
 That's why the development team needs to merge their efforts and take a holistic view.
 
-"I tried looking down," you say, "but I only saw more water." We've all been there. Nobody can see (or breathe) underwater without proper testing equipment and support.
+"I tried looking down," you say, "but I only saw more water." We've all been there. Nobody can see (or breathe) underwater without proper (testing) equipment and support.
 
 
 ## Become a Testing Deep Sea Diver!
@@ -52,18 +52,18 @@ import iceberg_beneath from "../../images/posts/iceberg_beneath.png";
 
 <BlogImage imagePath={iceberg_beneath} imageAlt="Drawing of an iceberg, with it's main body underwater and 2 fish."/>
 
-But this doesn't change the fact that as a tester, you need to know how your application is built. Is it a monolith or a bunch of microservices playing hide and seek? Is it lounging in the cloud or hiding in an on-premise server room?
+As testers, we need to know how our application is built. Is it a monolith or a bunch of microservices playing hide and seek? Is it lounging in the cloud or hiding in an on-premise server room?
 
 "Black Box Testing" is just **one of** testing methodologies, not the only one a tester should follow. It cannot be used as an excuse for evading all other methodologies. We all should be curious about the product we test. Most of us are curious about **why** the product gets built and **who** would be using it. But we need to be just as curious about **how** it gets built.
 
-I'm not saying that every tester should now engage in "white box testing", re-skill and start writing unit tests (although every tester would learn a lot from trying to do so from time to time). I think it's ok to keep the focus on writing unit tests with developers. 
+I'm not saying that every tester should now engage in "white box testing", re-skill and start writing unit tests (although I think every tester would learn a lot from trying to do so from time to time). I think it's ok to keep the focus on writing unit tests with developers. 
 
-What I'm trying to say, is that, even if a tester does not write the unit tests, the tester should still know what kind of unit tests are getting written, how do they work, what do they test. This gets closer to "Grey-Box Testing". Every tester should take a sneak peek under the surface of the water. You could see what tests lie there. But you won't be 
+What I'm trying to say, is that, even if a tester does not write the unit tests, the tester should still know what kind of unit tests are getting written, how do they work, what do they test. This gets closer to "Grey-Box Testing". Every tester should take a sneak peek under the surface of the water. We should see what tests lie there. But we won't be 
 able to do that **without proper training and help**. 
 
-Once you invest time and effort, you'll have the full iceberg in sight. Only then can you grasp the entirety of the testing possibilities and decide rightly where to best invest your time.
+Once we invest time and effort, we'll have the full iceberg in sight. Only then can we grasp the entirety of the testing possibilities and decide rightly where to best invest our time.
 
-"Black-Box", "White-Box" and "Grey-Box" testing methods only relate loosely to the test pyramid itself. "Black-Box" testing could be used just as well to writing the e2e tests, as to writing unit tests, so do other methods. However, in my mind, we won't be able to implement a proper test automaton strategy without being able to apply all of those methods.
+"Black-Box", "White-Box" and "Grey-Box" testing methods only relate loosely to the test pyramid itself. "Black-Box" testing could be used just as well to writing the e2e tests, as to writing unit tests, so do other methods. However, in my mind, we won't be able to implement a proper test automation strategy without all of those methods.
 
 In the end testing is mostly about beeing curious. Curious of all the aspects of the System Under Test.
 
@@ -72,7 +72,7 @@ In the end testing is mostly about beeing curious. Curious of all the aspects of
 1. Learn how your application is built.
 2. Understand the whole "Testing Iceberg." What kinds of tests do you have? At which levels?
    What do they do? What don't they do? Where are the gaps? 
-3. Collaborate with developers to get a complete picture of the system.
+3. Collaborate with others on your team to get a complete picture of the system.
 
 That's when the magic happens. Only a fool thinks that a pyramid can be built by itself.
 The Egyptians did it, and we still wonder how. 
