@@ -36,13 +36,13 @@ export const { getStaticPaths, GET } = OGImageRoute({
                 title: {
                     color: [0, 0, 0],
                     families: ["PixChicago"],
-                    size: 42,
+                    size: 46,
                     lineHeight: 1.6,
                 },
                 description: {
                     color: [0, 0, 0],
                     families: ["PixChicago"],
-                    size: 22,
+                    size: 24,
                     lineHeight: 1.6,
                 }
             },
