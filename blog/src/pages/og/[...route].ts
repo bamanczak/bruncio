@@ -31,12 +31,12 @@ export const { getStaticPaths, GET } = OGImageRoute({
                 path: "./src/images/og_bg.png",
                 fit: "fill"
             },
-            padding: 170,
+            padding: 160,
             font: {
                 title: {
                     color: [0, 0, 0],
                     families: ["PixChicago"],
-                    size: 46,
+                    size: 45,
                     lineHeight: 1.6,
                 },
                 description: {
