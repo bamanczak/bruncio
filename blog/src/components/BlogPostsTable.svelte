@@ -92,7 +92,9 @@
                 on:click={() => openPost(slugger.slug(post.id))}
             >
                 <td class={"text-2xl content-center" + setRowClass(index)}>
-                    <Icon class="" icon={post.icon} />
+                    <div class="icon-container">
+                        <Icon class="icon" icon={post.icon} />
+                    </div>
                 </td>
                 <td class={setRowClass(index) + " text-balance text-lg"}>
                     <span class="mb-0">{post.title}</span>
@@ -137,6 +139,18 @@
     .icon-column {
         min-width: 25px;
     }
+    .icon-container {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon {
+        width: 100%;
+        height: 100%;
+    }
 
     tr td:first-child,
     thead th:first-child {
@@ -175,5 +189,18 @@
     th {
         border-bottom: 1px solid #e0e0e0;
         border-top: 1px solid #e0e0e0;
+    }
+
+    .icon-container {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon {
+        width: 100%;
+        height: 100%;
     }
 </style>
