@@ -12,6 +12,8 @@
             useFunMode.set("false");
             if (pathname == "/") {
                 navigate("/boring/blog");
+            } else if (is404) {
+                navigate("/boring/404");
             } else {
                 navigate(`/boring${pathname}`);
             }
