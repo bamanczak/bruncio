@@ -30,7 +30,7 @@
     "astro-og-canvas": "^0.5.3",
     "astro-tooltips": "^0.6.2",
     "bowser": "^2.11.0",
-    "framer-motion": "^11.3.31",
+    "framer-motion": "^11.18.1",
     "nanostores": "^0.11.3",
     "overlayscrollbars": "^2.10.0",
     "preline": "^2.4.1",
