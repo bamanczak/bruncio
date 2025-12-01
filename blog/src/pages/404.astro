@@ -1,24 +1,10 @@
 ---
-import DesktopPage from "../layouts/DesktopPage.astro";
-import Pane from "../components/BlogPostPane.astro";
-import { Image } from "astro:assets";
-import ghostImage from "../images/ghost.png";
+import BoringPage from "../layouts/BoringPage.astro";
 
 const errorTitle = "Page missing";
 const errorMessage = "This page was not found. Please go elsewhere.";
 ---
 
-<DesktopPage title={errorTitle} description={errorMessage} is404={true}>
-	<Pane title="Page not found" windowName="mainPanel">
-		<div class="flex flex-col justify-center items-center ml-1 mb-1">
-			<h2>{errorTitle}</h2>
-			<Image
-				src={ghostImage}
-				alt="Picture of a ghost"
-				width={300}
-				class="border-4 border-black"
-			/>
-			<p>{errorMessage}</p>
-		</div>
-	</Pane>
-</DesktopPage>
+<BoringPage title={errorTitle} description={errorMessage}>
+	<p>{errorMessage}</p>
+</BoringPage>

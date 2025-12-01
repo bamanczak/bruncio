@@ -44,7 +44,7 @@ const {
 		<Loader />
 	</head>
 	<body class="bg-myyellow">
-		<Header />
+		<Header linkPrefix="/fun/" />
 		<main>
 			<Switcher
 				client:load
@@ -63,14 +63,14 @@ const {
 				position_x={20}
 				position_y={60}
 				iconFunction="navigate"
-				navigateTo="/blog"
+				navigateTo="/fun/blog"
 				draggable={true}
 			/>
 			<DesktopIcon
 				iconName="pixelarticons:user"
 				label="About me"
 				iconFunction="navigate"
-				navigateTo="/about"
+				navigateTo="/fun/about"
 				position_x={22}
 				position_y={180}
 				draggable={true}
@@ -79,7 +79,7 @@ const {
 				iconName="pixelarticons:image-gallery"
 				label="projects"
 				iconFunction="navigate"
-				navigateTo="/projects"
+				navigateTo="/fun/projects"
 				position_x={25}
 				position_y={270}
 				draggable={true}
@@ -219,7 +219,7 @@ const {
 			</Pane>
 
 			<slot />
-			<MobileMenu />
+			<MobileMenu linkPrefix="/fun/" />
 		</main>
 	</body>
 </html>

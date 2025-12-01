@@ -5,6 +5,7 @@ import headImage from "../images/header_head.png";
 import Clock from "./Clock.astro";
 import { Icon } from "astro-icon/components";
 import MenuDropdown from "../components/MenuDropdown.svelte";
+const { linkPrefix = "/" } = Astro.props;
 ---
 
 <header class="pixelated sticky top-0 h-10 bg-mywhite">
@@ -23,8 +24,8 @@ import MenuDropdown from "../components/MenuDropdown.svelte";
 			</div>
 			<div class="pixelated internal-links max-md:hidden">
 				<!-- <HeaderLink href="/">Home</HeaderLink> -->
-				<HeaderLink href="/blog">Blog</HeaderLink>
-				<HeaderLink href="/about">About</HeaderLink>
+				<HeaderLink href={`${linkPrefix}blog`}>Blog</HeaderLink>
+				<HeaderLink href={`${linkPrefix}about`}>About</HeaderLink>
 			</div>
 		</div>
 		<div class="flex flex-row justify-between">

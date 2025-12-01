@@ -10,31 +10,37 @@
     function switchFunMode() {
         if (isChecked) {
             useFunMode.set("false");
-            if (pathname == "/") {
-                navigate("/boring/blog");
+            if (pathname === "/fun" || pathname === "/fun/") {
+                navigate("/blog");
             } else if (is404) {
-                navigate("/boring/404");
+                navigate("/404");
             } else {
-                navigate(`/boring${pathname}`);
+                navigate(pathname.replace(/^\/fun/, "") || "/");
             }
         } else {
             useFunMode.set("true");
-            navigate(`${pathname.replace("boring/", "")}`);
+            if (pathname === "/") {
+                navigate("/fun");
+            } else if (is404) {
+                navigate("/fun/404");
+            } else {
+                navigate(`/fun${pathname}`);
+            }
         }
     }
 
     function checkIfCorrectMode() {
         if (useFunMode.get() != "true") {
-            if (is404) {
-                navigate("/boring/404");
-            } else if (pathname == "/") {
-                navigate("/boring/blog");
-            } else if (!pathname.includes("boring")) {
-                navigate(`/boring${pathname}`);
+            if (pathname.startsWith("/fun")) {
+                navigate(pathname.replace(/^\/fun/, "") || "/");
             }
         } else if (useFunMode.get() == "true") {
-            if (pathname.includes("boring")) {
-                navigate(`${pathname.replace("/boring", "")}`);
+            if (!pathname.startsWith("/fun")) {
+                if (pathname === "/") {
+                    navigate("/fun");
+                } else {
+                    navigate(`/fun${pathname}`);
+                }
             }
         }
     }

@@ -1,0 +1,31 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../../consts";
+import { getCollection } from "astro:content";
+
+let postMetaData: any[] = [];
+const posts = await (
+	await getCollection("projects")
+).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+posts.forEach((post) => {
+	let postData = post.data;
+	postMetaData.push(postData);
+});
+import DesktopPage from "../../../layouts/DesktopPage.astro";
+import Pane from "../../../components/BlogPostPane.astro";
+import BlogPostsTable from "../../../components/BlogPostsTable.svelte";
+---
+
+<DesktopPage title={SITE_TITLE} , description={SITE_DESCRIPTION}>
+	<Pane
+		title="List of projects"
+		windowName="mainPanel"
+		footnote={posts.length + " items; free NaN GB"}
+	>
+		<BlogPostsTable
+			client:load
+			posts={postMetaData}
+			linksPrefix="/fun/projects"
+		/>
+	</Pane>
+</DesktopPage>

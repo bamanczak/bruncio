@@ -1,12 +1,3 @@
 ---
-import DesktopPage from "../layouts/DesktopPage.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-
-const post = Astro.props;
+return Astro.redirect('/blog');
 ---
-
-<DesktopPage title={SITE_TITLE} description={SITE_DESCRIPTION} />
-<script>
-    import { resetStore } from "../store.ts";
-    resetStore();
-</script>

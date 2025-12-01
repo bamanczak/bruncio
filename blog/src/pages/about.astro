@@ -1,17 +1,8 @@
 ---
-import DesktopPage from "../layouts/DesktopPage.astro";
-import Pane from "../components/BlogPostPane.astro";
-
 import { Content as AboutMe } from "../content/other/aboutMe.mdx";
+import BoringPage from "../layouts/BoringPage.astro";
 ---
 
-<DesktopPage
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date("August 08 2021")}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<Pane title="About me" windowName="mainPanel">
-		<AboutMe />
-	</Pane>
-</DesktopPage>
+<BoringPage title="About me" description="Who is this guy?">
+	<AboutMe />
+</BoringPage>

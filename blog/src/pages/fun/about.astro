@@ -1,0 +1,17 @@
+---
+import DesktopPage from "../../layouts/DesktopPage.astro";
+import Pane from "../../components/BlogPostPane.astro";
+
+import { Content as AboutMe } from "../../content/other/aboutMe.mdx";
+---
+
+<DesktopPage
+	title="About Me"
+	description="Lorem ipsum dolor sit amet"
+	pubDate={new Date("August 08 2021")}
+	heroImage="/blog-placeholder-about.jpg"
+>
+	<Pane title="About me" windowName="mainPanel">
+		<AboutMe />
+	</Pane>
+</DesktopPage>

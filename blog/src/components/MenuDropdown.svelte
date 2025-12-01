@@ -25,9 +25,9 @@
             <MenuItem
                 on:click={() => {
                     if (useFunMode.get() == "true") {
-                        navigate("/");
+                        navigate("/fun");
                     } else {
-                        navigate("/boring/blog");
+                        navigate("/blog");
                     }
                 }}
                 class="pixelated flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
@@ -35,7 +35,11 @@
             >
             <MenuItem
                 on:click={() => {
-                    navigate("/blog");
+                    if (useFunMode.get() == "true") {
+                        navigate("/fun/blog");
+                    } else {
+                        navigate("/blog");
+                    }
                 }}
                 class="pixelated flex items-center gap-x-0.5 py-2 px-3 text-sm text-black hover:text-mywhite hover:bg-black focus:outline-none focus:bg-black focus:text-mywhite"
                 >Blog</MenuItem

@@ -11,9 +11,7 @@ const blog = defineCollection({
 		// Transform string to Date object
 		pubDate: stringToDate,
 		updatedDate: z.coerce.date().optional(),
-		heroImage: image().refine((img) => img.width >= 100, {
-			message: "Cover image must be at least 100 pixels wide!",
-		}),
+		heroImage: image().optional(),
 		ogImage: z.string().optional(),
 		id: z.string(),
 		icon: z.string(),
@@ -29,9 +27,8 @@ const projects = defineCollection({
 		// Transform string to Date object
 		pubDate: stringToDate,
 		updatedDate: z.coerce.date().optional(),
-		heroImage: image().refine((img) => img.width >= 100, {
-			message: "Cover image must be at least 100 pixels wide!",
-		}),
+		heroImage: image().optional(),
+
 		id: z.string(),
 		icon: z.string(),
 	}),

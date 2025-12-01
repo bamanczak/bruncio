@@ -1,10 +1,10 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import BoringPage from "../../../layouts/BoringPage.astro";
+import DesktopPage from "../../../layouts/DesktopPage.astro";
+import Pane from "../../../components/BlogPostPane.astro";
 import Comments from "../../../components/Comments.astro";
 
 export const prerender = true;
-
 export async function getStaticPaths() {
 	const posts = await getCollection("projects");
 	return posts.map((post) => ({
@@ -17,17 +17,19 @@ type Props = CollectionEntry<"projects">;
 
 const { slug } = Astro.params;
 const post = posts.find((page) => page.slug === slug);
-if (!post) return Astro.redirect("/boring/404");
+if (!post) return Astro.redirect("/fun/404");
 
-const { Content, headings } = await post.render();
+const { Content } = await post.render();
 ---
 
-<BoringPage
-	{...post.data}
-	title={post.data.title}
-	description={post.data.description}
-	ogImage=`https://brunc.io/og/${post.slug}.png`
->
-	<Content />
-	<Comments />
-</BoringPage>
+<DesktopPage {...post.data}>
+	<Pane
+		title={post.data.title}
+		windowName={post.id}
+		showBackButton="true"
+		backButtonDestination="fun/projects"
+	>
+		<Content />
+		<Comments />
+	</Pane>
+</DesktopPage>
