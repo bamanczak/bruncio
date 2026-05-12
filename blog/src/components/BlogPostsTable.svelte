@@ -1,3 +1,5 @@
+<!-- @migration-task Error while migrating Svelte code: `<th>` cannot be a child of `<thead>`. `<thead>` only allows these children: `<tr>`, `<style>`, `<script>`, `<template>`. The browser will 'repair' the HTML (by moving, removing, or inserting elements) which breaks Svelte's assumptions about the structure of your components.
+https://svelte.dev/e/node_invalid_placement -->
 <script>
     import { navigate } from "astro:transitions/client";
 
@@ -75,13 +77,15 @@
     <thead
         class="text-lg bg-black dark:bg-black text-mywhite dark:text-mywhite sticky p-0"
     >
-        <th class="icon-column"></th>
-        <th on:click={() => sortTable("title")} class="text-left">Post</th>
-        <th
-            on:click={() => sortTable("pubDate")}
-            class="text-left date-column max-md:hidden">Date</th
-        >
-        <th class="empty-column p-0"></th>
+        <tr>
+            <th class="icon-column"></th>
+            <th onclick={() => sortTable("title")} class="text-left">Post</th>
+            <th
+                onclick={() => sortTable("pubDate")}
+                class="text-left date-column max-md:hidden">Date</th
+            >
+            <th class="empty-column p-0"></th>
+        </tr>
     </thead>
 
     <tbody>
@@ -89,7 +93,7 @@
             <tr
                 id={"post-no-" + index}
                 class="group cursor-pointer"
-                on:click={() => openPost(slugger.slug(post.id))}
+                onclick={() => openPost(slugger.slug(post.id))}
             >
                 <td class={"text-2xl content-center" + setRowClass(index)}>
                     <div class="icon-container">

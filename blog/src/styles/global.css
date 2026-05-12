@@ -3,6 +3,45 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+@import "tailwindcss";
+
+@source "../**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}";
+@source "../../node_modules/preline/dist/*.js";
+@source "../../node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}";
+@source "../../node_modules/svelte-ux/**/*.{svelte,js}";
+
+@theme {
+	--color-back: #EBE1DB;
+	--color-white: #FFF;
+	--color-black: #000;
+	--color-myblue: #1E8EBF;
+	--color-myyellow: #ecb337;
+	--color-mywhite: #FAF4E6;
+
+	--color-50: #FFF5F2;
+	--color-100: #FFF1EE;
+	--color-200: #FFE4DE;
+	--color-300: #FFD5CC;
+	--color-400: #FFBCAD;
+	--color-500: #FE795D;
+	--color-600: #EF562F;
+	--color-700: #EB4F27;
+	--color-800: #CC4522;
+	--color-900: #A5371B;
+
+	--font-sans: NeuePixelSans, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+	--text-xs: 0.6rem;
+	--text-sm: 0.7rem;
+	--text-base: 0.8rem;
+	--text-xl: 1.25rem;
+	--text-2xl: 1.563rem;
+	--text-3xl: 1.953rem;
+	--text-4xl: 2.441rem;
+	--text-5xl: 3.052rem;
+}
+
+
 
 :root {
 	--accent: #2337ff;

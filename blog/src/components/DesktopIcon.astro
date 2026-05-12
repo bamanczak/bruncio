@@ -86,7 +86,9 @@ export let menu = true;
     class AstroDesktopIcon extends HTMLElement {
         constructor() {
             super();
+        }
 
+        connectedCallback() {
             const fixed = this.querySelector(".draggable-icon.position-fixed");
 
             const draggable = this.getAttribute("data-draggable") != null;
@@ -98,6 +100,8 @@ export let menu = true;
             const draggableIconContainer = this.querySelector(
                 ".desktop-icon-sub-container",
             ) as HTMLElement;
+
+            if (!draggableIconContainer) return;
 
             draggableIconContainer.addEventListener("mousedown", (event) => {
                 if (draggable) {

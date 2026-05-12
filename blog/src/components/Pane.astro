@@ -55,7 +55,7 @@ import "overlayscrollbars/overlayscrollbars.css";
         <div
             class="pane-footer pixelated
             bg-black text-mywhite text-xs
-            flex-grow flex items-center justify-center"
+            grow flex items-center justify-center"
         >
             {footnote}
         </div>
@@ -235,10 +235,15 @@ import "overlayscrollbars/overlayscrollbars.css";
     class AstroDesktopWindow extends HTMLElement {
         constructor() {
             super();
+        }
 
+        connectedCallback() {
             const content = this.querySelector(
                 ".content.scrollable",
             ) as HTMLElement;
+
+            if (!content) return;
+
             const scrollbar = OverlayScrollbars(content, {
                 scrollbars: { theme: "invisible", visibility: "visible" },
             });
