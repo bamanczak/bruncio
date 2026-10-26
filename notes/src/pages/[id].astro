@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { getPosts, formatDate } from '../posts';
+import Subscribe from '../components/Subscribe.astro';
 
 export const getStaticPaths = (async () =>
 	(await getPosts()).map((post) => ({ params: { id: post.id }, props: { post } }))) satisfies GetStaticPaths;
@@ -27,6 +28,7 @@ const { title, description, pubDate, heroImage, heroImageAlt } = post.data;
 		</div>
 	</article>
 	<p class="back pix"><a href="/">&larr; all notes</a></p>
+	<Subscribe />
 </Layout>
 
 <style>

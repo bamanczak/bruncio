@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import { getPosts, formatDate } from '../posts';
+import Subscribe from '../components/Subscribe.astro';
 
 export const getStaticPaths = (async ({ paginate }) => paginate(await getPosts(), { pageSize: 20 })) satisfies GetStaticPaths;
 
@@ -10,6 +11,7 @@ const { page } = Astro.props;
 ---
 
 <Layout title={page.currentPage > 1 ? `Page ${page.currentPage}` : undefined}>
+	<Subscribe />
 	<section class="window">
 		<div class="titlebar pix">
 			<span>notes</span>

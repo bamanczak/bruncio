@@ -1,0 +1,31 @@
+<section class="window subscribe" aria-label="Newsletter">
+	<div class="titlebar pix"><span>subscribe</span><span>Substack</span></div>
+	<iframe
+		src="https://notesfrombruno.substack.com/embed"
+		title="Subscribe to Notes from Bruno on Substack"
+		width="480"
+		height="320"
+		loading="lazy"
+		scrolling="no"></iframe>
+</section>
+
+<style>
+	/* Substack draws its embed on its own light background, whatever our theme. */
+	.subscribe {
+		width: fit-content;
+		max-width: 100%;
+		margin: 48px auto;
+	}
+	/* Above the post list it's the first thing on the page: no gap over it. */
+	.subscribe:first-child {
+		margin-top: 0;
+	}
+	iframe {
+		display: block;
+		width: 480px;
+		max-width: 100%;
+		height: 320px;
+		border: 0;
+		background: #fff;
+	}
+</style>
