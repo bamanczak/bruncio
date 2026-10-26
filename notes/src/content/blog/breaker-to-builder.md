@@ -1,6 +1,6 @@
 ---
 title: "I was a breaker, now I am a builder"
-description: "How AI turned a tester who used to only find bugs into one who also fixes, implements and ships."
+description: "How AI turned a tester focused on bugs and test automation into one who also fixes, implements and... tests more than ever before."
 pubDate: "2026-10-26"
 icon: "pixelarticons:tool-case"
 ---
