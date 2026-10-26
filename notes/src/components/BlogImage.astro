@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+
+const { imagePath, imageAlt = '', imageWidth = 300 } = Astro.props;
+---
+
+<Image src={imagePath} alt={imageAlt} width={imageWidth} class="blog-image" />
+
+<style>
+	.blog-image {
+		display: block;
+		margin: 0 auto 1em;
+		border: 4px solid var(--rule);
+	}
+	@media (min-width: 720px) {
+		.blog-image {
+			float: right;
+			margin: 0 0 1em 1.5em;
+		}
+	}
+</style>

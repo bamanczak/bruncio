@@ -1,0 +1,179 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { getPosts, formatDate } from '../posts';
+
+export const getStaticPaths = (async ({ paginate }) => paginate(await getPosts(), { pageSize: 20 })) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Layout title={page.currentPage > 1 ? `Page ${page.currentPage}` : undefined}>
+	<section class="window">
+		<div class="titlebar pix">
+			<span>notes</span>
+			<span>{page.total} items</span>
+		</div>
+
+		<div class="search">
+			<label for="q" class="pix">Search</label>
+			<input type="search" id="q" placeholder="title or topic…" autocomplete="off" />
+		</div>
+
+		<ul class="posts">
+			{
+				page.data.map((post) => (
+					<li data-search={`${post.data.title} ${post.data.description}`.toLowerCase()}>
+						<a href={`/${post.id}`}>
+							<Icon name={post.data.icon} size={28} />
+							<span class="text">
+								<span class="title">{post.data.title}</span>
+								<span class="desc">{post.data.description}</span>
+							</span>
+							<span class="meta pix">
+								{post.data.pinned && <span class="pin">pinned</span>}
+								<time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+							</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+		<p class="empty" hidden>Nothing matches. Try another word.</p>
+
+		{
+			page.lastPage > 1 && (
+				<nav class="pager pix" aria-label="Pages">
+					{page.url.prev ? <a href={page.url.prev}>&larr; newer</a> : <span />}
+					<span>
+						{page.currentPage} / {page.lastPage}
+					</span>
+					{page.url.next ? <a href={page.url.next}>older &rarr;</a> : <span />}
+				</nav>
+			)
+		}
+	</section>
+</Layout>
+
+<script>
+	// ponytail: filters only the current page; fetch a JSON index if posts outgrow one page.
+	const input = document.querySelector<HTMLInputElement>('#q')!;
+	const rows = [...document.querySelectorAll<HTMLLIElement>('.posts li')];
+	const empty = document.querySelector<HTMLElement>('.empty')!;
+	input.addEventListener('input', () => {
+		const words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+		let shown = 0;
+		for (const row of rows) {
+			row.hidden = !words.every((w) => row.dataset.search!.includes(w));
+			if (!row.hidden) shown++;
+		}
+		empty.hidden = shown > 0;
+	});
+	const focusSearch = () => location.hash === '#q' && input.focus();
+	focusSearch();
+	window.addEventListener('hashchange', focusSearch);
+</script>
+
+<style>
+	.search {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 14px 16px;
+		border-bottom: 2px solid var(--soft);
+	}
+	.search label {
+		font-size: 14px;
+	}
+	.search input {
+		flex: 1;
+		min-width: 0;
+		font: inherit;
+		font-size: 16px;
+		color: var(--ink);
+		background: var(--field);
+		border: 2px solid var(--rule);
+		border-radius: 0;
+		padding: 6px 10px;
+	}
+	.posts {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.posts li + li {
+		border-top: 2px solid var(--soft);
+	}
+	.posts a {
+		display: grid;
+		grid-template-columns: 28px 1fr auto;
+		gap: 14px;
+		align-items: start;
+		padding: 14px 16px;
+		color: var(--ink);
+		text-decoration: none;
+	}
+	.posts a:hover {
+		background: var(--soft);
+	}
+	.posts a:hover .title {
+		text-decoration: underline;
+	}
+	.posts svg {
+		margin-top: 2px;
+	}
+	.text {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+	.title {
+		font-weight: 700;
+		line-height: 1.35;
+	}
+	.desc {
+		color: var(--muted);
+		font-size: 16px;
+		line-height: 1.45;
+		margin-top: 2px;
+	}
+	.meta {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 4px;
+		font-size: 12px;
+		color: var(--muted);
+		white-space: nowrap;
+		padding-top: 3px;
+	}
+	.pin {
+		background: var(--yellow);
+		color: #000;
+		padding: 0 5px;
+	}
+	@media (max-width: 560px) {
+		.posts a {
+			grid-template-columns: 28px 1fr;
+		}
+		.meta {
+			grid-column: 2;
+			flex-direction: row;
+			align-items: center;
+			padding: 0;
+		}
+	}
+	.empty {
+		margin: 0;
+		padding: 14px 16px;
+		color: var(--muted);
+	}
+	.pager {
+		display: flex;
+		justify-content: space-between;
+		padding: 12px 16px;
+		border-top: 4px solid var(--rule);
+		font-size: 14px;
+	}
+</style>

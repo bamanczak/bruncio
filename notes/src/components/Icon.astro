@@ -1,0 +1,12 @@
+---
+import { icons } from '@iconify-json/pixelarticons/icons.json';
+
+interface Props {
+	name: string;
+	size?: number;
+}
+const { name, size = 24 } = Astro.props;
+const icon = icons[name.replace('pixelarticons:', '') as keyof typeof icons] ?? icons.article;
+---
+
+<svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" set:html={icon.body} />

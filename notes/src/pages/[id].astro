@@ -1,0 +1,102 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { getPosts, formatDate } from '../posts';
+
+export const getStaticPaths = (async () =>
+	(await getPosts()).map((post) => ({ params: { id: post.id }, props: { post } }))) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, heroImage, heroImageAlt } = post.data;
+---
+
+<Layout title={title} description={description}>
+	<article class="window">
+		<div class="titlebar pix">
+			<span>{post.id}.txt</span>
+			<span><time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time></span>
+		</div>
+		<div class="prose">
+			<h1 class="pix">{title}</h1>
+			<p class="lede">{description}</p>
+			{heroImage && <Image src={heroImage} alt={heroImageAlt} width={720} class="hero" />}
+			<Content />
+		</div>
+	</article>
+	<p class="back pix"><a href="/">&larr; all notes</a></p>
+</Layout>
+
+<style>
+	.prose {
+		padding: 24px 32px 32px;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	@media (max-width: 600px) {
+		.prose {
+			padding: 16px;
+		}
+	}
+	h1 {
+		font-size: 28px;
+		line-height: 1.35;
+		margin: 0 0 8px;
+	}
+	.lede {
+		color: var(--muted);
+		margin: 0 0 24px;
+	}
+	.hero {
+		display: block;
+		width: 30%;
+		margin: 0 auto 24px;
+		border: 4px solid var(--rule);
+	}
+	@media (max-width: 600px) {
+		.hero {
+			width: 100%;
+		}
+	}
+	.prose :global(h2),
+	.prose :global(h3) {
+		line-height: 1.3;
+		margin: 1.6em 0 0.5em;
+	}
+	.prose :global(h2) {
+		font-family: 'PixChicago', ui-monospace, monospace;
+		font-weight: normal;
+		font-size: 20px;
+	}
+	.prose :global(mark) {
+		background: var(--yellow);
+		color: #000;
+		padding: 0 2px;
+	}
+	.prose :global(blockquote) {
+		margin: 1.5em 0;
+		padding: 4px 16px;
+		border-left: 4px solid var(--rule);
+		background: var(--paper);
+	}
+	.prose :global(code) {
+		font-size: 0.9em;
+		background: var(--soft);
+		padding: 1px 4px;
+	}
+	.prose :global(pre) {
+		padding: 12px 16px;
+		overflow-x: auto;
+		border: 2px solid var(--rule);
+	}
+	.prose :global(hr) {
+		border: 0;
+		border-top: 4px solid var(--rule);
+	}
+	.back {
+		margin-top: 28px;
+		font-size: 14px;
+	}
+</style>
