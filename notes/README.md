@@ -32,4 +32,4 @@ The list shows pinned posts first, then newest first, 20 per page.
 
 ## Latest notes for frombruno.com
 
-`/latest.json` lists the 3 newest posts (title, description, date, URL), pinned or not. frombruno.com's Notes section fetches it in the browser, so a new post shows up there without rebuilding that site. `vercel.json` adds the CORS header that lets it.
+`/latest.json` lists the 3 newest posts (title, description, date, URL), pinned or not. frombruno.com's Notes section fetches it in the browser, so a new post shows up there without rebuilding that site. `public/_headers` adds the CORS header that lets it (Cloudflare reads it on deploy).

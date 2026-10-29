@@ -1,8 +1,0 @@
-{
-	"headers": [
-		{
-			"source": "/latest.json",
-			"headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
-		}
-	]
-}
