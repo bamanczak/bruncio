@@ -12,6 +12,10 @@ The plain, readable blog behind [notes.frombruno.com](https://notes.frombruno.co
 | `make test` | Type check (`astro check`) and a full build |
 | `make clean` | Remove `dist/` and `.astro/` |
 
+## Deploying
+
+Pushing to `main` deploys the site: Cloudflare Workers Builds runs `npm run build` and `npx wrangler deploy` in `notes/` for any change under `notes/`.
+
 ## Writing a post
 
 Add a `.md` or `.mdx` file to `src/content/blog/`. The filename is the URL.
